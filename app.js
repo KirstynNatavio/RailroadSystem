@@ -32,6 +32,27 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
+var Sequelize = require('sequelize'),
+sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn'), {
+	dialect: 'mariadb',
+	port: 3307,
+	});
+
+sequelize
+	.authenticate()
+	.then(function(err) {
+		console.log('Connection has been established successfully.');
+	}, function(err) {
+		console.log('Unable to connect to the database: ', err);
+	}); 
+
+
+
+
+
+
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
