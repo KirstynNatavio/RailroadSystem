@@ -32,12 +32,30 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+var config = {
+	username: 'nata9798',
+	Password: '23399798',
+	host: '134.74.126.104',
+	dstPort: 3307
+};
+
+
+var tunnel = require('tunnel-ssh');
+tunnel(config, function (error, server) {
+	if (error) {
+		console.log("Error: " + error);
+	}
+})
+
+
 
 // var Sequelize = require('sequelize'),
-// sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn'), {
-// 	dialect: 'mariadb',
-// 	port: 3307,
-// 	});
+// sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn', {
+// 	host: '134.74.126.107',
+// 	dialect: 'mysql',
+// 	socketPath: '/opt/mariadb.sock',
+// 	port: 3307
+// });	
 
 // sequelize
 // 	.authenticate()
@@ -48,6 +66,20 @@ app.use(function(req, res, next) {
 // 	}); 
 
 
+// const User = sequelize.define('user', {
+// 	fullName: {
+// 		type: Sequelize.STRING
+// 	},
+// })
+
+// User.sync({force: true}).then(() => {
+// 	return User.create({
+// 		fullName: 'Person'
+// 	})
+// })
+// .catch((e) => {
+// 	console.log(e);
+// })
 
 
 
