@@ -80,8 +80,43 @@ tunnel(config, function (error, server) {
 // .catch((e) => {
 // 	console.log(e);
 // })
+var knexInstance = require('knex')({
+	client: 'mariadb',
+	connection: {
+		socketPath: '/opt/mariadb-data/mariadb.sock',
+		host: '134.74.126.107',
+		user: 'S18336Pteam1',
+		password: 'brooklyn',
+		database: 'S18336Pteam1',
+		port: 3307
+	}
+});
 
+var bookshelf = require('bookshelf')(knexInstance);
 
+var User = bookshelf.Model.extend({
+  tableName: 'users',
+  posts: function() {
+    return this.hasMany(Posts);
+  }
+});
+
+var Posts = bookshelf.Model.extend({
+  tableName: 'messages',
+  tags: function() {
+    return this.belongsToMany(Tag);
+  }
+});
+
+var Tag = bookshelf.Model.extend({
+  tableName: 'tags'
+})
+
+User.where('id', 1).fetch({withRelated: ['posts.tags']}).then(function(user) {
+  console.log(user.related('posts').toJSON());
+}).catch(function(err) {
+  console.error(err);
+});
 
 
 

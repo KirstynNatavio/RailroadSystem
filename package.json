@@ -7,10 +7,12 @@
   },
   "dependencies": {
     "body-parser": "~1.18.2",
+    "bookshelf": "^0.13.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "hbs": "~4.0.1",
+    "knex": "^0.14.6",
     "mariasql": "^0.2.6",
     "morgan": "~1.9.0",
     "mysql": "^2.15.0",
