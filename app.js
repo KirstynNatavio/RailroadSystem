@@ -33,19 +33,19 @@ app.use(function(req, res, next) {
 });
 
 
-var Sequelize = require('sequelize'),
-sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn'), {
-	dialect: 'mariadb',
-	port: 3307,
-	});
+// var Sequelize = require('sequelize'),
+// sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn'), {
+// 	dialect: 'mariadb',
+// 	port: 3307,
+// 	});
 
-sequelize
-	.authenticate()
-	.then(function(err) {
-		console.log('Connection has been established successfully.');
-	}, function(err) {
-		console.log('Unable to connect to the database: ', err);
-	}); 
+// sequelize
+// 	.authenticate()
+// 	.then(function(err) {
+// 		console.log('Connection has been established successfully.');
+// 	}, function(err) {
+// 		console.log('Unable to connect to the database: ', err);
+// 	}); 
 
 
 
