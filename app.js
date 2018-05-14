@@ -36,7 +36,8 @@ var config = {
 	username: 'nata9798',
 	Password: '23399798',
 	host: '134.74.126.104',
-	dstPort: 3307
+	dstPort: 3307,
+  keepAlive:true
 };
 
 
