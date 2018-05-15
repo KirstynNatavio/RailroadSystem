@@ -81,7 +81,7 @@ tunnel(config, function (error, server) {
 // .catch((e) => {
 // 	console.log(e);
 // })
-var knexInstance = require('knex')({
+var knex = require('knex')({
 	client: 'mariadb',
 	connection: {
 		socketPath: '/opt/mariadb-data/mariadb.sock',
@@ -89,35 +89,47 @@ var knexInstance = require('knex')({
 		user: 'S18336Pteam1',
 		password: 'brooklyn',
 		database: 'S18336Pteam1',
-		port: 3307
+		port: 3307,
+    pool: { min: 0, max: 10000000 }
 	}
 });
 
-var bookshelf = require('bookshelf')(knexInstance);
-
-var User = bookshelf.Model.extend({
-  tableName: 'users',
-  posts: function() {
-    return this.hasMany(Posts);
-  }
-});
-
-var Posts = bookshelf.Model.extend({
-  tableName: 'messages',
-  tags: function() {
-    return this.belongsToMany(Tag);
-  }
-});
-
-var Tag = bookshelf.Model.extend({
-  tableName: 'tags'
+knex.schema.createTable('users', function(table) {
+  table.increments();
+  table.string('user_name');
 })
 
-User.where('id', 1).fetch({withRelated: ['posts.tags']}).then(function(user) {
-  console.log(user.related('posts').toJSON());
-}).catch(function(err) {
-  console.error(err);
-});
+knex('users').insert({user_name: 'test'});
+// .then(function() {
+//   return knex.insert({user_name: 'Tim'}).into('users');
+// })
+
+
+// var bookshelf = require('bookshelf')(knexInstance);
+
+// var User = bookshelf.Model.extend({
+//   tableName: 'users',
+//   posts: function() {
+//     return this.hasMany(Posts);
+//   }
+// });
+
+// var Posts = bookshelf.Model.extend({
+//   tableName: 'messages',
+//   tags: function() {
+//     return this.belongsToMany(Tag);
+//   }
+// });
+
+// var Tag = bookshelf.Model.extend({
+//   tableName: 'tags'
+// })
+
+// User.where('id', 1).fetch({withRelated: ['posts.tags']}).then(function(user) {
+//   console.log(user.related('posts').toJSON());
+// }).catch(function(err) {
+//   console.error(err);
+// });
 
 
 
