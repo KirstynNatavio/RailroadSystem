@@ -66,71 +66,48 @@ sequelize
 		console.log('Unable to connect to the database: ', err);
 	}); 
 
+const Passenger = sequelize.define('passenger', {
+	id: {
+		type: Sequelize.INTEGER,
+		autoIncrement: true,
+		primaryKey: true
+	},
+	fullName: {
+		type: Sequelize.STRING
+		allowNull: false,
+		validate: {
+			notEmpty: true
+		}
+	},
+	email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notEmpty: true,
+        isEmail: true
+      }
+    },
+    phoneNumber: {
+    	type: Sequelize.STRING,
+    	allowNull: false,
+    	validate: {
+    		notEmpty: true,
+    	}
+    }, 
+    password: {
+    	type: Sequelize.STRING
+    }
+})
 
-// const User = sequelize.define('user', {
-// 	fullName: {
-// 		type: Sequelize.STRING
-// 	},
-// })
-
-// User.sync({force: true}).then(() => {
-// 	return User.create({
-// 		fullName: 'Person'
-// 	})
-// })
-// .catch((e) => {
-// 	console.log(e);
-// })
-// var knex = require('knex')({
-// 	client: 'mariadb',
-// 	connection: {
-// 		socketPath: '/opt/mariadb-data/mariadb.sock',
-// 		host: '134.74.126.107',
-// 		user: 'S18336Pteam1',
-// 		password: 'brooklyn',
-// 		database: 'S18336Pteam1',
-// 		port: 3307,
-//     pool: { min: 0, max: 10000000 }
-// 	}
-// });
-
-// knex.schema.createTable('users', function(table) {
-//   table.increments();
-//   table.string('user_name');
-// })
-
-// knex('users').insert({user_name: 'test'});
-// .then(function() {
-//   return knex.insert({user_name: 'Tim'}).into('users');
-// })
-
-
-// var bookshelf = require('bookshelf')(knexInstance);
-
-// var User = bookshelf.Model.extend({
-//   tableName: 'users',
-//   posts: function() {
-//     return this.hasMany(Posts);
-//   }
-// });
-
-// var Posts = bookshelf.Model.extend({
-//   tableName: 'messages',
-//   tags: function() {
-//     return this.belongsToMany(Tag);
-//   }
-// });
-
-// var Tag = bookshelf.Model.extend({
-//   tableName: 'tags'
-// })
-
-// User.where('id', 1).fetch({withRelated: ['posts.tags']}).then(function(user) {
-//   console.log(user.related('posts').toJSON());
-// }).catch(function(err) {
-//   console.error(err);
-// });
-
+Passenger.sync({force: true}).then(() => {
+	return Passenger.create({
+		fullName: 'John Smith',
+		email: 'email@email.com',
+		phoneNumber: '2124892492',
+		password: 'password'
+	})
+})
 
 
 // error handler
