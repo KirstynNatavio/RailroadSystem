@@ -32,39 +32,39 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-var config = {
-	username: 'nata9798',
-	Password: '23399798',
-	host: '134.74.126.104',
-	dstPort: 3307,
-  keepAlive:true
-};
+// var config = {
+// 	username: 'nata9798',
+// 	Password: '23399798',
+// 	host: '134.74.126.104',
+// 	dstPort: 3307,
+//   keepAlive:true
+// };
 
 
-var tunnel = require('tunnel-ssh');
-tunnel(config, function (error, server) {
-	if (error) {
-		console.log("Error: " + error);
-	}
-})
+// var tunnel = require('tunnel-ssh');
+// tunnel(config, function (error, server) {
+// 	if (error) {
+// 		console.log("Error: " + error);
+// 	}
+// })
 
 
 
-// var Sequelize = require('sequelize'),
-// sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn', {
-// 	host: '134.74.126.107',
-// 	dialect: 'mysql',
-// 	socketPath: '/opt/mariadb.sock',
-// 	port: 3307
-// });	
+var Sequelize = require('sequelize'),
+sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn', {
+	host: '134.74.126.107',
+	dialect: 'mysql',
+	socketPath: '/opt/mariadb.sock',
+	port: 3307
+});	
 
-// sequelize
-// 	.authenticate()
-// 	.then(function(err) {
-// 		console.log('Connection has been established successfully.');
-// 	}, function(err) {
-// 		console.log('Unable to connect to the database: ', err);
-// 	}); 
+sequelize
+	.authenticate()
+	.then(function(err) {
+		console.log('Connection has been established successfully.');
+	}, function(err) {
+		console.log('Unable to connect to the database: ', err);
+	}); 
 
 
 // const User = sequelize.define('user', {
@@ -81,25 +81,25 @@ tunnel(config, function (error, server) {
 // .catch((e) => {
 // 	console.log(e);
 // })
-var knex = require('knex')({
-	client: 'mariadb',
-	connection: {
-		socketPath: '/opt/mariadb-data/mariadb.sock',
-		host: '134.74.126.107',
-		user: 'S18336Pteam1',
-		password: 'brooklyn',
-		database: 'S18336Pteam1',
-		port: 3307,
-    pool: { min: 0, max: 10000000 }
-	}
-});
+// var knex = require('knex')({
+// 	client: 'mariadb',
+// 	connection: {
+// 		socketPath: '/opt/mariadb-data/mariadb.sock',
+// 		host: '134.74.126.107',
+// 		user: 'S18336Pteam1',
+// 		password: 'brooklyn',
+// 		database: 'S18336Pteam1',
+// 		port: 3307,
+//     pool: { min: 0, max: 10000000 }
+// 	}
+// });
 
-knex.schema.createTable('users', function(table) {
-  table.increments();
-  table.string('user_name');
-})
+// knex.schema.createTable('users', function(table) {
+//   table.increments();
+//   table.string('user_name');
+// })
 
-knex('users').insert({user_name: 'test'});
+// knex('users').insert({user_name: 'test'});
 // .then(function() {
 //   return knex.insert({user_name: 'Tim'}).into('users');
 // })
