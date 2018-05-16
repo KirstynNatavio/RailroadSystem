@@ -73,7 +73,7 @@ const Passenger = sequelize.define('passenger', {
 		primaryKey: true
 	},
 	fullName: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
 		allowNull: false,
 		validate: {
 			notEmpty: true
