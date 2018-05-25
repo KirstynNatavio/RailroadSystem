@@ -64,6 +64,17 @@ sequelize
 		console.log('Unable to connect to the database: ', err);
 	}); 
 
+
+var SequelizeAuto = require('sequelize-auto')
+
+var auto = new SequelizeAuto('S18336PRRteam1', 'S18336Pteam1', 'brooklyn', {
+	host: '134.74.146.21',
+	dialect: 'mariadb'
+});
+
+auto.run(function (err) {
+	console.log(auto.tables);
+})
 // const Passenger = sequelize.define('passenger', {
 // 	id: {
 // 		type: Sequelize.INTEGER,
