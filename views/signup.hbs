@@ -17,7 +17,7 @@
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Phone</span>
-					<input class="input100" type="text" name="phone" placeholder="Phone number" required>
+					<input class="input100" id="phone" type="text" name="phone" placeholder="Phone number" required>
 				</div>
 
 				<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Password">
@@ -118,3 +118,32 @@
 
   gtag('config', 'UA-23581568-13');
 </script>
+
+<script>
+
+	$('#phone').keyup(function(e){
+    var ph = this.value.replace(/\D/g,'').substring(0,10);
+    // Backspace and Delete keys
+    var deleteKey = (e.keyCode == 8 || e.keyCode == 46);
+    var len = ph.length;
+    
+    if(len==0){
+        ph=ph;
+    }else if(len<3){
+        ph='('+ph;
+    }else if(len==3){
+        ph = '('+ph + (deleteKey ? '' : ') ');
+    }else if(len<6){
+        ph='('+ph.substring(0,3)+') '+ph.substring(3,6);
+    }else if(len==6){
+        ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+ (deleteKey ? '' : '-');
+    }else{
+        ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+'-'+ph.substring(6,10);
+    }
+    this.value = ph;
+});
+
+</script>
+
+var phone = '(123)4567890';
+phone = normalize(phone); //(123) 456-7890
