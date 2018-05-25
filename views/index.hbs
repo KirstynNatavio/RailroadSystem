@@ -5,9 +5,14 @@
 					Reservation Form
 				</span>
 
-				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-					<span class="label-input100">FULL NAME *</span>
-					<input class="input100" type="text" name="name" placeholder="Name" required>
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your First Name">
+					<span class="label-input100">First Name *</span>
+					<input class="input100" type="text" name="text" placeholder="First Name " required>
+				</div>
+
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Last Name">
+					<span class="label-input100">Last Name *</span>
+					<input class="input100" type="text" name="text" placeholder="Last Name " required>
 				</div>
 
 				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email">
@@ -31,40 +36,85 @@
 						</select>
 						<div class="dropDownSelect2"></div>
 					</div>
+
 				</div>
 
-				<div class="w-full dis-none js-show-service">
-					<div class="wrap-contact100-form-radio">
-						<span class="label-input100">What type of ticket fare do you want?</span>
 
-						<div class="contact100-form-radio m-t-15">
-							<input class="input-radio100" id="radio1" type="radio" name="type-product" value="physical" checked="checked">
-							<label class="label-radio100" for="radio1">
-								Adult fare
-							</label>
-						</div>
-
-						<div class="contact100-form-radio">
-							<input class="input-radio100" id="radio2" type="radio" name="type-product" value="digital">
-							<label class="label-radio100" for="radio2">
-								Child fare
-							</label>
-						</div>
-
-						<div class="contact100-form-radio">
-							<input class="input-radio100" id="radio3" type="radio" name="type-product" value="service">
-							<label class="label-radio100" for="radio3">
-								Elderly fare
-							</label>
-						</div>
+				<div class="wrap-input100 input100-select bg1">
+					<span class="label-input100">Destination *</span>
+					<div>
+						<select class="js-select2" name="service">
+							<option>Please choose</option>
+							<option>Boston</option>
+							<option>NYC</option>
+							<option>Washington</option>
+						</select>
+						<div class="dropDownSelect2"></div>
 					</div>
 
 				</div>
 
-				<div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Please Type Your Message">
-					<span class="label-input100">Message</span>
-					<textarea class="input100" name="message" placeholder="Your message here..."></textarea>
+
+				<div class="wrap-input100 form-group bg1 ">
+				  <span class="label-input100"> Date</span>
+				  <div class="col-10">
+				    <input class="form-control" id="date" type="date" name="date">
+				  </div>
 				</div>
+				
+				<fieldset class="radiogroup"> 
+					<div class="w-full">
+					<div class="wrap-contact100-form-radio">
+					<span class="label-input100"> What time of the day?</span>
+
+					<div class="contact100-form-radio m-t-15">
+						<input class="input-radio100" id="timeday1" value="morning" type="radio" name="timeday" checked="checked" />
+						<label class="label-radio100" for="timeday1">Morning</label>
+					</div>
+
+					<div class="contact100-form-radio m-t-15">
+						<input class="input-radio100" id="timeday2" value="afternoon" type="radio" name="timeday" checked="checked" />
+						<label class="label-radio100" for="timeday2">Afternoon</label>
+					</div>
+
+					<div class="contact100-form-radio m-t-15">
+						<input class="input-radio100" id="timeday3" value="evening" type="radio" name="timeday" checked="checked" />
+						<label class="label-radio100" for="timeday3">Evening</label>
+					</div>
+
+					</div>
+				  </div>
+
+				</fieldset>
+
+
+
+				<fieldset class="radiogroup"> 
+					<div class="w-full">
+					<div class="wrap-contact100-form-radio">
+					<span class="label-input100"> What type of ticket fare do you want?</span>
+
+					<div class="contact100-form-radio m-t-15">
+						<input class="input-radio100" id="fare1" value="adult" type="radio" name="fare" checked="checked" />
+						<label class="label-radio100" for="fare1">Adult</label>
+					</div>
+
+					<div class="contact100-form-radio m-t-15">
+						<input class="input-radio100" id="fare2" value="child" type="radio" name="fare" checked="checked" />
+						<label class="label-radio100" for="fare2">Child</label>
+					</div>
+
+					<div class="contact100-form-radio m-t-15">
+						<input class="input-radio100" id="fare3" value="elderly" type="radio" name="fare" checked="checked" />
+						<label class="label-radio100" for="fare3">Evening</label>
+					</div>
+
+					</div>
+				  </div>
+
+				</fieldset> 
+ 
+
 
 				<div class="container-contact100-form-btn">
 					<button class="contact100-form-btn">
@@ -97,17 +147,7 @@
 			});
 
 
-			$(".js-select2").each(function(){
-				$(this).on('select2:close', function (e){
-					if($(this).val() == "Please chooses") {
-						$('.js-show-service').slideUp();
-					}
-					else {
-						$('.js-show-service').slideUp();
-						$('.js-show-service').slideDown();
-					}
-				});
-			});
+			
 		})
 	</script>
 <!--===============================================================================================-->
@@ -116,6 +156,16 @@
 <!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
+
+	<script>
+
+		var today = new Date().toISOString().split('T')[0];
+		document.getElementsByName("date")[0].setAttribute('min', today);
+
+
+
+	</script>
+
 	<script src="vendor/noui/nouislider.min.js"></script>
 	<script>
 	    var filterBar = document.getElementById('filter-bar');
