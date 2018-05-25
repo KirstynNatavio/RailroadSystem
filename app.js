@@ -51,7 +51,7 @@ app.use(function(req, res, next) {
 
 
 var Sequelize = require('sequelize'),
-sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn', {
+sequelize = new Sequelize('S18336PRRteam1', 'S18336Pteam1', 'brooklyn', {
 	host: '134.74.146.21',
 	dialect: 'mysql'
 });	
@@ -64,48 +64,48 @@ sequelize
 		console.log('Unable to connect to the database: ', err);
 	}); 
 
-const Passenger = sequelize.define('passenger', {
-	id: {
-		type: Sequelize.INTEGER,
-		autoIncrement: true,
-		primaryKey: true
-	},
-	fullName: {
-		type: Sequelize.STRING,
-		allowNull: false,
-		validate: {
-			notEmpty: true
-		}
-	},
-	email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notEmpty: true,
-        isEmail: true
-      }
-    },
-    phoneNumber: {
-    	type: Sequelize.STRING,
-    	allowNull: false,
-    	validate: {
-    		notEmpty: true,
-    	}
-    }, 
-    password: {
-    	type: Sequelize.STRING
-    }
-})
+// const Passenger = sequelize.define('passenger', {
+// 	id: {
+// 		type: Sequelize.INTEGER,
+// 		autoIncrement: true,
+// 		primaryKey: true
+// 	},
+// 	fullName: {
+// 		type: Sequelize.STRING,
+// 		allowNull: false,
+// 		validate: {
+// 			notEmpty: true
+// 		}
+// 	},
+// 	email: {
+//       type: Sequelize.STRING,
+//       allowNull: false,
+//       unique: true,
+//       validate: {
+//         notEmpty: true,
+//         isEmail: true
+//       }
+//     },
+//     phoneNumber: {
+//     	type: Sequelize.STRING,
+//     	allowNull: false,
+//     	validate: {
+//     		notEmpty: true,
+//     	}
+//     }, 
+//     password: {
+//     	type: Sequelize.STRING
+//     }
+// })
 
-Passenger.sync({force: true}).then(() => {
-	return Passenger.create({
-		fullName: 'John Smith',
-		email: 'email@email.com',
-		phoneNumber: '2124892492',
-		password: 'password'
-	})
-})
+// Passenger.sync({force: true}).then(() => {
+// 	return Passenger.create({
+// 		fullName: 'John Smith',
+// 		email: 'email@email.com',
+// 		phoneNumber: '2124892492',
+// 		password: 'password'
+// 	})
+// })
 
 
 // error handler
