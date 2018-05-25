@@ -73,7 +73,7 @@ var auto = new SequelizeAuto('S18336PRRteam1', 'S18336Pteam1', 'brooklyn', {
 });
 
 auto.run(function (err) {
-	console.log(auto.tables);
+	console.log(auto.tables.PASSENGER);
 })
 // const Passenger = sequelize.define('passenger', {
 // 	id: {
