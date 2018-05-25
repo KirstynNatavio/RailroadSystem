@@ -52,10 +52,8 @@ app.use(function(req, res, next) {
 
 var Sequelize = require('sequelize'),
 sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn', {
-	host: '134.74.126.107',
-	dialect: 'mysql',
-	socketPath: '/opt/mariadb.sock',
-	port: 3307
+	host: '134.74.146.21',
+	dialect: 'mysql'
 });	
 
 sequelize
