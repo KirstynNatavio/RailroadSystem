@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+const models = require('./models/');
 
 var app = express();
 
@@ -32,51 +33,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// var config = {
-// 	username: 'nata9798',
-// 	Password: '23399798',
-// 	host: '134.74.126.104',
-// 	dstPort: 3307,
-//   keepAlive:true
-// };
 
-
-// var tunnel = require('tunnel-ssh');
-// tunnel(config, function (error, server) {
-// 	if (error) {
-// 		console.log("Error: " + error);
-// 	}
-// })
-
-
-
-var Sequelize = require('sequelize'),
-sequelize = new Sequelize('S18336PRRteam1', 'S18336Pteam1', 'brooklyn', {
-	host: '134.74.146.21',
-	dialect: 'mysql'
-});	
-
-sequelize
-	.authenticate()
-	.then(function(err) {
-		console.log('Connection has been established successfully.');
-	}, function(err) {
-		console.log('Unable to connect to the database: ', err);
-	}); 
-
-
-var SequelizeAuto = require('sequelize-auto')
-
-var auto = new SequelizeAuto('S18336PRRteam1', 'S18336Pteam1', 'brooklyn', {
-	host: '134.74.146.21',
-	dialect: 'mariadb'
-});
-
-auto.run(function (err) {
-	auto.tables.PASSENGER.findAll({
-		
-	})
-})
 // const Passenger = sequelize.define('passenger', {
 // 	id: {
 // 		type: Sequelize.INTEGER,
@@ -132,4 +89,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+models.sequelize.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is up and running on port ${PORT}`);
+  });
+});
 module.exports = app;
