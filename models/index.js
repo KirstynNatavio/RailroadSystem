@@ -7,7 +7,7 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(`${__dirname}/../config/config.json`)[env];
 const db = {};
 
-const sequelize = new Sequelize('S18336PRRteam1', 'S18336Pteam1', 'brooklyn', {
+const sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn', {
 	host: '134.74.146.21',
 	dialect: 'mysql'
 });	
