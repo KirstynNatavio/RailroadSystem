@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false
 		}
 
+	}, {
+		freezeTableName: true
 	});
 
 	STATION.associate = function(models) {

@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.TIME,
 			allowNull: false
 		}
+	}, {
+		freezeTableName: true
 	});
 
 	return STOPS_AT; 

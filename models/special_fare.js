@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.FLOAT,
 			allowNull: false
 		}
+	}, {
+		freezeTableName: true
 	});
 
 	return SPECIAL_FARE; 

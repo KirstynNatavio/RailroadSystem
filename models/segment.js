@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.FLOAT,
 			allowNull: false
 		}
+    }, {
+    	freezeTableName: true
     });
 
 	SEGMENT.associate = function(models) {
