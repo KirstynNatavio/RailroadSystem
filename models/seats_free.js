@@ -11,8 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 
 	}, {
 		freezeTableName: true, 
-		createdAt: false,
-		updatedAt: false
+		timestamps: false
 	});
 
 	SEATS_FREE.associate = function(models) {

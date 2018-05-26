@@ -12,8 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 		}
     }, {
     	freezeTableName: true,
-    	createdAt: false,
-		updatedAt: false
+    	timestamps: false
     });
 
 	SEGMENT.associate = function(models) {

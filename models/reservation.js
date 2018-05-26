@@ -22,8 +22,7 @@ module.exports = (sequelize, DataTypes) => {
 	},
 	{
 		freezeTableName: true,
-		createdAt: false,
-		updatedAt: false
+		timestamps: false
 	});
 
 	RESERVATION.associate = function(models) {
