@@ -5,14 +5,15 @@ module.exports = (sequelize, DataTypes) => {
 			primaryKey: true,
 			allowNull: false,
 			autoIncrement: true,
-			primaryKey: true
         },
 		FARE: {
 			type: DataTypes.FLOAT,
 			allowNull: false
 		}
     }, {
-    	freezeTableName: true
+    	freezeTableName: true,
+    	createdAt: false,
+		updatedAt: false
     });
 
 	SEGMENT.associate = function(models) {

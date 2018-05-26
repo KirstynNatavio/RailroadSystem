@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 			autoIncrement: true
 		},
+		PASSENGER_ID: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
 		RES_DATE: {
 			type: DataTypes.DATE,
 			allowNull: false
@@ -17,11 +21,13 @@ module.exports = (sequelize, DataTypes) => {
 
 	},
 	{
-		freezeTableName: true
+		freezeTableName: true,
+		createdAt: false,
+		updatedAt: false
 	});
 
 	RESERVATION.associate = function(models) {
-		models.RESERVATION.belongsTo(models.PASSENGER);
+		models.RESERVATION.belongsTo(models.PASSENGER, {targetKey: 'PASSENGER_ID'});
 		models.RESERVATION.hasMany(models.TRIP);
 	};
 	return RESERVATION; 

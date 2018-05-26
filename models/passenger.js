@@ -25,7 +25,9 @@ module.exports = (sequelize, DataTypes) => {
 
 	},
 	{
-		freezeTableName: true
+		freezeTableName: true,
+		createdAt: false,
+		updatedAt: false
 	});
 
 	PASSENGER.associate = function(models) {

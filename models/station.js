@@ -16,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
 		}
 
 	}, {
-		freezeTableName: true
+		freezeTableName: true,
+		createdAt: false,
+		updatedAt: false
 	});
 
 	STATION.associate = function(models) {
