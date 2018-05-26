@@ -34,40 +34,6 @@ app.use(function(req, res, next) {
 });
 
 
-// const Passenger = sequelize.define('passenger', {
-// 	id: {
-// 		type: Sequelize.INTEGER,
-// 		autoIncrement: true,
-// 		primaryKey: true
-// 	},
-// 	fullName: {
-// 		type: Sequelize.STRING,
-// 		allowNull: false,
-// 		validate: {
-// 			notEmpty: true
-// 		}
-// 	},
-// 	email: {
-//       type: Sequelize.STRING,
-//       allowNull: false,
-//       unique: true,
-//       validate: {
-//         notEmpty: true,
-//         isEmail: true
-//       }
-//     },
-//     phoneNumber: {
-//     	type: Sequelize.STRING,
-//     	allowNull: false,
-//     	validate: {
-//     		notEmpty: true,
-//     	}
-//     }, 
-//     password: {
-//     	type: Sequelize.STRING
-//     }
-// })
-
 // Passenger.sync({force: true}).then(() => {
 // 	return Passenger.create({
 // 		fullName: 'John Smith',
