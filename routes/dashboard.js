@@ -13,8 +13,7 @@ module.exports = {
     models.STATION.findAll({
       attributes: ['STATION_ID', 'CITY', 'STATE']
     }).then((allStations) => {
-      console.log(allStations);
-      res.render('dashboard');
+      res.send(allStations);
 
     })
 
