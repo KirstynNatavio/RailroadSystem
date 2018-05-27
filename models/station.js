@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
+		models.STATION.belongsTo(models.TRIP, {sourceKey: 'STATION_ID', targetKey: 'ORIGIN'});
+		models.STATION.belongsTo(models.TRIP, {sourceKey: 'STATION_ID', targetKey: 'DESTINATION'});
+
 
 		// models.STATION.belongsTo(models.SEGMENT, {foreignKey: 'STATION_ID', targetKey: 'NORTH_END'});
 		// models.STATION.belongsTo(models.SEGMENT, {foreignKey: 'STATION_ID', targetKey: 'SOUTH_END'});
