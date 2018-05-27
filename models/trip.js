@@ -48,8 +48,8 @@ module.exports = (sequelize, DataTypes) => {
 
 		models.TRIP.hasOne(models.TRAIN);
 		models.TRIP.belongsTo(models.RESERVATION, {foreignKey: 'RESERVATION_ID', sourceKey: 'RESERVATION_ID', targetKey: 'RESERVATION_ID'});
-		models.TRIP.hasOne(models.STATION, {foreignKey: 'TRAIN_ID', sourceKey: 'ORIGIN'});
-		models.TRIP.hasOne(models.STATION, {foreignKey: 'TRAIN_ID', sourceKey: 'DESTINATION'});
+		// models.TRIP.hasOne(models.STATION, {foreignKey: 'TRAIN_ID', sourceKey: 'ORIGIN'});
+		// models.TRIP.hasOne(models.STATION, {foreignKey: 'TRAIN_ID', sourceKey: 'DESTINATION'});
 
 	};
 	return TRIP; 
