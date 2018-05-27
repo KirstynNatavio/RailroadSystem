@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	STATION.associate = function(models) {
-
+		models.STATION.hasMany(models.TRAIN, {sourceKey: 'STATION_ID', targetKey: 'ORIGIN'});
+		models.STATION.hasMany(models.TRAIN, {sourceKey: 'STATION_ID', targetKey: 'DESTINATION'});
 
 		// models.STATION.belongsTo(models.TRAIN, {sourceKey: 'STATION_ID', targetKey: 'ORIGIN'})
 
@@ -33,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
 		// models.STATION.belongsTo(models.SEGMENT, {foreignKey: 'STATION_ID', targetKey: 'SOUTH_END'});
 
 		// models.STATION.belongsToMany(models.TRAIN, {through: models.STOPS_AT })	
+
 
 	};
 	return STATION; 
