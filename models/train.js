@@ -29,6 +29,9 @@ module.exports = (sequelize, DataTypes) => {
 
 	TRAIN.associate = function(models) {
 		models.TRAIN.hasOne(models.TRIP, {targetKey: 'TRAIN_ID', sourceKey: 'TRAIN_ID', foreignKey: 'TRAIN_ID'})
+		models.TRAIN.hasMany(models.SEATS_FREE, {targetKey: 'TRAIN_ID', sourceKey: 'TRAIN_ID', foreignKey: 'TRAIN_ID'});
+		//SEATS_FREE.belongsTo(models.TRAIN, {foreignKey: 'TRAIN_ID', targetKey: 'TRAIN_ID', sourceKey: 'TRAIN_ID'})
+
 		// models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'ORIGIN'});
 		// models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'DESTINATION'});
 

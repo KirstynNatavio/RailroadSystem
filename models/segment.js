@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     });
 
 	SEGMENT.associate = function(models) {
+		models.SEGMENT.hasMany(models.SEATS_FREE, {foreignKey: 'SEGMENT_ID', targetKey: 'SEGMENT_ID', sourceKey: 'SEGMENT_ID'})
+		//SEATS_FREE.belongsTo(models.SEGMENT, {foreignKey: 'SEGMENT_ID', targetKey: 'SEGMENT_ID', sourceKey: 'SEGMENT_ID'});
+
 		// SEGMENT.hasMany(models.SEATS_FREE);
 		// SEGMENT.hasOne(models.STATION, {foreignKey: 'STATION_ID', sourceKey: 'NORTH_END'});
 		// SEGMENT.hasOne(models.STATION, {foreignKey: 'STATION_ID', sourceKey: 'SOUTH_END'});
