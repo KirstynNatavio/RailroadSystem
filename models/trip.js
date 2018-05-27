@@ -47,8 +47,8 @@ module.exports = (sequelize, DataTypes) => {
 	TRIP.associate = function(models) {
 
 		models.TRIP.hasOne(models.TRAIN);
-		models.TRIP.belongsTo(models.PASSENGER);
-		models.TRIP.belongsTo(models.RESERVATION);
+		models.TRIP.belongsTo(models.PASSENGER, {sourceKey: 'PASSENGER_ID'});
+		models.TRIP.belongsTo(models.RESERVATION, {sourceKey: 'RESERVATION_ID'});
 		models.TRIP.hasOne(models.STATION, {foreignKey: 'TRAIN_ID', sourceKey: 'ORIGIN'});
 		models.TRIP.hasOne(models.STATION, {foreignKey: 'TRAIN_ID', sourceKey: 'DESTINATION'});
 
