@@ -51,10 +51,10 @@ app.use(function(req, res, next) {
 
 const PORT = process.env.PORT || 8080;
 
-const IP = process.env.IP;
+
 
 models.sequelize.sync().then(() => {
-  app.listen((PORT, IP) => {
+  app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`);
   });
 });
