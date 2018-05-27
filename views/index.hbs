@@ -75,22 +75,67 @@
 					<span class="label-input100"> What time of the day?</span>
 
 					<div class="contact100-form-radio m-t-15">
-						<input class="input-radio100" id="timeday1" value="morning" type="radio" name="timeday" checked="checked" />
-						<label class="label-radio100" for="timeday1">Morning</label>
+						<input class="input-radio100" id="morning" value="morning" type="radio" name="timeday" checked="checked" />
+						<label class="label-radio100" for="morning">Morning</label>
+					</div>
+					
+					<div id="morningTrains" class="wrap-input100 input100-select bg1">
+							<span class="label-input100">Available Morning Trains:</span>
+							<div>
+								<select class="js-select2" name="morningTrains">
+									<option>Please choose</option>
+									<option>credit</option>
+									<option>debit</option>
+									<option>cryptocurrency</option>
+									<option>cash</option>
+								</select>
+								<div class="dropDownSelect2"></div>
+							</div>
+		
 					</div>
 
 					<div class="contact100-form-radio m-t-15">
-						<input class="input-radio100" id="timeday2" value="afternoon" type="radio" name="timeday" checked="checked" />
-						<label class="label-radio100" for="timeday2">Afternoon</label>
+						<input class="input-radio100" id="afternoon" value="afternoon" type="radio" name="timeday" checked="checked" />
+						<label class="label-radio100" for="afternoon">Afternoon</label>
+					</div>
+					
+					<div id="afternoonTrains" class="wrap-input100 input100-select bg1">
+							<span class="label-input100">Available Morning Trains:</span>
+							<div>
+								<select class="js-select2" name="morningTrains">
+									<option>Please choose</option>
+									<option>credit</option>
+									<option>debit</option>
+									<option>cryptocurrency</option>
+									<option>cash</option>
+								</select>
+								<div class="dropDownSelect2"></div>
+							</div>
+		
 					</div>
 
 					<div class="contact100-form-radio m-t-15">
-						<input class="input-radio100" id="timeday3" value="evening" type="radio" name="timeday" checked="checked" />
-						<label class="label-radio100" for="timeday3">Evening</label>
+						<input class="input-radio100" id="evening" value="evening" type="radio" name="timeday" checked="checked" />
+						<label class="label-radio100" for="evening">Evening</label>
+					</div>
+					
+					<div id="eveningTrains" class="wrap-input100 input100-select bg1">
+							<span class="label-input100">Available Morning Trains:</span>
+							<div>
+								<select class="js-select2" name="morningTrains">
+									<option>Please choose</option>
+									<option>credit</option>
+									<option>debit</option>
+									<option>cryptocurrency</option>
+									<option>cash</option>
+								</select>
+								<div class="dropDownSelect2"></div>
+							</div>
+		
 					</div>
 
 					</div>
-				  </div>
+				    </div>
 
 				</fieldset>
 				
@@ -121,17 +166,17 @@
 					<span class="label-input100"> What type of ticket fare do you want?</span>
 
 					<div class="contact100-form-radio m-t-15">
-						<input class="input-radio100" id="fare1" value="adult" type="radio" name="adultFare" checked="checked" />
+						<input class="input-radio100" id="adultFare" value="adult" type="radio" name="fare" checked="checked"/>
 						<label class="label-radio100" for="adultFare">Adult</label>
 					</div>
 
 					<div class="contact100-form-radio m-t-15">
-						<input class="input-radio100" id="fare2" value="child" type="radio" name="childFare"/>
+						<input class="input-radio100" id="childFare" value="child" type="radio" name="fare"/>
 						<label class="label-radio100" for="childFare">Child</label>
 					</div>
 
 					<div class="contact100-form-radio m-t-15">
-						<input class="input-radio100" id="fare3" value="elderly" type="radio" name="elderlyFare"/>
+						<input class="input-radio100" id="elderlyFare" value="elderly" type="radio" name="fare"/>
 						<label class="label-radio100" for="elderlyFare">Elderly</label>
 					</div>
 
@@ -208,7 +253,17 @@
 			});
 
 
-			
+			$(".js-select2").each(function(){
+				$(this).on('select2:close', function (e){
+					if($(this).val() == "Please chooses") {
+						$('.js-show-service').slideUp();
+					}
+					else {
+						$('.js-show-service').slideUp();
+						$('.js-show-service').slideDown();
+					}
+				});
+			});
 		})
 	</script>
 <!--===============================================================================================-->
@@ -264,63 +319,82 @@
   gtag('config', 'UA-23581568-13');
 </script>
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
 
->>>>>>> design
 <script>
-	//Format phone number field as user enters his/her number
+			//Format phone number field as user enters his/her number
+			
 			$('#phone').keyup(function(e){
 				
 				
-									    var ph = this.value.replace(/\D/g,'').substring(0,10);
-									    		// Backspace and Delete keys
-									    var deleteKey = (e.keyCode == 8 || e.keyCode == 46);
-									    var len = ph.length;
-									    if(len==0){
-									        ph=ph;
-									    }else if(len<3){
-									        ph='('+ph;
-									    }else if(len==3){
-									        ph = '('+ph + (deleteKey ? '' : ') ');
-									    }else if(len<6){
-									        ph='('+ph.substring(0,3)+') '+ph.substring(3,6);
-									    }else if(len==6){
-									        ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+ (deleteKey ? '' : '-');
-									    }else{
-									        ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+'-'+ph.substring(6,10);
-									    }
-									    this.value = ph;
+				    var ph = this.value.replace(/\D/g,'').substring(0,10);
+				    		// Backspace and Delete keys
+				    var deleteKey = (e.keyCode == 8 || e.keyCode == 46);
+				    var len = ph.length;
+				    
+				    if(len==0){
+				        ph=ph;
+				    }else if(len<3){
+				        ph='('+ph;
+				    }else if(len==3){
+				        ph = '('+ph + (deleteKey ? '' : ') ');
+				    }else if(len<6){
+				        ph='('+ph.substring(0,3)+') '+ph.substring(3,6);
+				    }else if(len==6){
+				        ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+ (deleteKey ? '' : '-');
+				    }else{
+				        ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+'-'+ph.substring(6,10);
+				    }
+					this.value = ph;
 			});
-<<<<<<< HEAD
-=======
+</script>
 
-=======
+
 <script>
-		// Format phone number field as user enters his/her phone number
-		$('#phone').keyup(function(e){
-					    var ph = this.value.replace(/\D/g,'').substring(0,10);
-					    
-					    			// Backspace and Delete keys
-					    var deleteKey = (e.keyCode == 8 || e.keyCode == 46);
-					    var len = ph.length;
-					    
-					    if(len==0){
-					        ph=ph;
-					    }else if(len<3){
-					        ph='('+ph;
-					    }else if(len==3){
-					        ph = '('+ph + (deleteKey ? '' : ') ');
-					    }else if(len<6){
-					        ph='('+ph.substring(0,3)+') '+ph.substring(3,6);
-					    }else if(len==6){
-					        ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+ (deleteKey ? '' : '-');
-					    }else{
-					        ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+'-'+ph.substring(6,10);
-					    }
-					    this.value = ph;
-					});
->>>>>>> Stashed changes
->>>>>>> design
+
+	 var $morning    			= $('#morning'),
+	 	 $afternoon  			= $('#afternoon'),
+	 	 $evening    			= $('#evening'),
+	 	 $morningTrains 		= $('#morningTrains'),
+	 	 $afternoonTrains 		= $('#afternoonTrains'),
+	 	 $eveningTrains  		= $('#eveningTrains');
+	 	 
+	 if(!$morning.is(':checked')) $morningTrains.hide();
+	 if(!$afternoon.is(':checked')) $afternoonTrains.hide();
+	 if(!$evening.is(':checked')) $eveningTrains.hide();
+	   
+	 $morning.click(function() {
+	 	
+	 	
+			   	hide();
+			    if($morning.is(':checked')) $morningTrains.show(); 
+			    
+			    
+	 });
+	
+	$afternoon.click(function() {
+		
+		
+				hide();
+			    if($afternoon.is(':checked')) $afternoonTrains.show();
+			    
+			    
+	});
+	
+	$evening.click(function() {
+		
+		
+				hide();
+			    if($evening.is(':checked')) $eveningTrains.show();
+			    
+			    
+	});
+	
+	function hide(){
+		
+				$eveningTrains.hide();
+			   	$afternoonTrains.hide();
+			   	$morningTrains.hide();
+			   	
+	}
+	
 </script>
