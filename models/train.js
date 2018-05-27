@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	TRAIN.associate = function(models) {
-		models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'ORIGIN'})
+		models.TRAIN.hasOne(models.STATION, {as: 'ORIGIN', targetKey: 'STATION_ID', sourceKey: 'ORIGIN'})
 		// models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'ORIGIN'});
 		// models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'DESTINATION'});
 
