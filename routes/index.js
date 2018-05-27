@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
    models.STATION.findAll({
       attributes: ['STATION_ID', 'CITY', 'STATE']
     }).then((allStations) => {
+      console.log("THIS SHOULD BE DISPLAYING ------- ")
       console.log(allStations);
       res.render('dashboard');
 
