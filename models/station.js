@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
 	STATION.associate = function(models) {
 
 
-		models.STATION.belongsTo(models.TRAIN, {sourceKey: 'STATION_ID', targetKey: 'ORIGIN'})
+		// models.STATION.belongsTo(models.TRAIN, {sourceKey: 'STATION_ID', targetKey: 'ORIGIN'})
 
 		// models.STATION.belongsTo(models.TRIP, {sourceKey: 'STATION_ID', targetKey: 'ORIGIN'});
 		// models.STATION.belongsTo(models.TRIP, {sourceKey: 'STATION_ID', targetKey: 'DESTINATION'});
