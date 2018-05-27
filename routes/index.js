@@ -14,7 +14,13 @@ fs
   });
 
 router.get('/', (req, res) => {
-  res.render('dashboard');
+   models.STATION.findAll({
+      attributes: ['STATION_ID', 'CITY', 'STATE']
+    }).then((allStations) => {
+      res.send(allStations);
+
+    })
+  // res.render('dashboard');
 });
 
 module.exports = router;

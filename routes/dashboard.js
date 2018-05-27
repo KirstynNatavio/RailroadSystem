@@ -5,20 +5,10 @@ const sequelize = require('sequelize');
 module.exports = {
   registerRouter() {
     const router  = express.Router();
-    router.get('/', this.index);
     router.post('/', this.newReservation);
     return router;
   },
-  index(req, res) {
-    // models.STATION.findAll({
-    //   attributes: ['STATION_ID', 'CITY', 'STATE']
-    // }).then((allStations) => {
-    //   res.send(allStations);
 
-    // })
-    res.render('dashboard');
-
-  },
   newReservation(req, res) {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
