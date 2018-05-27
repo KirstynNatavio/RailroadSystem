@@ -21,9 +21,7 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	STATION.associate = function(models) {
-		models.STATION.belongsTo(models.TRAIN, {as: 'ORIGIN_ID'});
-		models.STATION.belongsTo(models.TRAIN, {as: 'DESTINATION_ID'});
-
+	
 		models.STATION.belongsTo(models.TRIP, {as: 'ORIGIN'});
 		models.STATION.belongsTo(models.TRIP, {as: 'DESTINATION'});
 
