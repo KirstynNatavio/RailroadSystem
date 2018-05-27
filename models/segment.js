@@ -6,6 +6,14 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 			autoIncrement: true,
         },
+        NORTH_END: {
+        	type: DataTypes.INTEGER,
+        	allowNull: false
+        },
+        SOUTH_END: {
+        	type: DataTypes.INTEGER,
+        	allowNull: false
+        },
 		FARE: {
 			type: DataTypes.FLOAT,
 			allowNull: false
@@ -17,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
 
 	SEGMENT.associate = function(models) {
 		SEGMENT.hasMany(models.SEATS_FREE);
-		SEGMENT.hasMany(models.STATION);
+		SEGMENT.hasOne(models.STATION, {foreignKey: 'STATION_ID', sourceKey: 'NORTH_END'});
+		SEGMENT.hasOne(models.STATION, {foreignKey: 'STATION_ID', sourceKey: 'SOUTH_END'});
 	};
 	return SEGMENT;
 };
