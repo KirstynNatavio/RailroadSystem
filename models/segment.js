@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
 		FARE: {
 			type: DataTypes.FLOAT,
 			allowNull: false
+		},
+		TRAVEL_TIME: {
+			type: DataTypes.TIME,
+			allowNull: false
 		}
     }, {
     	freezeTableName: true,
