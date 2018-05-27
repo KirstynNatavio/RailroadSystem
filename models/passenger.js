@@ -29,6 +29,13 @@ module.exports = (sequelize, DataTypes) => {
 		timestamps: false	//tell sequelize not to include createdAt and updatedAt attributes
 	});
 
+	PASSENGER.associate = function(models) {
+
+		models.PASSENGER.hasMany(models.TRIP, {foreignKey: 'PASSENGER_ID', sourceKey: 'PASSENGER_ID', targetKey: 'PASSENGER_ID' });
+		
+
+	};
+
 	return PASSENGER; 
 
 
