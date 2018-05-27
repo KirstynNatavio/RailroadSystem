@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false
 		},
 		DESTINATION: {
-			type: DataTypes: INTEGER,
+			type: DataTypes.INTEGER,
 			allowNull: false
 		},
 		TRIP_DATE: {
