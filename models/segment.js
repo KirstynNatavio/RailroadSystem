@@ -25,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
 
 	SEGMENT.associate = function(models) {
 		SEGMENT.hasMany(models.SEATS_FREE);
-		SEGMENT.hasOne(models.STATION, {foreignKey: 'NORTH_END'});
-		SEGMENT.hasOne(models.STATION, {foreignKey: 'SOUTH_END'});
+		SEGMENT.hasOne(models.STATION, {sourceKey: 'NORTH_END'});
+		SEGMENT.hasOne(models.STATION, {sourceKey: 'SOUTH_END'});
 	};
 	return SEGMENT;
 };
