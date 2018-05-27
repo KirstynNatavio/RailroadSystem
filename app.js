@@ -31,6 +31,14 @@ app.set('views', `${__dirname}/views/`);
 
 app.use(require('./routes/'));
 
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+
 // Passenger.sync({force: true}).then(() => {
 // 	return Passenger.create({
 // 		fullName: 'John Smith',
@@ -41,11 +49,12 @@ app.use(require('./routes/'));
 // })
 
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8080;
 
+const IP = process.env.IP;
 
 models.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
+  app.listen((PORT, IP) => {
     console.log(`Server is up and running on port ${PORT}`);
   });
 });
