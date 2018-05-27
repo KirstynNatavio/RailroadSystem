@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => 
 	var TRAIN = sequelize.define('TRAIN', {
 		TRAIN_ID: {
 			type: DataTypes.INTEGER,
@@ -28,9 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	TRAIN.associate = function(models) {
-		models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'ORIGIN'});
-		models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'DESTINATION'});
-
+		
 		models.TRAIN.hasMany(models.SEATS_FREE);
 		models.TRAIN.belongsToMany(models.STATION, {through: models.STOPS_AT})
 	};
