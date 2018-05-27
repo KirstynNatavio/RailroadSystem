@@ -7,12 +7,12 @@
 
 				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your First Name">
 					<span class="label-input100">First Name *</span>
-					<input class="input100" type="text" name="text" placeholder="First Name " required>
+					<input class="input100" type="text" name="firstName" placeholder="First Name " required>
 				</div>
 
 				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Last Name">
 					<span class="label-input100">Last Name *</span>
-					<input class="input100" type="text" name="text" placeholder="Last Name " required>
+					<input class="input100" type="text" name="lastName" placeholder="Last Name " required>
 				</div>
 
 				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email">
@@ -28,7 +28,7 @@
 				<div class="wrap-input100 input100-select bg1">
 					<span class="label-input100">Origin *</span>
 					<div>
-						<select class="js-select2" name="service">
+						<select class="js-select2" name="origin">
 							<option>Please choose</option>
 							<option>Boston</option>
 							<option>NYC</option>
@@ -43,7 +43,7 @@
 				<div class="wrap-input100 input100-select bg1">
 					<span class="label-input100">Destination *</span>
 					<div>
-						<select class="js-select2" name="service">
+						<select class="js-select2" name="destination">
 							<option>Please choose</option>
 							<option>Boston</option>
 							<option>NYC</option>
@@ -105,7 +105,7 @@
 						</div>
 						
 						<div class="contact100-form-radio m-t-15">
-							<input class="input-radio100" type="radio" id="disabled_no" name="disabled" value="disabled_no">
+							<input class="input-radio100" type="radio" id="disabled_no" name="disabled" value="disabled_no" checked="checked">
 							<label class="label-radio100" for="disabled_no">No</label>
 						</div>
 				
@@ -121,18 +121,18 @@
 					<span class="label-input100"> What type of ticket fare do you want?</span>
 
 					<div class="contact100-form-radio m-t-15">
-						<input class="input-radio100" id="fare1" value="adult" type="radio" name="fare" checked="checked" />
-						<label class="label-radio100" for="fare1">Adult</label>
+						<input class="input-radio100" id="fare1" value="adult" type="radio" name="adultFare" checked="checked" />
+						<label class="label-radio100" for="adultFare">Adult</label>
 					</div>
 
 					<div class="contact100-form-radio m-t-15">
-						<input class="input-radio100" id="fare2" value="child" type="radio" name="fare" checked="checked" />
-						<label class="label-radio100" for="fare2">Child</label>
+						<input class="input-radio100" id="fare2" value="child" type="radio" name="childFare"/>
+						<label class="label-radio100" for="childFare">Child</label>
 					</div>
 
 					<div class="contact100-form-radio m-t-15">
-						<input class="input-radio100" id="fare3" value="elderly" type="radio" name="fare" checked="checked" />
-						<label class="label-radio100" for="fare3">Elderly</label>
+						<input class="input-radio100" id="fare3" value="elderly" type="radio" name="elderlyFare"/>
+						<label class="label-radio100" for="elderlyFare">Elderly</label>
 					</div>
 
 					</div>
@@ -150,7 +150,7 @@
 						    <label class="label-radio100" for="veteran_yes">Yes</label>
 						</div>
 						<div>
-							<input class="input-radio100" type="radio" id="veteran_no" name="veteran" value="veteran_no">
+							<input class="input-radio100" type="radio" id="veteran_no" name="veteran" value="veteran_no" checked="checked">
 					    	<label class="label-radio100" for="veteran_no">No</label>
 						</div>
 					 </div>
@@ -249,6 +249,11 @@
   gtag('config', 'UA-23581568-13');
 </script>
 
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+
+>>>>>>> design
 <script>
 	//Format phone number field as user enters his/her number
 			$('#phone').keyup(function(e){
@@ -273,4 +278,34 @@
 									    }
 									    this.value = ph;
 			});
+<<<<<<< HEAD
+=======
+
+=======
+<script>
+		// Format phone number field as user enters his/her phone number
+		$('#phone').keyup(function(e){
+					    var ph = this.value.replace(/\D/g,'').substring(0,10);
+					    
+					    			// Backspace and Delete keys
+					    var deleteKey = (e.keyCode == 8 || e.keyCode == 46);
+					    var len = ph.length;
+					    
+					    if(len==0){
+					        ph=ph;
+					    }else if(len<3){
+					        ph='('+ph;
+					    }else if(len==3){
+					        ph = '('+ph + (deleteKey ? '' : ') ');
+					    }else if(len<6){
+					        ph='('+ph.substring(0,3)+') '+ph.substring(3,6);
+					    }else if(len==6){
+					        ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+ (deleteKey ? '' : '-');
+					    }else{
+					        ph='('+ph.substring(0,3)+') '+ph.substring(3,6)+'-'+ph.substring(6,10);
+					    }
+					    this.value = ph;
+					});
+>>>>>>> Stashed changes
+>>>>>>> design
 </script>

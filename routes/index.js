@@ -8,11 +8,7 @@ router.get('/', function(req, res, next) {
 
 /* CREATE */
 router.post('/', function(req, res){
-    
-                   var firstName    = req.body.firstName;
-                   var lastName     = req.body.lastName;
-                   var email        = req.body.email;
-                   var phone        = req.body.phone;
+
                    var origin       = req.body.origin;
                    var destination  = req.body.destination;
                    var date         = req.body.date;
@@ -21,8 +17,27 @@ router.post('/', function(req, res){
                    var childFare    = req.body.childFare;
                    var elderlyFare  = req.body.elderlyFare;
                    
-                
+
+                   models.PASSENGER.create({
+                       FIRST_NAME: req.body.firstName,
+                       LAST_NAME: req.body.lastName,
+                       EMAIL: req.body.email,
+                       PHONE_NUMBER: req.body.phone,
+                   });
                    
-});
+                   
+});               
+                   
+                   
+//                   User.create({ username: 'fnord', job: 'omnomnom' })
+//                       .then(() => User.findOrCreate({where: {username: 'fnord'}, defaults: {job: 'something else'}}))
+//                       .spread((user, created) => {
+//                         console.log(user.get({
+//                           plain: true
+//                         }))
+//                     console.log(created);
+
+                   
+// });
 
 module.exports = router;
