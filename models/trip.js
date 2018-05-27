@@ -6,6 +6,26 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 			autoIncrement: true
 		},
+		TRAIN_ID: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
+		PASSENGER_ID: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
+		RESERVATION_ID: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
+		ORIGIN: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
+		DESTINATION: {
+			type: DataTypes: INTEGER,
+			allowNull: false
+		},
 		TRIP_DATE: {
 			type: DataTypes.DATE,
 			allowNull: false
@@ -25,10 +45,12 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	TRIP.associate = function(models) {
-		models.TRIP.belongsToMany(models.TRAIN, {through: "train_trip"});
+
+		models.TRIP.hasOne(models.TRAIN);
 		models.TRIP.belongsTo(models.PASSENGER);
 		models.TRIP.belongsTo(models.RESERVATION);
-		models.TRIP.hasMany(models.STATION);
+		models.TRIP.hasOne(models.STATION, {foreignKey: 'TRAIN_ID', sourceKey: 'ORIGIN'});
+		models.TRIP.hasOne(models.STATION, {foreignKey: 'TRAIN_ID', sourceKey: 'DESTINATION'});
 
 	};
 	return TRIP; 
