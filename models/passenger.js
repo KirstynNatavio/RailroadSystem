@@ -24,9 +24,9 @@ module.exports = (sequelize, DataTypes) => {
 		}
 
 	},
-	{
-		freezeTableName: true,
-		timestamps: false
+	{	
+		freezeTableName: true, //tell sequelize not to add random letters to attributes
+		timestamps: false	//tell sequelize not to include createdAt and updatedAt attributes
 	});
 
 	PASSENGER.associate = function(models) {
