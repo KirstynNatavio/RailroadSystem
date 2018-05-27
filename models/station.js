@@ -27,8 +27,6 @@ module.exports = (sequelize, DataTypes) => {
 		models.STATION.belongsTo(models.TRIP, {as: 'ORIGIN'});
 		models.STATION.belongsTo(models.TRIP, {as: 'DESTINATION'});
 
-		models.STATION.belongsTo(models.SEGMENT, {as: 'NORTH_END'});
-		models.STATION.belongsTo(models.SEGMENT, {as: 'SOUTH_END'});
 
 		models.STATION.belongsToMany(models.TRAIN, {through: models.STOPS_AT })	
 
