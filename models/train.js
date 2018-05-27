@@ -28,11 +28,12 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	TRAIN.associate = function(models) {
-		models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'ORIGIN'});
-		models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'DESTINATION'});
+		models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'ORIGIN'})
+		// models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'ORIGIN'});
+		// models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'DESTINATION'});
 
-		models.TRAIN.hasMany(models.SEATS_FREE);
-		models.TRAIN.belongsToMany(models.STATION, {through: models.STOPS_AT})
+		// models.TRAIN.hasMany(models.SEATS_FREE);
+		// models.TRAIN.belongsToMany(models.STATION, {through: models.STOPS_AT})
 	};
 	return TRAIN; 
 

@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	RESERVATION.associate = function(models) {
-		models.RESERVATION.belongsTo(models.PASSENGER, {foreignKey: 'PASSENGER_ID'});
+		models.RESERVATION.belongsTo(models.PASSENGER, {foreignKey: 'PASSENGER_ID'});	// WORKS
 	};
 	return RESERVATION; 
 
