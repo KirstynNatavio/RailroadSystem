@@ -29,10 +29,6 @@ module.exports = (sequelize, DataTypes) => {
 		timestamps: false
 	});
 
-	PASSENGER.associate = function(models) {
-		models.PASSENGER.hasMany(models.TRIP);
-		models.PASSENGER.hasMany(models.RESERVATION);
-	};
 	return PASSENGER; 
 
 
