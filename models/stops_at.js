@@ -1,8 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
 	var STOPS_AT = sequelize.define('STOPS_AT', {
-		
+		STATION_ID: {
+			type: DataTypes.INTEGER,
+			primaryKey: true,
+			allowNull: false
+		},
 		TRAIN_ID: {
 			type: DataTypes.INTEGER,
+			primaryKey: true,
 			allowNull: false
 		},
 		ARRIVAL: {
