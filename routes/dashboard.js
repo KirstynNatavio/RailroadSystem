@@ -11,11 +11,12 @@ module.exports = {
   },
   index(req, res) {
     models.STATION.findAll({
-
+      attributes: ['STATION_ID', 'CITY', 'STATE']
     }).then((allStations) => {
       console.log(allStations);
+      res.render('dashboard');
+
     })
-    res.render('dashboard');
 
   },
   newReservation(req, res) {
