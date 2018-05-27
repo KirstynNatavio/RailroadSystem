@@ -17,10 +17,11 @@ router.get('/', (req, res) => {
    models.STATION.findAll({
       attributes: ['STATION_ID', 'CITY', 'STATE']
     }).then((allStations) => {
-      res.send(allStations);
+      console.log(allStations);
+      res.render('dashboard');
+
 
     })
-  // res.render('dashboard');
 });
 
 module.exports = router;
