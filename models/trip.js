@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	TRIP.associate = function(models) {
-		models.TRIP.hasOne(models.TRAIN, {as: "TRAIN_ID"});
+		models.TRIP.belongsToMany(models.TRAIN, {as: "TRAIN_ID"});
 		models.TRIP.belongsTo(models.PASSENGER);
 		models.TRIP.belongsTo(models.RESERVATION);
 		models.TRIP.hasMany(models.STATION);
