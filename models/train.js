@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
 		// models.TRAIN.hasOne(models.STATION, {targetKey: 'STATION_ID', sourceKey: 'DESTINATION'});
 
 		// models.TRAIN.hasMany(models.SEATS_FREE);
-		// models.TRAIN.belongsToMany(models.STATION, {through: models.STOPS_AT})
+		models.TRAIN.belongsToMany(models.STATION, {through: models.STOPS_AT})
 	};
 	return TRAIN; 
 
