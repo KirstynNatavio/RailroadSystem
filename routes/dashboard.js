@@ -10,12 +10,13 @@ module.exports = {
     return router;
   },
   index(req, res) {
-    models.STATION.findAll({
-      attributes: ['STATION_ID', 'CITY', 'STATE']
-    }).then((allStations) => {
-      res.send(allStations);
+    // models.STATION.findAll({
+    //   attributes: ['STATION_ID', 'CITY', 'STATE']
+    // }).then((allStations) => {
+    //   res.send(allStations);
 
-    })
+    // })
+    res.render('dashboard');
 
   },
   newReservation(req, res) {
