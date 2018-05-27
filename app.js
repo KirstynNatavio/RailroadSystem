@@ -41,7 +41,7 @@ app.use(require('./routes/'));
 // })
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 
 models.sequelize.sync().then(() => {
