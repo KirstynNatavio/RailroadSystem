@@ -2,7 +2,6 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const models = require("../models");
-const express = require('express');
 const sequelize = require('sequelize')
 
 const router = express.Router();
