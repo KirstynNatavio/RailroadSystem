@@ -24,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
 		models.STATION.hasMany(models.TRAIN, {foreignKey: 'ORIGIN', sourceKey: 'STATION_ID', targetKey: 'ORIGIN'});
 		models.STATION.hasMany(models.TRAIN, {foreignKey: 'DESTINATION', sourceKey: 'STATION_ID', targetKey: 'DESTINATION'});
 
+		models.STATION.hasMany(models.TRIP, {foreignKey: 'ORIGIN', sourceKey: 'STATION_ID', targetKey: 'ORIGIN'});
+		models.STATION.hasMany(models.TRIP, {foreignKey: 'DESTINATION', sourceKey: 'STATION_ID', targetKey: 'DESTINATION'});
+
+		models.STATION.hasMany(models.SEGMENT, {foreignKey: 'NORTH_END', sourceKey: 'STATION_ID', targetKey: 'NORTH_END'});
+		models.STATION.hasMany(models.SEGMENT, {foreignKey: 'SOUTH_END', sourceKey: 'STATION_ID', targetKey: 'SOUTH_END'});
+
 		// models.STATION.belongsTo(models.TRAIN, {sourceKey: 'STATION_ID', targetKey: 'ORIGIN'})
 
 		// models.STATION.belongsTo(models.TRIP, {sourceKey: 'STATION_ID', targetKey: 'ORIGIN'});
