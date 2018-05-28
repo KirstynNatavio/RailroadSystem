@@ -66,7 +66,7 @@ router.post('/', function(req, res){
                            OUT PRICE DOUBLE(6,2))
                        */
                   
-                  
+            var price;
             var replacements = [
                              origin,
                              destination,
@@ -75,22 +75,21 @@ router.post('/', function(req, res){
                              age,
                              numberOfPets,
                              currentDate,
-                             reservationDate
+                             reservationDate,
+                             price
                ];
               
                //Call GET_PRICE with sequelize.query and pass in relevant info
-             sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, @PRICE_OF_FARE);', { 
+             sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, ?);', { 
                      replacements: replacements, 
                      type: sequelize.QueryTypes.SELECT 
             
-             }).then(projects => {
-                  console.log("-----------PROJECTS:---------")
-                 console.log(projects);
+             }).then(() => {
+                  console.log(price)
+
                });
                
-            sequelize.query('select @PRICE_OF_FARE').then(price => {
-                  console.log(price);
-            })
+         
       
                 models.PASSENGER.create({
                     FIRST_NAME: firstName,
