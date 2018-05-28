@@ -211,7 +211,8 @@ router.post('/available', function(req, res){
                 
             
           
-                
+                setTimeout(function(){
+                    
                               var train1, train2, train3 = null;
                                 
                               var train_replacements = [
@@ -236,6 +237,8 @@ router.post('/available', function(req, res){
                                 });
 						          
 
+                }, 3000);
+                              
 
    res.render('available');          
 
