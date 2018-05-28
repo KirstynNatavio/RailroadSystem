@@ -426,17 +426,11 @@
 	 if(!$evening.is(':checked')) $eveningTrains.hide();
 	   
 	 $morning.click(function() {
-	 	
-	 	
 			   	hide();
 			    if($morning.is(':checked')) $morningTrains.show(); 
-			    
-			    
 	 });
 	
 	$afternoon.click(function() {
-		
-		
 				hide();
 			    if($afternoon.is(':checked')) {
 			    	console.log("this works dog")
@@ -450,12 +444,44 @@
 									            date 		= $('#date').val(),
 									            timeday 	= 'AFT';
 									            
+									        var price;
+								            var inputOrigin = origin.split(",");
+								            console.log("inputOrigin = " + inputOrigin);
+								            var inputDestination = destination.split(",");
+								            console.log("inputDestination = " + inputDestination);
+								            var origin_id;
+								            var destination_id;
+								            
+								            
+								            models.STATION.findOne({
+								              where: {
+								                CITY: inputOrigin[0],
+								                STATE: inputOrigin[1]
+								              }
+								            }).then((originID) => {
+								              origin_id = originID.STATION_ID;
+								              console.log("originID = " + originID);
+								              console.log("stored origin = " + origin_id);
+								            });
+								
+								            models.STATION.findOne({
+								              where: {
+								                CITY: inputDestination[0],
+								                STATE: inputDestination[1]
+								              }
+								            }).then((destinationID) => {
+								              console.log("destinationID = " + destinationID);
+								              destination_id = destinationID.STATION_ID;
+								              console.log("stored destination = " + destination_id);
+								            });
+									            
 									         console.log(origin);
 									         console.log(destination);
 									         console.log(date);
 									         console.log(timeday);
 			    	
 			    }
+	
 			    
 			    
 	});

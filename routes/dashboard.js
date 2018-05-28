@@ -75,6 +75,8 @@ router.post('/', function(req, res){
             console.log("inputDestination = " + inputDestination);
             var origin_id;
             var destination_id;
+            
+            
             models.STATION.findOne({
               where: {
                 CITY: inputOrigin[0],
