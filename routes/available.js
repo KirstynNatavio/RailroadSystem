@@ -215,8 +215,8 @@ router.post('/available', function(req, res){
                               var train1, train2, train3 = null;
                                 
                               var train_replacements = [
-                                    origin,
-                                    destination,
+                                    origin_id,
+                                    destination_id,
                                     train_timeday,
                                     date
                               ];    
