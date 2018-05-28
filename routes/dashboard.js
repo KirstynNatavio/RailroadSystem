@@ -13,6 +13,8 @@ router.get('/', function(req, res, next) {
         res.render('dashboard');
 });
 
+module.exports = router;
+
 //module.exports = router;
   
 //             const firstName           = req.body.firstName,
