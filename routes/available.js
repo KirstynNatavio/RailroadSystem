@@ -8,7 +8,7 @@ const   Sequelize       = require('sequelize'),
         train_timeday   = options.train_timeday,
         date            = options.date;
     
-var router              = express.router();
+var router              = express.Router();
     
 var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                     host: 'localhost',
