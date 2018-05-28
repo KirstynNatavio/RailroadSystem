@@ -197,8 +197,11 @@ router.post('/available', function(req, res){
         							 				replacements: [origin_id, train1],
         											type: sequelize.QueryTypes.SELECT 
         							 			}).then(arrival => {
-        							 				arrival1 = arrival;
-        							 				console.log(Object.values(arrival1[0])[0]);
+        							 			    if(train1 != 0){
+        							 			        arrival1 = arrival;
+        							 				    console.log(Object.values(arrival1[0])[0]);
+        							 			    }
+        							 			
         							 			});
                                      });
                                      
@@ -211,21 +214,28 @@ router.post('/available', function(req, res){
 													replacements: [origin_id, train2],
 													type: sequelize.QueryTypes.SELECT 
 												}).then(arrival => {
-													arrival2 = arrival;
-													console.log(Object.values(arrival2[0])[0]);
+												    if(train2 != 0){
+    													arrival2 = arrival;
+    													console.log(Object.values(arrival2[0])[0]);
+												    }
 												});
                                      });
                                      
                                      sequelize.query('SELECT @TRAIN3;').then(train => {
+                                           
                                             train3 = Object.values(train[0][0])[0];
                                           
                                      }).then(train => {
+                                                    
                                                 sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID=? AND TRAIN_ID=?;", {
     													replacements: [origin_id, train3],
     													type: sequelize.QueryTypes.SELECT 
     												}).then(arrival => {
-    													arrival3 = arrival;
-    													console.log(Object.values(arrival3[0])[0]);
+    												        if(train3 != 0){
+    											            	arrival3 = arrival;
+    											            	console.log(Object.values(arrival3[0])[0]);
+    												        } 
+    												
     												});
 
                                      });
