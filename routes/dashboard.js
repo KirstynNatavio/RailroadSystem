@@ -65,6 +65,7 @@ router.post('/', function(req, res){
                              });
                             
                           });
+                          
                      });
                      
                      //                       /* Select reservation id to insert information into the TRIP table */
