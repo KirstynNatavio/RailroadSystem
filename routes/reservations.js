@@ -13,7 +13,7 @@ router.post('/', function(req, res, next) {
 			EMAIL: req.body.email
 		}
 	}).then((passenger) => {
-		res.render('reservationsList/:'+passenger.PASSENGER_ID);
+		res.render('reservationsList/:${passenger.PASSENGER_ID}');
 	})	.catch((err) => {
 		res.send(err); 	// CHANGE LATER TO SHOW THAT A PASSENGER HAS NO RESERVATIONS
 	})
