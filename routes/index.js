@@ -16,13 +16,14 @@ fs
   });
 
 router.get('/', (req, res) => {
-   models.STATION.findAll({
-      attributes: ['STATION_ID', 'CITY', 'STATE']
-    }).then((allStations) => {
-      res.json(allStations);
+   // models.STATION.findAll({
+   //    attributes: ['STATION_ID', 'CITY', 'STATE']
+   //  }).then((allStations) => {
+   //    res.json(allStations);
 
 
-    })
+   //  })
+   res.render('dashboard')
 });
 
 module.exports = router;
