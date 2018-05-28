@@ -109,7 +109,7 @@
 										$afternoon = $('#afternoon');
 										
 										if(!$afternoon.is(':checked')) {
-											
+											alert('LOL IM CHECKED');
 											/* Get sequelize */
 											
 											const Sequelize     = require('sequelize');
@@ -125,6 +125,11 @@
 									            destination = $('#destination option:selected').text(),
 									            date 		= $('#date').val(),
 									            timeday 	= 'AFT';
+									            
+									         console.log(origin);
+									         console.log(destination);
+									         console.log(date);
+									         console.log(timeday);
 									        
 											sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
 						                            replacements: [origin, destination, timeday, date],
@@ -137,7 +142,7 @@
 														trains = JSON.stringify(result);
 											});		
 											
-									
+											console.log(trains);
 											
 											var arrivals = [];
 											sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN1;", {
@@ -161,7 +166,7 @@
 													}).then(arrival => {
 														arrivals.push(arrival);
 													});
-														
+											console.log(arrivals);		
 											
 											var html = '';
 											var i = 0;
