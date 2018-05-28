@@ -101,16 +101,10 @@ router.post('/', function(req, res){
               console.log("stored destination = " + destination_id);
             });
 
-            setInterval(function(){ 
-                        console.log('DESTINATION ' + destination_id);
-                        console.log('ORIGIN ' + origin_id); 
-                
-            }, 3000);
-    
             
             
-            
-            var replacements = [
+            function getPrice(){
+                     var replacements = [
                              origin_id,
                              destination_id,
                              disabled,
@@ -120,17 +114,27 @@ router.post('/', function(req, res){
                              currentDate,
                              reservationDate,
                              price
-               ];
-              
-               //Call GET_PRICE with sequelize.query and pass in relevant info
-             sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, :price);', { 
+                      ];
+                        
+                    //Call GET_PRICE with sequelize.query and pass in relevant info
+                 sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, :price);', { 
                      replacements: replacements, 
                      type: sequelize.QueryTypes.SELECT 
-            
-             }).then(() => {
+                
+                 }).then(() => {
                   console.log("-------------PRICE: " + price + "--------")
 
                });
+            }
+            setTimeout(getPrice(), 2000);
+
+    
+            
+            
+            
+           
+              
+               
                
          
       
