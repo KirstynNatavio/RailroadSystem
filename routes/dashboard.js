@@ -8,6 +8,11 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                  dialect: 'mysql',
                  port: 3306
          });
+         
+var script = document.createElement('script');
+ 
+script.src = '//code.jquery.com/jquery-1.11.0.min.js';
+document.getElementsByTagName('head')[0].appendChild(script);
 
 router.get('/', function(req, res, next) {
   models.STATION.findAll({
