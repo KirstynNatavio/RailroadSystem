@@ -50,6 +50,7 @@ router.post('/', function(req, res){
                                    console.log(elderlyFare);
                        //Set veteran/military variables to bits for yes/no
                        //These bits will be used to compute the GET_PRICE procedure in the database
+                       console.log(disabled)
                       (disabled.toLowerCase() == 'yes') ? disabled = 1 : disabled = 0;
                       (veteran.toLowerCase() == 'yes') ? veteran = 1 : veteran = 0;
                       if(adultFare.toLowerCase() == 'adult') age = 1;
