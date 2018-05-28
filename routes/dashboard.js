@@ -48,7 +48,7 @@ router.post('/', function(req, res){
                 /* Select passenger id to be able to insert values into the reservation and trip tables.
                     The result of the query is passed as "result."
                  */
-                 sequelize.query("SELECT PASSENGER_ID FROM PASSENGER WHERE EMAIL='?' AND LAST_NAME='?'", {
+                 sequelize.query("SELECT PASSENGER_ID FROM PASSENGER WHERE EMAIL=? AND LAST_NAME=?", {
                    
                      replacements: [email, lastName],
                      type: sequelize.QueryTypes.SELECT 
