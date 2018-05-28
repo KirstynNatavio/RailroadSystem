@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		DATE: {
 			type: DataTypes.DATE,
+			primaryKey: true,
 			allowNull: false
 		},
 		SEATS_FREE: {

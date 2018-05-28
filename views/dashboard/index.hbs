@@ -28,7 +28,7 @@
 				<div class="wrap-input100 input100-select bg1">
 					<span class="label-input100">Origin *</span>
 					<div>
-						<select class="js-select2" name="origin">
+						<select class="js-select2" id="origin" name="origin">
 							<option>Please choose</option>
 							<option>Boston</option>
 							<option>NYC</option>
@@ -43,7 +43,7 @@
 				<div class="wrap-input100 input100-select bg1">
 					<span class="label-input100">Destination *</span>
 					<div>
-						<select class="js-select2" name="destination">
+						<select class="js-select2" id="destination" name="destination">
 							<option>Please choose</option>
 							<option>Boston</option>
 							<option>NYC</option>
@@ -100,14 +100,88 @@
 					</div>
 					
 					<div id="afternoonTrains" class="wrap-input100 input100-select bg1">
-							<span class="label-input100">Available Morning Trains:</span>
+							<span class="label-input100">Available AfternoonTrains:</span>
 							<div>
-								<select class="js-select2" name="morningTrains">
-									<option>Please choose</option>
-									<option>credit</option>
-									<option>debit</option>
-									<option>cryptocurrency</option>
-									<option>cash</option>
+								<select id="afternoonSelect" class="js-select2" name="afternoonTrains">
+			
+									
+									<script>
+										$afternoon = $('#afternoon');
+										
+										if(!$afternoon.is(':checked')) {
+											
+											/* Get sequelize */
+											
+											const Sequelize     = require('sequelize');
+											var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
+									                host: 'localhost',
+									                dialect: 'mysql',
+									                port: 3306
+									        });
+									        
+									        /* setup call to get available trains from TRAIN */
+									   
+									        var origin 		= $('#origin option:selected').text(),
+									            destination = $('#destination option:selected').text(),
+									            date 		= $('#date').val(),
+									            timeday 	= 'AFT';
+									        
+											sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
+						                            replacements: [origin, destination, timeday, date],
+						                            type: sequelize.QueryTypes.SELECT 
+     
+						                     });
+						                     
+						                    var trains = [];
+											sequelize.query('select @TRAIN1, @TRAIN2, @TRAIN3;').spread(result => {
+														trains = JSON.stringify(result);
+											});		
+											
+									
+											
+											var arrivals = [];
+											sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN1;", {
+														replacements: [origin],
+														type: sequelize.QueryTypes.SELECT 
+													}).then(arrival => {
+														arrivals.push(arrival);
+													});
+													
+											sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN2;", {
+														replacements: [origin],
+														type: sequelize.QueryTypes.SELECT 
+													}).then(arrival => {
+														arrivals.push(arrival);
+													});
+													
+											
+											sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN3;", {
+														replacements: [origin],
+														type: sequelize.QueryTypes.SELECT 
+													}).then(arrival => {
+														arrivals.push(arrival);
+													});
+														
+											
+											var html = '';
+											var i = 0;
+											trains.forEach(function(train){
+													if(train == 0) {
+														i++;
+														
+													} else {
+														html += '<option>' + 'Train ID: ' + train + ' Arrival time:' + arrivals[i] + '</option>';
+														i++;
+													}
+													
+											});
+											
+											$afternoonSelect = $('#afternoonSelect');
+											$afternoonSelect.innerHTML(html);
+											
+										}
+										
+									</script>
 								</select>
 								<div class="dropDownSelect2"></div>
 							</div>
@@ -124,10 +198,6 @@
 							<div>
 								<select class="js-select2" name="morningTrains">
 									<option>Please choose</option>
-									<option>credit</option>
-									<option>debit</option>
-									<option>cryptocurrency</option>
-									<option>cash</option>
 								</select>
 								<div class="dropDownSelect2"></div>
 							</div>

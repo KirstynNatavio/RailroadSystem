@@ -6,6 +6,7 @@ const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
 const db = {};
 
+<<<<<<< HEAD
 var sequelize = new Sequelize("S18336PRRteam1", 'kpj', 'thebestgroupever123', {
     host: "96.246.237.159",
     dialect: "mysql",
@@ -22,6 +23,13 @@ var sequelize = new Sequelize("S18336PRRteam1", 'kpj', 'thebestgroupever123', {
         paranoid: true
     }
 });
+=======
+const sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
+	host: '96.246.237.159',
+	dialect: 'mysql',
+	port: 3306
+});	
+>>>>>>> 34933c61275fb9e1a311c5f4b28818fe4a8446c7
 
 
 fs
