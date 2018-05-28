@@ -175,7 +175,8 @@ router.post('/available', function(req, res){
                 setTimeout(function(){
                     
                               var train1, train2, train3 = null;
-                                
+                              var arrivals = [];
+               	              var trains =[];
                               var train_replacements = [
                                     origin_id,
                                     destination_id,
@@ -190,44 +191,48 @@ router.post('/available', function(req, res){
 
 		                     }).then(trains => {
                                      sequelize.query('SELECT @TRAIN1;').then(train => {
-                                            console.log(train);
+                                            trains.push(Object.values(train[0][0])[0]);
                                             
-                                     });
-                                     
-                                     sequelize.query('SELECT @TRAIN2;').then(train => {
-                                            console.log(train);
-                                          
-                                     });
-                                     
-                                     sequelize.query('SELECT @TRAIN3;').then(train => {
-                                            console.log(train);
-                                          
-                                     });
-                                     
-                                     var arrivals = [];
-               	
-    							 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN1;", {
+                                     }).then(train => {
+                                            sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN1;", {
         							 				replacements: [origin_id],
         											type: sequelize.QueryTypes.SELECT 
         							 			}).then(arrival => {
         							 				arrivals.push(arrival);
         							 			});
+                                     });
+                                     
+                                     sequelize.query('SELECT @TRAIN2;').then(train => {
+                                            trains.push(Object.values(train[0][0])[0]);
+                                          
+                                    }).then(train => {
+                                            sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN2;", {
+													replacements: [origin_id],
+													type: sequelize.QueryTypes.SELECT 
+												}).then(arrival => {
+													arrivals.push(arrival);
+												});
+                                     });
+                                     
+                                     sequelize.query('SELECT @TRAIN3;').then(train => {
+                                            trains.push(Object.values(train[0][0])[0]);
+                                          
+                                     }).then(train => {
+                                                sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN3;", {
+    													replacements: [origin_id],
+    													type: sequelize.QueryTypes.SELECT 
+    												}).then(arrival => {
+    													arrivals.push(arrival);
+    												});
+
+                                     });
+                                     
+                                     	console.log(arrivals);
+    							 	
     							 			
-							 		sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN2;", {
-													replacements: [origin_id],
-													type: sequelize.QueryTypes.SELECT 
-												}).then(arrival => {
-													arrivals.push(arrival);
-												});
+							 		
 												
-									sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN3;", {
-													replacements: [origin_id],
-													type: sequelize.QueryTypes.SELECT 
-												}).then(arrival => {
-													arrivals.push(arrival);
-												});
-												
-									console.log(arrivals);	
+										
 							
                                 });
                                 
