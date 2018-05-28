@@ -18,6 +18,8 @@ router.get('/', function(req, res, next) {
         
 });
 
+
+
 router.post('/', function(req, res){
   
      const        firstName           = req.body.firstName,
@@ -31,10 +33,11 @@ router.post('/', function(req, res){
                   fare                = req.body.fare,
                   numberOfPets        = parseInt(req.body.pets),
                   paymentMethod       = req.body.paymentMethod,
-                  timeday             = Date.parse(req.body.timeday),
+                  timeday             = req.body.timeday,
                   currentDate         = moment().format('YYYY-MM-DD');
                   
   
+                  
                   
     var           passengerId         = null,
                   trainId             = null,
@@ -42,11 +45,21 @@ router.post('/', function(req, res){
                   trip_price          = null,
                   disabled            = req.body.disabled,
                   veteran             = req.body.veteran,
+                  train_timeday       = '';
                   time                = req.body.time;
                   
-                    module.exports = origin;
-                    module.exports = reservationDate;
-                    module.exports = destination;
+                 if(timeday == 'morning')       train_timeday = 'MOR';
+                 if(timeday == 'afternoon')     train_timeday = 'AFT';
+                 if(timeday == 'evening')       train_timeday = 'EVE';
+                 
+                 var options = {
+                      origin,
+                      destination,
+                      reservationDate,
+                      train_timeday
+                  }
+                  
+                  module.exports = options;
              
                   
                                    console.log(disabled);
@@ -220,79 +233,4 @@ router.post('/', function(req, res){
 
 module.exports = router;
 
-//module.exports = router;
-  
-     
-                  
-          
-            
-        
-            
-//             sequelize.query('SELECT * FROM TRAIN', {
-//                             model: models.TRAIN
-//                     }).then(projects => {
-//                             // Each record will now be a instance of Projec
-//                             res.send(JSON.stringify(projects));
-//                     });
-                    
 
-                         
-//                         //ORIGIN
-//                         //DEST
-//                         //TIME OF DAY MOR, EVE, AFT
-//                         //DATE
-//                    
-              
-              
-// });
-
-
-
-/* CREATE */
-
-                 
-
-                       
-//                       var replacements = [
-//                             origin,
-//                             destination,
-//                             disabled,
-//                             veteran,
-//                             numberOfPets,
-//                             currentDate,
-//                             reservationDate
-//                       ];
-    
-//                       //Call GET_PRICE with sequelize.query and pass in relevant info
-//                       sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, @PRICE_OF_FARE);', { 
-//                               replacements: replacements, 
-//                               type: sequelize.QueryTypes.SELECT 
-                          
-//                       }).then(projects => {
-//                           console.log(projects);
-//                         });
-                        
-//                       sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
-//                           replacements: [];
-//                       })
-                      
-//                       var trains = []
-//                       sequelize.query('select @TRAIN1;').spread((result) => {
-                                
-//                       })
-                        
-                        
-//                       /* Passing information to relevant database tables */
-                      
-
-                      
-
-                      
-
-                       
-                     
-                     
-// });               
-
-
-//module.exports = router;
