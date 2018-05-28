@@ -432,7 +432,7 @@
 	
 	$afternoon.click(function() {
 				hide();
-				$afternoonTrains.show();
+				if($afternoon.is(':checked')) $afternoonTrains.show();
 			    // if($afternoon.is(':checked')) {
 			    // 	console.log("this works dog")
 			    // 	$afternoonTrains.show();
