@@ -60,9 +60,9 @@ router.get('/', function(req, res){
 
 });
 
-router.post('/', function(req, res){
-    //somewhere else
-});
+// router.post('/', function(req, res){
+//     //somewhere else
+// });
 
 
 module.exports = router;
