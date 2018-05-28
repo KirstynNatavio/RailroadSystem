@@ -42,32 +42,28 @@ router.post('/', function(req, res){
                     PHONE_NUMBER: phone,
                     EMAIL: email
                 }).then(passenger => {
-                    console.log(passenger);
-                });
+                    
+                    
+                     /* Select passenger id to be able to insert values into the reservation and trip tables.
+                         The result of the query is passed as "result."
+                    */
+              
+                           
+                           models.RESERVATION.create({
+                                 PASSENGER_ID:     passenger[0][0],   
+                                 RES_DATE:         reservationDate,
+                                 PAYMENT_METHOD:   paymentMethod 
+                           });
+                     });
                 
-                /* Select passenger id to be able to insert values into the reservation and trip tables.
-                    The result of the query is passed as "result."
-                 */
-                 sequelize.query("SELECT PASSENGER_ID FROM PASSENGER WHERE EMAIL=? AND LAST_NAME=?", {
-                   
-                     replacements: [email, lastName],
-                     type: sequelize.QueryTypes.SELECT 
-                     
-                 }).spread((result) => {
-                   
-                       passengerId = result;
-                       
-                       models.RESERVATION.create({
-                             PASSENGER_ID:     result,   
-                             RES_DATE:         reservationDate,
-                             PAYMENT_METHOD:   paymentMethod 
-                       });
-                 });
+        
+                
+               
 
     
     
     res.render('dashboard');
-})
+});
 
 module.exports = router;
 
