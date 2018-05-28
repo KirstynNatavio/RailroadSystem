@@ -29,9 +29,7 @@ router.post('/', function(req, res){
                   numberOfPets        = req.body.pets,
                   paymentMethod       = req.body.paymentMethod,
               
-                  adultFare           = req.body.adultFare,
-                  childFare           = req.body.childFare,
-                  elderlyFare         = req.body.elderlyFare,
+                  fare                = req.body.fare,
                   timeday             = req.body.timeday,
                   currentDate         = Date.now();
                   
@@ -45,16 +43,15 @@ router.post('/', function(req, res){
                   
                                    console.log(disabled);
                                    console.log(veteran);
-                                   console.log(adultFare);
-                                   console.log(childFare);
-                                   console.log(elderlyFare);
+                                   console.log(fare);
+                              
                        //Set veteran/military variables to bits for yes/no
                        //These bits will be used to compute the GET_PRICE procedure in the database
-                      (disabled.toLowerCase() == 'yes') ? disabled = 1 : disabled = 0;
-                      (veteran.toLowerCase() == 'yes') ? veteran = 1 : veteran = 0;
-                      if(adultFare.toLowerCase() == 'adult') age = 1;
-                      if(childFare.toLowerCase() == 'child') age = 0;
-                      if(elderlyFare.toLowerCase() == 'elderlyFare') age = 2;
+                      (disabled ==  'disabled_yes') ? disabled = 1 : disabled = 0;
+                      (veteran == 'veteran_yes') ? veteran = 1 : veteran = 0;
+                      if (fare == 'adultFare') age = 1;
+                      else if (fare == 'childFare') age = 0;
+                      else age = 2;
                        
                        /* GET_PRICE parameters: */
                        
