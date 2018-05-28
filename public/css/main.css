@@ -1,6 +1,28 @@
+table {
+    font-family: Montserrat-Regular;
+    font-size: 12px;
+    border-collapse: collapse;
+    width: 100%;
+}
 
 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
 
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+.reservationInfo {
+  font-family: Montserrat-SemiBold;
+  font-size: 14px;
+  color: #393939;
+  text-transform: uppercase;
+}
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
