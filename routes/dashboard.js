@@ -49,11 +49,11 @@ router.post('/', function(req, res){
                     */
                       console.log(passenger);
                            
-                           models.RESERVATION.create({
-                                 PASSENGER_ID:     passenger.dataTypes.PASSENGER_ID,   
-                                 RES_DATE:         reservationDate,
-                                 PAYMENT_METHOD:   paymentMethod 
-                           });
+                          // models.RESERVATION.create({
+                          //       PASSENGER_ID:     passenger.dataTypes.PASSENGER_ID,   
+                          //       RES_DATE:         reservationDate,
+                          //       PAYMENT_METHOD:   paymentMethod 
+                          // });
                      });
                 
         
