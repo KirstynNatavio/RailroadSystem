@@ -5,8 +5,12 @@ const sequelize = require('sequelize');
 module.exports = {
   registerRouter() {
     const router  = express.Router();
+    router.get('/', this.index);
     router.post('/', this.newReservation);
     return router;
+  },
+  index(req, res) {
+    res.render('dashboard')
   },
 
   newReservation(req, res) {
