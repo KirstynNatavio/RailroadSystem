@@ -8,7 +8,8 @@ const db = {};
 
 const sequelize = new Sequelize('S18336PRRteam1', 'kpj', 'thebestgroupever123', {
 	host: '96.246.237.159',
-	dialect: 'mysql'
+	dialect: 'mysql',
+  port: 22
 });	
 
 
