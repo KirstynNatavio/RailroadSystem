@@ -116,11 +116,12 @@ router.post('/', function(req, res){
                      replacements: replacements, 
                      type: sequelize.QueryTypes.SELECT 
                 
-                 }).then(() => {
+                 });
+                 
                   sequelize.query('SELECT @PRICE').then(price => {
                         console.log(price);
                         // console.log("-------------PRICE: " + price + "--------");
-                  })
+                  });
                });
             }, 1000);
             
