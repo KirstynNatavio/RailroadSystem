@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 
 
    //  })
-   res.render('/dashboard')
+   res.render('dashboard')
 });
 
 module.exports = router;
