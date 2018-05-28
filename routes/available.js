@@ -243,16 +243,19 @@ router.post('/available', function(req, res){
 							
                                 });
                                 
-                                var trains = [train1, train2, train3];
-                                var arrivals = [arrival1, arrival2, arrival3];
-                                
-                                trains.forEach((train) => {
-                                    console.log(train);
-                                })
-                                
-                                arrivals.forEach((train) => {
-                                    console.log(train);
-                                })
+                                setTimeout(() => {
+                                        var trains = [train1, train2, train3];
+                                        var arrivals = [arrival1, arrival2, arrival3];
+                                        
+                                        trains.forEach((train) => {
+                                            console.log(train);
+                                        })
+                                        
+                                        arrivals.forEach((train) => {
+                                            console.log(train);
+                                        })
+                                }, 5000);
+                              
                                 
                  			    
                 }, 3000);
