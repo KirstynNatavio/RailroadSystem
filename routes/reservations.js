@@ -13,14 +13,8 @@ router.post('/', function(req, res, next) {
 			EMAIL: req.body.email
 		}
 	}).then((passenger) => {
-		models.RESERVATION.findAll({
-			where: {
-				PASSENGER_ID: passenger.PASSENGER_ID
-			}
-		})
-	}).then((allReservations) => {
-		res.render('reservationsList', {allReservations});
-	}).catch((err) => {
+		res.render('reservationsList/:'+passenger.PASSENGER_ID);
+	})	.catch((err) => {
 		res.send(err); 	// CHANGE LATER TO SHOW THAT A PASSENGER HAS NO RESERVATIONS
 	})
 	
