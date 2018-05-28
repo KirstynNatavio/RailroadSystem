@@ -6,6 +6,7 @@ var passengerObj;
 var reservationObj;
 var tripObj;
 var originObj;
+var destinationObj;
 
 router.post('/', function(req, res, next) {
 	models.PASSENGER.findOne({
@@ -26,9 +27,23 @@ router.post('/', function(req, res, next) {
 				}
 			}).then((trip) => {
 				tripObj = trip;
-				originObj = trip.getORIGIN();
-				
-				res.render('reservationsList', {passengerObj, reservationObj, allTrips})
+				models.STATION.findOne({
+					where: {
+						STATION_ID: parseInt(tripObj.ORIGIN)
+					}
+				}).then((origin) => {
+					originObj = origin;
+					models.STATION.findOne({
+						where: {
+							STATION_ID: parseInt(tripObj.DESTINATION)
+						}
+					}).then((destination) => {
+						destinationObj = destination;
+						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj})
+
+					})
+				})
+
 			})
 		})
 	})

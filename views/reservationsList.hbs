@@ -14,15 +14,13 @@
 						<th>TRIP DATE</th>
 						<th>TRIP TIME</th>
 					</tr>
-					{{#each allTrips}}
 					<tr>
-						<th>{{this.TRAIN_ID}}</th>
-						<th>{{this.ORIGIN}}</th>
-						<th>{{this.DESTINATION}}</th>
-						<th>{{this.TRIP_DATE}}</th>
-						<th>{{this.TRIP_TIME}}</th>
+						<th>{{tripObj.TRAIN_ID}}</th>
+						<th>{{originObj.CITY}}, {{originObj.STATE}}</th>
+						<th>{{destinationObj.CITY}}, {{destinationObj.STATE}}</th>
+						<th>{{tripObj.TRIP_DATE}}</th>
+						<th>{{tripObj.TRIP_TIME}}</th>
 					</tr>
-					{{/each}}
 				</table>
 			
 				
