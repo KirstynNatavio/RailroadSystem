@@ -102,8 +102,8 @@ router.post('/', function(req, res){
             });
 
             
-            
-            function getPrice(){
+           
+             setTimeout(function(){
                      var replacements = [
                              origin_id,
                              destination_id,
@@ -122,11 +122,11 @@ router.post('/', function(req, res){
                      type: sequelize.QueryTypes.SELECT 
                 
                  }).then(() => {
-                  console.log("-------------PRICE: " + price + "--------")
+                  console.log("-------------PRICE: " + price + "--------");
 
                });
-            }
-            setTimeout(getPrice(), 2000);
+            }, 1000);
+            
 
     
             
