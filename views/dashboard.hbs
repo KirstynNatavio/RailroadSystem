@@ -102,7 +102,7 @@
 					<div id="afternoonTrains" class="wrap-input100 input100-select bg1">
 							<span class="label-input100">Available AfternoonTrains:</span>
 							<div>
-								<select id="afternoonSelect" class="js-select2" name="afternoonTrains">
+								<select id="afternoonTrain" class="js-select2" name="afternoonTrain">
 			
 									
 									<script>
@@ -432,55 +432,56 @@
 	
 	$afternoon.click(function() {
 				hide();
-			    if($afternoon.is(':checked')) {
-			    	console.log("this works dog")
-			    	$afternoonTrains.show();
+				$afternoonTrains.show();
+			    // if($afternoon.is(':checked')) {
+			    // 	console.log("this works dog")
+			    // 	$afternoonTrains.show();
 			    	
 			    				 	
-									        /* setup call to get available trains from TRAIN */
+							// 		        /* setup call to get available trains from TRAIN */
 									   
-									        var origin 		= $('#origin option:selected').text(),
-									            destination = $('#destination option:selected').text(),
-									            date 		= $('#date').val(),
-									            timeday 	= 'AFT';
+							// 		        var origin 		= $('#origin option:selected').text(),
+							// 		            destination = $('#destination option:selected').text(),
+							// 		            date 		= $('#date').val(),
+							// 		            timeday 	= 'AFT';
 									            
-									        var price;
-								            var inputOrigin = origin.split(",");
-								            console.log("inputOrigin = " + inputOrigin);
-								            var inputDestination = destination.split(",");
-								            console.log("inputDestination = " + inputDestination);
-								            var origin_id;
-								            var destination_id;
+							// 		        var price;
+							// 	            var inputOrigin = origin.split(",");
+							// 	            console.log("inputOrigin = " + inputOrigin);
+							// 	            var inputDestination = destination.split(",");
+							// 	            console.log("inputDestination = " + inputDestination);
+							// 	            var origin_id;
+							// 	            var destination_id;
 								            
 								            
-								            models.STATION.findOne({
-								              where: {
-								                CITY: inputOrigin[0],
-								                STATE: inputOrigin[1]
-								              }
-								            }).then((originID) => {
-								              origin_id = originID.STATION_ID;
-								              console.log("originID = " + originID);
-								              console.log("stored origin = " + origin_id);
-								            });
+							// 	            models.STATION.findOne({
+							// 	              where: {
+							// 	                CITY: inputOrigin[0],
+							// 	                STATE: inputOrigin[1]
+							// 	              }
+							// 	            }).then((originID) => {
+							// 	              origin_id = originID.STATION_ID;
+							// 	              console.log("originID = " + originID);
+							// 	              console.log("stored origin = " + origin_id);
+							// 	            });
 								
-								            models.STATION.findOne({
-								              where: {
-								                CITY: inputDestination[0],
-								                STATE: inputDestination[1]
-								              }
-								            }).then((destinationID) => {
-								              console.log("destinationID = " + destinationID);
-								              destination_id = destinationID.STATION_ID;
-								              console.log("stored destination = " + destination_id);
-								            });
+							// 	            models.STATION.findOne({
+							// 	              where: {
+							// 	                CITY: inputDestination[0],
+							// 	                STATE: inputDestination[1]
+							// 	              }
+							// 	            }).then((destinationID) => {
+							// 	              console.log("destinationID = " + destinationID);
+							// 	              destination_id = destinationID.STATION_ID;
+							// 	              console.log("stored destination = " + destination_id);
+							// 	            });
 									            
-									         console.log(origin);
-									         console.log(destination);
-									         console.log(date);
-									         console.log(timeday);
+							// 		         console.log(origin);
+							// 		         console.log(destination);
+							// 		         console.log(date);
+							// 		         console.log(timeday);
 			    	
-			    }
+			    // }
 	
 			    
 			    
@@ -496,7 +497,6 @@
 	});
 	
 	function hide(){
-		
 				$eveningTrains.hide();
 			   	$afternoonTrains.hide();
 			   	$morningTrains.hide();
