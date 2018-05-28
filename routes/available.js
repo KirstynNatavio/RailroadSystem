@@ -40,21 +40,14 @@ router.post('/', function(req, res){
 
 		                     }).then(trains => {
                                  console.log(trains);
-                                 sequelize.query('SELECT @TRAIN1;').then(train => {
-                                        console.log(train);
-                                 });
-                                 
-                                //  sequelize.query('SELECT @TRAIN2;').then(train => {
-                                //         train2 = Object.values(train[0][0])[0];
-                                //  });
-                                 
-                                //  sequelize.query('SELECT @TRAIN3;').then(price => {
-                                //         train3 = Object.values(train[0][0])[0];
-                                //  });
-                 });
+                                     sequelize.query('SELECT @TRAIN1;').then(train => {
+                                            console.log(train);
+                                     });
+                              
+                                });
 						          
 
-        }
+    }       
 
             res.render('available');
 
