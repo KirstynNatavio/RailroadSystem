@@ -3,8 +3,8 @@ const express = require('express');
 const sequelize = require('sequelize');
 var router = express.Router();
 
-router.get('/:passengerID', function(req, res, next) {
-	console.log(req.params.passengerID);
+router.get('/:email', function(req, res, next) {
+	res.send(req.params.email);
 	// models.RESERVATIONS.findAll({
 	// }).then(())
  //  res.render('reservationsList');
