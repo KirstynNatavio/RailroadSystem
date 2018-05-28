@@ -1,6 +1,7 @@
 const models        = require("../models"),
       express       = require('express'),
-      Sequelize     = require('sequelize');
+      Sequelize     = require('sequelize'),
+      moment        = require('moment');
 var router = express.Router();
 var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                  host: 'localhost',
@@ -31,7 +32,7 @@ router.post('/', function(req, res){
               
                   fare                = req.body.fare,
                   timeday             = Date.parse(req.body.timeday),
-                  currentDate         = Date.parse(Date.now());
+                  currentDate         = moment().format('YYYY-MM-DD');
                   
           var passengerId             = null,
                   trainId             = null,
