@@ -33,6 +33,8 @@ router.get('/availableTrains', function(req, res){
                                     date
                               ];    
                               
+                              console.log(train_replacements);
+                              
                               sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
 		                            replacements: train_replacements
 
