@@ -49,8 +49,8 @@ router.post('/', function(req, res){
                        //These bits will be used to compute the GET_PRICE procedure in the database
                       (disabled ==  'disabled_yes') ? disabled = 1 : disabled = 0;
                       (veteran == 'veteran_yes') ? veteran = 1 : veteran = 0;
-                      if (fare == 'adultFare') age = 1;
-                      else if (fare == 'childFare') age = 0;
+                      if (fare == 'adult') age = 1;
+                      else if (fare == 'child') age = 0;
                       else age = 2;
                        
                        /* GET_PRICE parameters: */
