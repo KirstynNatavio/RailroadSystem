@@ -16,10 +16,9 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                     port: 3306
                 });
 
-router.post('/', function(req, res){
+router.get('/available', function(req, res){
       
       availableTrains();
-      console.log("TEST");
       
       function availableTrains(){
           
@@ -42,6 +41,7 @@ router.post('/', function(req, res){
                                  console.log(trains);
                                      sequelize.query('SELECT @TRAIN1;').then(train => {
                                             console.log(train);
+                                            res.render('available');
                                      });
                               
                                 });
@@ -49,7 +49,7 @@ router.post('/', function(req, res){
 
     }       
 
-            res.render('available');
+            
 
 });
 
