@@ -25,8 +25,7 @@ router.post('/', function(req, res){
                   destination         = req.body.destination,
                   numberOfPets        = req.body.pets,
                   paymentMethod       = req.body.paymentMethod,
-                  disabled            = req.body.disabled,
-                  veteran             = req.body.veteran,
+              
                   adultFare           = req.body.adultFare,
                   childFare           = req.body.childFare,
                   elderlyFare         = req.body.elderlyFare,
@@ -36,6 +35,8 @@ router.post('/', function(req, res){
           var passengerId             = null,
                   trainId             = null,
                   age                 = null,
+                  disabled            = req.body.disabled,
+                  veteran             = req.body.veteran,
                   time                = req.body.time;
                   
                   
