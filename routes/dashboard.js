@@ -9,8 +9,11 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
          });
 
 router.get('/', function(req, res, next) {
+  models.STATION.findAll({
+  }).then((allStations) => {
+    res.render('dashboard', {allStations});
+  })      
         
-        res.render('dashboard');
 });
 
 router.post('/', function(req, res){
