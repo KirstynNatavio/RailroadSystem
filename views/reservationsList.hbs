@@ -5,7 +5,7 @@
 					Reservation List
 				</span>
 
-				<p class="reservationInfo">RESERVATION ID<br>EMAIL</p>
+				<p class="reservationInfo">RESERVATION ID: {{reservationObj.RESERVATION_ID}}<br>EMAIL: {{passengerObj.EMAIL}}</p>
 				<table>
 					<tr>
 						<th>TRAIN NO</th>
@@ -14,14 +14,15 @@
 						<th>TRIP DATE</th>
 						<th>TRIP TIME</th>
 					</tr>
-					{{#each allReservations}}
+					{{#each allTrips}}
 					<tr>
-						<th>1</th>
-						<th>RONKONKOMA</th>
-						<th>BOSTON</th>
-						<th>MONDAY</th>
-						<th>3PM</th>
+						<th>{{this.TRAIN_ID}}</th>
+						<th>{{this.ORIGIN}}</th>
+						<th>{{this.DESTINATION}}</th>
+						<th>{{this.TRIP_DATE}}</th>
+						<th>{{this.TRIP_TIME}}</th>
 					</tr>
+					{{/each}}
 				</table>
 			
 				
