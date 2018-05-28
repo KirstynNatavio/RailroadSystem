@@ -10,7 +10,7 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                     port: 3306
                 });
 
-router.post('/', function(req, res){
+router.post('/available', function(req, res){
   
      const        firstName           = req.body.firstName,
                   lastName            = req.body.lastName,
