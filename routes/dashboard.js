@@ -99,6 +99,7 @@ router.post('/', function(req, res){
             
            
              setTimeout(function(){
+                 
                      var replacements = [
                              origin_id,
                              destination_id,
@@ -122,7 +123,7 @@ router.post('/', function(req, res){
                         console.log(price);
                         // console.log("-------------PRICE: " + price + "--------");
                   });
-               });
+
             }, 1000);
             
 
