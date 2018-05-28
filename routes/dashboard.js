@@ -53,8 +53,35 @@ router.post('/', function(req, res){
                                 PASSENGER_ID:     passenger.dataValues.PASSENGER_ID,   
                                 RES_DATE:         reservationDate,
                                 PAYMENT_METHOD:   paymentMethod 
+                          }).then(reservation => {
+                            
+                              models.TRIP.create({
+                                   TRAIN_ID:         trainId,
+                                   RESERVATION_ID:   reservation.dataValues.RESERVATION_ID,
+                                   PASSENGER_ID:     passengerId,
+                                   ORIGIN:           origin,
+                                   DESTINATION:      destination,
+                                   TRIP_DATE:        reservationDate
+                             });
+                            
                           });
                      });
+                     
+                     //                       /* Select reservation id to insert information into the TRIP table */
+//                       sequelize.query("SELECT RESERVATION_ID FROM RESERVATION WHERE PASSENGER_ID='?'", {
+//                           replacements: [passengerId],
+//                           type: sequelize.QueryTypes.SELECT
+//                       }).spread((result) => {
+//                             models.TRIP.create({
+//                                   TRAIN_ID:         trainId,
+//                                   RESERVATION_ID:   result,
+//                                   PASSENGER_ID:     passengerId,
+//                                   ORIGIN:           origin,
+//                                   DESTINATION:      destination,
+//                                   TRIP_DATE:        reservationDate
+//                             });
+                          
+//                       });
                 
         
                 
@@ -178,21 +205,7 @@ module.exports = router;
                       
 
                       
-//                       /* Select reservation id to insert information into the TRIP table */
-//                       sequelize.query("SELECT RESERVATION_ID FROM RESERVATION WHERE PASSENGER_ID='?'", {
-//                           replacements: [passengerId],
-//                           type: sequelize.QueryTypes.SELECT
-//                       }).spread((result) => {
-//                             models.TRIP.create({
-//                                   TRAIN_ID:         trainId,
-//                                   RESERVATION_ID:   result,
-//                                   PASSENGER_ID:     passengerId,
-//                                   ORIGIN:           origin,
-//                                   DESTINATION:      destination,
-//                                   TRIP_DATE:        reservationDate
-//                             });
-                          
-//                       });
+
                        
                      
                      
