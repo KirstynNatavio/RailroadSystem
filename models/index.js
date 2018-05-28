@@ -6,30 +6,11 @@ const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
 const db = {};
 
-<<<<<<< HEAD
-var sequelize = new Sequelize("S18336PRRteam1", 'kpj', 'thebestgroupever123', {
-    host: "96.246.237.159",
-    dialect: "mysql",
-    logging: function () {},
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    },
-    dialectOptions: {
-        socketPath: "/var/run/mysqld/mysqld.sock"
-    },
-    define: {
-        paranoid: true
-    }
-});
-=======
 const sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
-	host: '96.246.237.159',
+	host: 'localhost',
 	dialect: 'mysql',
 	port: 3306
 });	
->>>>>>> 34933c61275fb9e1a311c5f4b28818fe4a8446c7
 
 
 fs
