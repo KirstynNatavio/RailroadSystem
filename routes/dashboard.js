@@ -47,10 +47,10 @@ router.post('/', function(req, res){
                      /* Select passenger id to be able to insert values into the reservation and trip tables.
                          The result of the query is passed as "result."
                     */
-              
+                      console.log(passenger);
                            
                            models.RESERVATION.create({
-                                 PASSENGER_ID:     passenger[0][0],   
+                                 PASSENGER_ID:     passenger.dataTypes.PASSENGER_ID,   
                                  RES_DATE:         reservationDate,
                                  PAYMENT_METHOD:   paymentMethod 
                            });
