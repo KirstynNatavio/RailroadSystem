@@ -4,6 +4,9 @@ const sequelize = require('sequelize');
 var router = express.Router();
 var passengerObj;
 var reservationObj;
+var tripObj;
+var originObj;
+
 router.post('/', function(req, res, next) {
 	models.PASSENGER.findOne({
 		where:{
@@ -17,12 +20,15 @@ router.post('/', function(req, res, next) {
 			}
 		}).then((reservation) => {
 			reservationObj = reservation;
-			models.TRIP.findAll({
+			models.TRIP.findOne({
 				where: {
 					RESERVATION_ID: parseInt(reservation.RESERVATION_ID)
 				}
-			}).then((allTrips) => {
-				res.render('/', {passengerObj, reservationObj, allTrips})
+			}).then((trip) => {
+				tripObj = trip;
+				originObj = trip.getORIGIN();
+				
+				res.render('reservationsList', {passengerObj, reservationObj, allTrips})
 			})
 		})
 	})
