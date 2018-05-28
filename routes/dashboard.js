@@ -9,10 +9,6 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                  port: 3306
          });
          
-var script = document.createElement('script');
- 
-script.src = '//code.jquery.com/jquery-1.11.0.min.js';
-document.getElementsByTagName('head')[0].appendChild(script);
 
 router.get('/', function(req, res, next) {
   models.STATION.findAll({
@@ -38,15 +34,20 @@ router.post('/', function(req, res){
                   timeday             = Date.parse(req.body.timeday),
                   currentDate         = moment().format('YYYY-MM-DD');
                   
+  
+                  
     var           passengerId         = null,
                   trainId             = null,
                   age                 = null,
                   trip_price          = null,
-                  train_timeday       = '',
                   disabled            = req.body.disabled,
                   veteran             = req.body.veteran,
                   time                = req.body.time;
                   
+                    module.exports = origin;
+                    module.exports = reservationDate;
+                    module.exports = destination;
+             
                   
                                    console.log(disabled);
                                    console.log(veteran);
@@ -173,32 +174,7 @@ router.post('/', function(req, res){
                           //timeday - mor, eve, aft
                           //reservationDate
                         
-                          
-                          $evening = $('#evening');
-                          
-                          if($evening.is(':checked')){
-                              train_timeday = 'EVE';
-                              availableTrains();
-                              
-                          }
-                          
-                          function availableTrains(){
-                              
-                                
-                              var train_replacements = [
-                                    origin,
-                                    destination,
-                                    train_timeday,
-                                    date
-                              ];    
-                              
-                              sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
-		                            replacements: train_replacements
 
-		                     });
-						                
-                              
-                          };
                           
                                
 						  //                  var trains = [];

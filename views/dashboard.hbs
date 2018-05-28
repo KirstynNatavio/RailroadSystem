@@ -413,6 +413,11 @@
 	 	 $afternoonTrains 		= $('#afternoonTrains'),
 	 	 $eveningTrains  		= $('#eveningTrains');
 	 	 
+	 	 var options  			= require("../routes/dashboard.js");
+	 	 var origin 			= options.origin;
+	 	 var destination        = options.destination;
+	 	 var date 				= options.date;
+ 	 	 
 	 	 const Sequelize     = require('sequelize');
 	 	 var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
 		                host: 'localhost',
@@ -432,59 +437,36 @@
 	
 	$afternoon.click(function() {
 				hide();
-				if($afternoon.is(':checked')) $afternoonTrains.show();
-			    // if($afternoon.is(':checked')) {
-			    // 	console.log("this works dog")
-			    // 	$afternoonTrains.show();
-			    	
-			    				 	
-							// 		        /* setup call to get available trains from TRAIN */
-									   
-							// 		        var origin 		= $('#origin option:selected').text(),
-							// 		            destination = $('#destination option:selected').text(),
-							// 		            date 		= $('#date').val(),
-							// 		            timeday 	= 'AFT';
-									            
-							// 		        var price;
-							// 	            var inputOrigin = origin.split(",");
-							// 	            console.log("inputOrigin = " + inputOrigin);
-							// 	            var inputDestination = destination.split(",");
-							// 	            console.log("inputDestination = " + inputDestination);
-							// 	            var origin_id;
-							// 	            var destination_id;
-								            
-								            
-							// 	            models.STATION.findOne({
-							// 	              where: {
-							// 	                CITY: inputOrigin[0],
-							// 	                STATE: inputOrigin[1]
-							// 	              }
-							// 	            }).then((originID) => {
-							// 	              origin_id = originID.STATION_ID;
-							// 	              console.log("originID = " + originID);
-							// 	              console.log("stored origin = " + origin_id);
-							// 	            });
-								
-							// 	            models.STATION.findOne({
-							// 	              where: {
-							// 	                CITY: inputDestination[0],
-							// 	                STATE: inputDestination[1]
-							// 	              }
-							// 	            }).then((destinationID) => {
-							// 	              console.log("destinationID = " + destinationID);
-							// 	              destination_id = destinationID.STATION_ID;
-							// 	              console.log("stored destination = " + destination_id);
-							// 	            });
-									            
-							// 		         console.log(origin);
-							// 		         console.log(destination);
-							// 		         console.log(date);
-							// 		         console.log(timeday);
-			    	
-			    // }
-	
+				var train_timeday    = '';
+			    if($afternoon.is(':checked')) {
 			    
-			    
+			    	$afternoonTrains.show();
+			    	
+					        /* setup call to get available trains from TRAIN */
+					   
+					        train_timeday = 'AFT';
+					        availableTrains();
+                              
+                }
+                          
+                          function availableTrains(){
+                              
+                                
+                              var train_replacements = [
+                                    origin,
+                                    destination,
+                                    train_timeday,
+                                    date
+                              ];    
+                              
+                              sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
+		                            replacements: train_replacements
+
+		                     });
+						                
+                              
+                          }
+			    	
 	});
 	
 	$evening.click(function() {
