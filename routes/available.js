@@ -198,8 +198,7 @@ router.post('/available', function(req, res){
         											type: sequelize.QueryTypes.SELECT 
         							 			}).then(arrival => {
         							 			    if(train1 != 0){
-        							 			        arrival1 = arrival;
-        							 				    console.log(Object.values(arrival1[0])[0]);
+        							 			        arrival1 = Object.values(arrival[0])[0];;
         							 			    }
         							 			
         							 			});
@@ -215,8 +214,7 @@ router.post('/available', function(req, res){
 													type: sequelize.QueryTypes.SELECT 
 												}).then(arrival => {
 												    if(train2 != 0){
-    													arrival2 = arrival;
-    													console.log(Object.values(arrival2[0])[0]);
+    													arrival2 = Object.values(arrival[0])[0];
 												    }
 												});
                                      });
@@ -232,8 +230,8 @@ router.post('/available', function(req, res){
     													type: sequelize.QueryTypes.SELECT 
     												}).then(arrival => {
     												        if(train3 != 0){
-    											            	arrival3 = arrival;
-    											            	console.log(Object.values(arrival3[0])[0]);
+    											            	arrival3 = Object.values(arrival[0])[0];
+    											            	
     												        } 
     												
     												});
