@@ -5,7 +5,20 @@
 					Available Trains
 				</span>
 
-			
+			<div class="wrap-input100 input100-select bg1">
+					<span class="label-input100">Origin *</span>
+					<div>
+						<select class="js-select2" id="origin" name="origin">
+							<option>Please choose</option>
+							{{#each trains}}
+							    <option>{{this}}</option>
+							{{/each}}
+						</select>
+						<div class="dropDownSelect2"></div>
+					</div>
+
+				</div>
+
 
 		      
 

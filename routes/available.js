@@ -251,7 +251,9 @@ router.post('/available', function(req, res){
                                         
                                         arrivals.forEach((train) => {
                                             console.log(train);
-                                        })
+                                        });
+                                        
+                                        res.render('available', {trains: trains, arrivals: arrivals}); 
                                 }, 3200);
                               
                                 
@@ -259,7 +261,7 @@ router.post('/available', function(req, res){
                 }, 3000);
                               
 
-   res.render('available');          
+            
 
 });
 
