@@ -228,10 +228,19 @@ router.post('/available', function(req, res){
 		                            replacements: train_replacements
 
 		                     }).then(trains => {
-                                 console.log(trains);
                                      sequelize.query('SELECT @TRAIN1;').then(train => {
                                             console.log(train);
-                                            res.render('available');
+                                            
+                                     });
+                                     
+                                     sequelize.query('SELECT @TRAIN2;').then(train => {
+                                            console.log(train);
+                                          
+                                     });
+                                     
+                                     sequelize.query('SELECT @TRAIN3;').then(train => {
+                                            console.log(train);
+                                          
                                      });
                               
                                 });
