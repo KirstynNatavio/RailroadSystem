@@ -209,9 +209,7 @@ router.post('/available', function(req, res){
                      });
                 }, 2000);
                 
-                availableTrains();
-      
-      function availableTrains(){
+            
           
                 
                               var train1, train2, train3 = null;
@@ -238,7 +236,6 @@ router.post('/available', function(req, res){
                                 });
 						          
 
-    }       
 
    res.render('available');          
 
