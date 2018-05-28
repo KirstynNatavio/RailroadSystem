@@ -11,8 +11,8 @@
 					<span class="label-input100">Available trains:</span>
 					<div class="contact100-form-radio m-t-15">
 					    {{#each trains}}
-        						<input class="input-radio100" type="radio" name="available" checked="checked" />
-        						<label class="label-radio100" for="train{{this}}">Train ID: {{this}}</label>
+        						<input class="input-radio100" type="radio" id="train{{this}}" name="available" checked="checked" />
+        						<label class="label-radio100" for="train{{this}}">{{this}}</label>
         				{{/each}}
 					</div>
 				

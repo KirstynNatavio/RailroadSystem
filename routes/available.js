@@ -244,7 +244,21 @@ router.post('/available', function(req, res){
                                 setTimeout(() => {
                                         var trains = [train1, train2, train3];
                                         var arrivals = [arrival1, arrival2, arrival3];
-                                        res.render('available', {trains: trains, arrivals: arrivals}); 
+                                        
+                                        var train_w_arrivals= [];
+                                        
+                                        if(train1 != 0){
+                                            train_w_arrivals.push('Train ID: ' + train1 + ',' + ' Arrival Time: ' + arrival1);
+                                        }
+                                        
+                                        if(train2 != 0){
+                                            train_w_arrivals.push('Train ID: ' + train2 + ',' + ' Arrival Time: ' + arrival2);
+                                        }
+                                        
+                                        if(train3 != 0){
+                                            train_w_arrivals.push('Train ID: ' + train3 + ',' + ' Arrival Time: ' + arrival3);
+                                        }
+                                        res.render('available', {trains : train_w_arrivals}); 
                                 }, 3200);
                               
                                 
