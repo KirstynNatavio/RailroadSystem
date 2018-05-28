@@ -5,18 +5,24 @@
 					Available Trains
 				</span>
 
-			<div class="wrap-input100 input100-select bg1">
-					<span class="label-input100">Origin *</span>
-					<div>
-						<select class="js-select2" id="origin" name="origin">
-							{{#each trains}}
-							    <option>Train ID: {{this}}</option>
-							{{/each}}
-						</select>
-						<div class="dropDownSelect2"></div>
+			<fieldset class="radiogroup"> 
+					<div class="w-full">
+					<div class="wrap-contact100-form-radio">
+					<span class="label-input100">Available trains:</span>
+					<div class="contact100-form-radio m-t-15">
+					    {{#each trains}}
+        						<input class="input-radio100" type="radio" name="available" checked="checked" />
+        						<label class="label-radio100" for="train{{this}}">Train ID: {{this}}</label>
+        				{{/each}}
 					</div>
+				
+					
+			
 
-				</div>
+					</div>
+				    </div>
+
+				</fieldset>
 
 
 		      
