@@ -1,15 +1,19 @@
 // const models        = require("../models"),
-//       express       = require('express'),
+const express       = require('express');
 //       Sequelize     = require('sequelize');
 
-// var router = express.Router();
+ var router = express.Router();
 // var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
 //                 host: 'localhost',
 //                 dialect: 'mysql',
 //                 port: 3306
 //         });
 
-// router.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
+        res.render('dashboard');
+}
+
+//module.exports = router;
   
 //             const firstName           = req.body.firstName,
 //                   lastName            = req.body.lastName,
