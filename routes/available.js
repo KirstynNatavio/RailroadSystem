@@ -198,6 +198,7 @@ router.post('/available', function(req, res){
         											type: sequelize.QueryTypes.SELECT 
         							 			}).then(arrival => {
         							 				arrival1 = arrival;
+        							 				console.log(arrival1);
         							 			});
                                      });
                                      
@@ -211,6 +212,7 @@ router.post('/available', function(req, res){
 													type: sequelize.QueryTypes.SELECT 
 												}).then(arrival => {
 													arrival2 = arrival;
+													console.log(arrival2);
 												});
                                      });
                                      
@@ -223,6 +225,7 @@ router.post('/available', function(req, res){
     													type: sequelize.QueryTypes.SELECT 
     												}).then(arrival => {
     													arrival3 = arrival;
+    													console.log(arrival3)
     												});
 
                                      });
