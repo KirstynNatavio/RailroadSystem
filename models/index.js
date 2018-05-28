@@ -7,7 +7,7 @@ const env = process.env.NODE_ENV || 'development';
 const db = {};
 
 const sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
-	host: 'localhost',
+	host: '96.246.237.159',
 	dialect: 'mysql',
 	port: 3306
 });	
