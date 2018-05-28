@@ -165,46 +165,7 @@ router.post('/available', function(req, res){
                             // });
                             
                           });
-                          
-                          //Origin
-                          //dest
-                          //timeday - mor, eve, aft
-                          //reservationDate
-                        
-
-                          
-                               
-						  //                  var trains = [];
-								// 			sequelize.query('select @TRAIN1, @TRAIN2, @TRAIN3;').spread(result => {
-								// 						trains = JSON.stringify(result);
-								// 			});		
-											
-								// 			console.log(trains);
-											
-								// 			var arrivals = [];
-                           	
-										// 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN1;", {
-										// 				replacements: [origin],
-										// 				type: sequelize.QueryTypes.SELECT 
-										// 			}).then(arrival => {
-										// 				arrivals.push(arrival);
-										// 			});
-													
-										// 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN2;", {
-										// 				replacements: [origin],
-										// 				type: sequelize.QueryTypes.SELECT 
-										// 			}).then(arrival => {
-										// 				arrivals.push(arrival);
-										// 			});
-													
-											
-										// 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN3;", {
-										// 				replacements: [origin],
-										// 				type: sequelize.QueryTypes.SELECT 
-										// 			}).then(arrival => {
-										// 				arrivals.push(arrival);
-										// 			});
-										// 	console.log(arrivals);	
+          
                           
                      });
                 }, 2000);
@@ -242,24 +203,41 @@ router.post('/available', function(req, res){
                                             console.log(train);
                                           
                                      });
-                              
+                                     
+                                     var arrivals = [];
+               	
+    							 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN1;", {
+        							 				replacements: [origin_id],
+        											type: sequelize.QueryTypes.SELECT 
+        							 			}).then(arrival => {
+        							 				arrivals.push(arrival);
+        							 			});
+    							 			
+							 		sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN2;", {
+													replacements: [origin_id],
+													type: sequelize.QueryTypes.SELECT 
+												}).then(arrival => {
+													arrivals.push(arrival);
+												});
+												
+									sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN3;", {
+													replacements: [origin_id],
+													type: sequelize.QueryTypes.SELECT 
+												}).then(arrival => {
+													arrivals.push(arrival);
+												});
+												
+									console.log(arrivals);	
+							
                                 });
-						          
-
+                                
+                 			    
                 }, 3000);
                               
 
    res.render('available');          
 
 });
-
-
-
-
-
-// router.post('/', function(req, res){
-//     //somewhere else
-// });
 
 
 module.exports = router;
