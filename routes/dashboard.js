@@ -67,28 +67,8 @@ router.post('/', function(req, res){
                           });
                           
                      });
-                     
-                     //                       /* Select reservation id to insert information into the TRIP table */
-//                       sequelize.query("SELECT RESERVATION_ID FROM RESERVATION WHERE PASSENGER_ID='?'", {
-//                           replacements: [passengerId],
-//                           type: sequelize.QueryTypes.SELECT
-//                       }).spread((result) => {
-//                             models.TRIP.create({
-//                                   TRAIN_ID:         trainId,
-//                                   RESERVATION_ID:   result,
-//                                   PASSENGER_ID:     passengerId,
-//                                   ORIGIN:           origin,
-//                                   DESTINATION:      destination,
-//                                   TRIP_DATE:        reservationDate
-//                             });
-                          
-//                       });
-                
-        
-                
-               
 
-    
+        
     
     res.render('dashboard');
 });
