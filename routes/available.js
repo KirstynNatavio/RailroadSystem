@@ -252,7 +252,7 @@ router.post('/available', function(req, res){
                                         arrivals.forEach((train) => {
                                             console.log(train);
                                         })
-                                }, 5000);
+                                }, 3200);
                               
                                 
                  			    
