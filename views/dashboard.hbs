@@ -106,40 +106,10 @@
 			
 									
 									<script>
-									
-										$afternoon = $('#afternoon');
-										
-										$afternoon.click(function() {
-		
-												if(!$afternoon.is(':checked')) {
-													alert('LOL IM CHECKED');
-													/* Get sequelize */
-												}
-												
-												    
-												    
-										});
 																			
 										
 										
-										// 	const Sequelize     = require('sequelize');
-										// 	var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
-									 //               host: 'localhost',
-									 //               dialect: 'mysql',
-									 //               port: 3306
-									 //       });
-									        
-									 //       /* setup call to get available trains from TRAIN */
-									   
-									 //       var origin 		= $('#origin option:selected').text(),
-									 //           destination = $('#destination option:selected').text(),
-									 //           date 		= $('#date').val(),
-									 //           timeday 	= 'AFT';
-									            
-									 //        console.log(origin);
-									 //        console.log(destination);
-									 //        console.log(date);
-									 //        console.log(timeday);
+										
 									        
 										// 	sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
 						    //                         replacements: [origin, destination, timeday, date],
@@ -460,7 +430,30 @@
 		
 		
 				hide();
-			    if($afternoon.is(':checked')) $afternoonTrains.show();
+			    if($afternoon.is(':checked')) {
+			    	
+			    	$afternoonTrains.show();
+			    	
+			    				 	const Sequelize     = require('sequelize');
+								 	var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
+									                host: 'localhost',
+									                dialect: 'mysql',
+									                port: 3306
+									        });
+									        
+									        /* setup call to get available trains from TRAIN */
+									   
+									        var origin 		= $('#origin option:selected').text(),
+									            destination = $('#destination option:selected').text(),
+									            date 		= $('#date').val(),
+									            timeday 	= 'AFT';
+									            
+									         console.log(origin);
+									         console.log(destination);
+									         console.log(date);
+									         console.log(timeday);
+			    	
+			    }
 			    
 			    
 	});
