@@ -1,42 +1,62 @@
-// const models        = require("../models"),
-const express       = require('express');
-//       Sequelize     = require('sequelize');
-
- var router = express.Router();
-// var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
-//                 host: 'localhost',
-//                 dialect: 'mysql',
-//                 port: 3306
-//         });
+const models        = require("../models"),
+      express       = require('express'),
+      Sequelize     = require('sequelize');
+var router = express.Router();
+var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
+                 host: 'localhost',
+                 dialect: 'mysql',
+                 port: 3306
+         });
 
 router.get('/', function(req, res, next) {
+        
         res.render('dashboard');
 });
+
+router.post('/', function(req, res){
+  
+     const firstName           = req.body.firstName,
+                  lastName            = req.body.lastName,
+                  phone               = req.body.phone,
+                  email               = req.body.email,
+                  date                = req.body.date,
+                  origin              = req.body.origin,
+                  reservationDate     = req.body.date,
+                  destination         = req.body.destination,
+                  numberOfPets        = req.body.pets,
+                  paymentMethod       = req.body.paymentMethod,
+                  disabled            = req.body.disabled,
+                  veteran             = req.body.veteran,
+                  adultFare           = req.body.adultFare,
+                  childFare           = req.body.childFare,
+                  elderlyFare         = req.body.elderlyFare,
+                  timeday             = req.body.timeday,
+                  currentDate         = Date.now();
+                  
+          var passengerId             = null,
+                  trainId             = null;
+                
+                models.PASSENGER.create({
+                    FIRST_NAME: firstName,
+                    LAST_NAME: lastName,
+                    PHONE_NUMBER: phone,
+                    EMAIL: email
+                }).then(passenger => {
+                    console.log(passenger);
+                });
+    
+    
+    
+    res.render('dashboard');
+})
 
 module.exports = router;
 
 //module.exports = router;
   
-//             const firstName           = req.body.firstName,
-//                   lastName            = req.body.lastName,
-//                   phone               = req.body.phone,
-//                   email               = req.body.email,
-//                   date                = req.body.date,
-//                   origin              = req.body.origin,
-//                   reservationDate     = req.body.date,
-//                   destination         = req.body.destination,
-//                   numberOfPets        = req.body.pets,
-//                   paymentMethod       = req.body.paymentMethod,
-//                   disabled            = req.body.disabled,
-//                   veteran             = req.body.veteran,
-//                   adultFare           = req.body.adultFare,
-//                   childFare           = req.body.childFare,
-//                   elderlyFare         = req.body.elderlyFare,
-//                   timeday             = req.body.timeday,
-//                   currentDate         = Date.now();
+     
                   
-//             var passengerId           = null,
-//                 trainId               = null;
+          
             
             
 //             (disabled.toLowerCase() == 'yes') ? disabled = 1 : disabled = 0;
@@ -139,12 +159,7 @@ module.exports = router;
                         
 //                       /* Passing information to relevant database tables */
                       
-//                       models.PASSENGER.create({
-//                           FIRST_NAME:       firstName,
-//                           LAST_NAME:        lastName,
-//                           EMAIL:            email,
-//                           PHONE_NUMBER:     phone,
-//                       });
+
                       
 //                       /* Select passenger id to be able to insert values into the reservation and trip tables.
 //                          The result of the query is passed as "result."
