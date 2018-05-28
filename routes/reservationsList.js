@@ -5,7 +5,7 @@ var router = express.Router();
 var passengerObj;
 var reservationObj;
 router.post('/', function(req, res, next) {
-	models.PASSENGER.findAll({
+	models.PASSENGER.findOne({
 		where:{
 			EMAIL: req.body.email
 		}
@@ -13,13 +13,13 @@ router.post('/', function(req, res, next) {
 		passengerObj = passenger;
 		models.RESERVATIONS.findOne({
 			where: {
-				RESERVATION_ID: req.body.reservation
+				RESERVATION_ID: parseInt(req.body.reservation)
 			}
 		}).then((reservation) => {
 			reservationObj = reservation;
 			models.TRIP.findAll({
 				where: {
-					RESERVATION_ID: reservation.RESERVATION_ID
+					RESERVATION_ID: parseInt(reservation.RESERVATION_ID)
 				}
 			}).then((allTrips) => {
 				res.render('/', {passengerObj, reservationObj, allTrips})
