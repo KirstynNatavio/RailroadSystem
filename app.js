@@ -4,8 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-const exphbs = require('express-handlebars');
 
+var dashboard = require('./routes/dashboard');
 const models = require('./models/');
 
 var app = express();
@@ -22,21 +22,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.engine('handlebars', exphbs({
-  layoutsDir: './views/layouts',
-  defaultLayout: 'main',
-}));
-app.set('view engine', 'handlebars');
-app.set('views', `${__dirname}/views/`);
-
-app.use(require('./routes/'));
+app.use('/', dashboard);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// app.use(function(req, res, next) {
+//   var err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
 
 
 // Passenger.sync({force: true}).then(() => {
@@ -49,8 +42,18 @@ app.use(function(req, res, next) {
 // })
 
 
-const PORT = process.env.PORT || 8080;
+// error handler
+// app.use(function(err, req, res, next) {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
+
+const PORT = process.env.PORT || 8080;
 
 
 models.sequelize.sync().then(() => {

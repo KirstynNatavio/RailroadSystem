@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // const models        = require("../models"),
 //       express       = require('express'),
 //       Sequelize     = require('sequelize');
@@ -77,16 +78,68 @@
               
 // });
 
+=======
+const models = require("../models");
+const express = require('express');
+const sequelize = require('sequelize');
+var router = express.Router();
+
+router.get('/', function(req, res, next) {
+  res.render('dashboard');
+});
 
 
-/* CREATE */
+module.exports = router;
+
+// module.exports = {
+//   registerRouter() {
+//     const router  = express.Router();
+//     router.get('/', this.index);
+//     router.post('/', this.newReservation);
+//     return router;
+//   },
+//   index(req, res) {
+//     res.render('dashboard')
+//   },
+>>>>>>> e20a851d73441464edc32234a8bc82ad2508bb4a
+
+//   newReservation(req, res) {
+//     const firstName = req.body.firstName;
+//     const lastName = req.body.lastName;
+//     const phone = req.body.phone;
+//     const email = req.body.email;
+//     const origin = req.body.origin;
+//     const reservationDate = req.body.date;
+//     const destination = req.body.destination;
+//     const numberOfPets = req.body.pets;
+//     const paymentMethod = req.body.paymentMethod;
+//     const disabled = req.body.disabled;
+//     const veteran = req.body.veteran;
+//     const adultFare = req.body.adultFare;
+//     const childFare = req.body.childFare;
+//     const elderlyFare = req.body.elderlyFare;
+//     var passengerId = null;
+//     var trainId = null;
+//     const currentDate = Date.now();
+
+//   }
+
+// }
+
+
+// /* CREATE */
 
                  
                        
 //                       //Set veteran/military variables to bits for yes/no
 //                       //These bits will be used to compute the GET_PRICE procedure in the database
+<<<<<<< HEAD
 //                      (disabled.toLowerCase() == 'yes') ? disabled = 1 : disabled = 0;
 //                      (veteran.toLowerCase() == 'yes') ? veteran = 1 : veteran = 0;
+=======
+// //                     (disabled.toLowerCase() == 'yes') ? disabled = 1 : disabled = 0;
+// //                    (veteran.toLowerCase() == 'yes') ? veteran = 1 : veteran = 0;
+>>>>>>> e20a851d73441464edc32234a8bc82ad2508bb4a
                 
                        
 //                       /* GET_PRICE parameters: */
@@ -102,6 +155,7 @@
 //                           OUT PRICE DOUBLE(6,2))
 //                       */
                        
+<<<<<<< HEAD
 //                       var replacements = [
 //                             origin,
 //                             destination,
@@ -120,6 +174,26 @@
 //                       }).then(projects => {
 //                           console.log(projects);
 //                         });
+=======
+// //                      var replacements = [
+// //                            origin,
+// //                            destination,
+// //                            disabled,
+// //                            veteran,
+// //                            numberOfPets,
+// //                            currentDate,
+// //                            reservationDate
+// //                      ];
+    
+//                       //Call GET_PRICE with sequelize.query and pass in relevant info
+// //                      sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, @PRICE_OF_FARE);', { 
+// //                              replacements: replacements, 
+// //                              type: sequelize.QueryTypes.SELECT 
+                          
+// //                      }).then(projects => {
+// //                          console.log(projects);
+// //                        });
+>>>>>>> e20a851d73441464edc32234a8bc82ad2508bb4a
                         
 //                       sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
 //                           replacements: [];
@@ -130,6 +204,7 @@
                                 
 //                       })
                         
+<<<<<<< HEAD
                         
 //                       /* Passing information to relevant database tables */
                       
@@ -139,10 +214,21 @@
 //                           EMAIL:            email,
 //                           PHONE_NUMBER:     phone,
 //                       });
+=======
+//                       /* Passing information to relevant database tables */
+                      
+// //                      models.PASSENGER.create({
+// //                          FIRST_NAME:       firstName,
+// //                          LAST_NAME:        lastName,
+// //                          EMAIL:            email,
+// //                          PHONE_NUMBER:     phone,
+// //                      });
+>>>>>>> e20a851d73441464edc32234a8bc82ad2508bb4a
                       
 //                       /* Select passenger id to be able to insert values into the reservation and trip tables.
 //                          The result of the query is passed as "result."
 //                       */
+<<<<<<< HEAD
 //                       sequelize.query("SELECT PASSENGER_ID FROM PASSENGER WHERE EMAIL='?' AND LAST_NAME='?'", {
 //                           replacements: [email, lastName],
 //                           type: sequelize.QueryTypes.SELECT 
@@ -174,6 +260,39 @@
                      
                      
 // });               
+=======
+// //                      sequelize.query("SELECT PASSENGER_ID FROM PASSENGER WHERE EMAIL='?' AND LAST_NAME='?'", {
+// //                          replacements: [email, lastName],
+// //                          type: sequelize.QueryTypes.SELECT 
+// //                      }).spread((result) => {
+// //                            passengerId = result;
+// //                            models.RESERVATION.create({
+// //                                  PASSENGER_ID:     result,   
+// //                                  RES_DATE:         reservationDate,
+// //                                  PAYMENT_METHOD:   paymentMethod 
+// //                            });
+// //                      });
+                      
+//                       /* Select reservation id to insert information into the TRIP table */
+// //                      sequelize.query("SELECT RESERVATION_ID FROM RESERVATION WHERE PASSENGER_ID='?'", {
+// //                          replacements: [passengerId],
+// //                          type: sequelize.QueryTypes.SELECT
+// //                      }).spread((result) => {
+// //                            models.TRIP.create({
+// //                                  TRAIN_ID:         trainId,
+// //                                  RESERVATION_ID:   result,
+// //                                  PASSENGER_ID:     passengerId,
+// //                                  ORIGIN:           origin,
+// //                                  DESTINATION:      destination,
+// //                                  TRIP_DATE:        reservationDate
+// //                            });
+// //                          
+// //                      });
+                       
+                     
+                     
+// //});               
+>>>>>>> e20a851d73441464edc32234a8bc82ad2508bb4a
 
 
-//module.exports = router;
+// //module.exports = router;
