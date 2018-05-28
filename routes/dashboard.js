@@ -31,7 +31,7 @@ router.post('/', function(req, res){
               
                   fare                = req.body.fare,
                   timeday             = Date.parse(req.body.timeday),
-                  currentDate         = Date.now();
+                  currentDate         = Date.parse(Date.now());
                   
           var passengerId             = null,
                   trainId             = null,
