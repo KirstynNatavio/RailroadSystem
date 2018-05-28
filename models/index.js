@@ -6,8 +6,8 @@ const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
 const db = {};
 
-const sequelize = new Sequelize('S18336Pteam1', 'S18336Pteam1', 'brooklyn', {
-	host: '134.74.146.21',
+const sequelize = new Sequelize('S18336Pteam1', 'kpj', 'thebestgroupever123', {
+	host: '96.246.237.159',
 	dialect: 'mysql'
 });	
 
