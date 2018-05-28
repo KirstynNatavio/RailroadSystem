@@ -11,7 +11,7 @@ router.post('/', function(req, res, next) {
 		}
 	}).then((passenger) => {
 		passengerObj = passenger;
-		models.RESERVATIONS.findOne({
+		models.RESERVATION.findOne({
 			where: {
 				RESERVATION_ID: parseInt(req.body.reservation)
 			}
