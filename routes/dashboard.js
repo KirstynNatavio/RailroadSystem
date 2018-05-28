@@ -120,7 +120,7 @@ router.post('/', function(req, res){
                  }).then(price => {
                                  
                                  sequelize.query('SELECT @PRICE;').then(price => {
-                                        console.log(Object.values(JSON.stringify(price[0][0])));
+                                        console.log(Object.values(price[0][0]));
                                  });
                  });
                  
