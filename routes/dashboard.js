@@ -84,10 +84,7 @@ router.post('/', function(req, res){
                 STATE: inputOrigin[1]
               }
             }).then((originID) => {
-                console.log(originID);
               origin_id = originID.dataValues.STATION_ID;
-              console.log("originID = " + originID);
-              console.log("stored origin = " + origin_id);
             })
 
             models.STATION.findOne({
@@ -96,10 +93,7 @@ router.post('/', function(req, res){
                 STATE: inputDestination[1]
               }
             }).then((destinationID) => {
-                console.log(destinationID);
-              console.log("destinationID = " + destinationID);
               destination_id = destinationID.dataValues.STATION_ID;
-              console.log("stored destination = " + destination_id);
             });
 
             
@@ -124,7 +118,8 @@ router.post('/', function(req, res){
                 
                  }).then(() => {
                   sequelize.query('SELECT @PRICE').then(price => {
-                        console.log("-------------PRICE: " + price + "--------");
+                        console.log(price);
+                        // console.log("-------------PRICE: " + price + "--------");
                   })
                });
             }, 1000);
