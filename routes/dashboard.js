@@ -45,7 +45,7 @@ router.post('/', function(req, res){
                                    console.log(veteran);
                                    console.log(fare);
                                    console.log("timeDay = " + timeday);
-
+                                   console.log("currDate = " + currentDate );
                               
                        //Set veteran/military variables to bits for yes/no
                        //These bits will be used to compute the GET_PRICE procedure in the database
@@ -171,9 +171,7 @@ module.exports = router;
                   
           
             
-            
-//             (disabled.toLowerCase() == 'yes') ? disabled = 1 : disabled = 0;
-//             (veteran.toLowerCase() == 'yes') ? veteran = 1 : veteran = 0;
+        
             
 //             sequelize.query('SELECT * FROM TRAIN', {
 //                             model: models.TRAIN
@@ -188,13 +186,7 @@ module.exports = router;
 //                         //DEST
 //                         //TIME OF DAY MOR, EVE, AFT
 //                         //DATE
-//                       sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN);', {
-//                             replacements: [origin, destination, timeday, date],
-//                             type: sequelize.QueryTypes.SELECT 
-                            
-//                       }).then(availableTrains => {
-//                             res.render('index', {availableTrains: availableTrains})
-//                       });
+//                    
               
               
 // });
