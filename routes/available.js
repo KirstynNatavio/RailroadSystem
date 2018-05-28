@@ -184,7 +184,7 @@ router.post('/available', function(req, res){
                                     date
                               ];    
                               
-                              console.log(train_replacements);
+
                               
                               sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
 		                            replacements: train_replacements
@@ -195,7 +195,7 @@ router.post('/available', function(req, res){
                                             console.log(train);
                                             
                                      }).then(train => {
-                                            sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN1;", {
+                                            sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID=? AND TRAIN_ID=@TRAIN1;", {
         							 				replacements: [origin_id],
         											type: sequelize.QueryTypes.SELECT 
         							 			}).then(arrival => {
@@ -208,7 +208,7 @@ router.post('/available', function(req, res){
                                             console.log(train[0]);
                                           
                                     }).then(train => {
-                                            sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN2;", {
+                                            sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID=? AND TRAIN_ID=@TRAIN2;", {
 													replacements: [origin_id],
 													type: sequelize.QueryTypes.SELECT 
 												}).then(arrival => {
@@ -220,7 +220,7 @@ router.post('/available', function(req, res){
                                             console.log(train[0][0]);
                                           
                                      }).then(train => {
-                                                sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN3;", {
+                                                sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID=? AND TRAIN_ID=@TRAIN3;", {
     													replacements: [origin_id],
     													type: sequelize.QueryTypes.SELECT 
     												}).then(arrival => {
