@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
    models.STATION.findAll({
       attributes: ['STATION_ID', 'CITY', 'STATE']
     }).then((allStations) => {
-      res.send(allStations);
+      res.json(allStations);
 
 
     })
