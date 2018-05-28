@@ -24,7 +24,7 @@ router.get('/availableTrains', function(req, res){
       function availableTrains(){
           
                 
-                              
+                              var train1, train2, train3 = null;
                                 
                               var train_replacements = [
                                     origin,
@@ -36,7 +36,20 @@ router.get('/availableTrains', function(req, res){
                               sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
 		                            replacements: train_replacements
 
-		                     });
+		                     }).then(trains => {
+                                 
+                                 sequelize.query('SELECT @TRAIN1;').then(train => {
+                                        console.log(train);
+                                 });
+                                 
+                                //  sequelize.query('SELECT @TRAIN2;').then(train => {
+                                //         train2 = Object.values(train[0][0])[0];
+                                //  });
+                                 
+                                //  sequelize.query('SELECT @TRAIN3;').then(price => {
+                                //         train3 = Object.values(train[0][0])[0];
+                                //  });
+                 });;
 						          
 
         }
