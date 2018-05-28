@@ -191,8 +191,7 @@ router.post('/available', function(req, res){
 
 		                     }).then(trains => {
                                      sequelize.query('SELECT @TRAIN1;').then(train => {
-                                            // trains.push(Object.values(train[0][0])[0]);
-                                            console.log(train);
+                                           console.log(Object.values(train[0][0])[0]);
                                             
                                      }).then(train => {
                                             sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID=? AND TRAIN_ID=@TRAIN1;", {
@@ -204,8 +203,8 @@ router.post('/available', function(req, res){
                                      });
                                      
                                      sequelize.query('SELECT @TRAIN2;').then(train => {
-                                            // trains.push(Object.values(train[0][0])[0]);
-                                            console.log(train[0]);
+                                            console.log(Object.values(train[0][0])[0]);
+                                           
                                           
                                     }).then(train => {
                                             sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID=? AND TRAIN_ID=@TRAIN2;", {
@@ -217,7 +216,7 @@ router.post('/available', function(req, res){
                                      });
                                      
                                      sequelize.query('SELECT @TRAIN3;').then(train => {
-                                            console.log(Object.values(train[0][0]));
+                                            console.log(Object.values(train[0][0])[0]);
                                           
                                      }).then(train => {
                                                 sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID=? AND TRAIN_ID=@TRAIN3;", {
