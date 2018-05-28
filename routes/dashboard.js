@@ -113,16 +113,19 @@ router.post('/', function(req, res){
                       ];
                         
                     //Call GET_PRICE with sequelize.query and pass in relevant info
-                 sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, @PRICE);', { 
+                 sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, @PRICE); SELECT @PRICE;', { 
                      replacements: replacements, 
                      type: sequelize.QueryTypes.SELECT 
                 
+                 }).then(price => {
+                                 console.log("-------------PRICE: " + price + "--------");
+                                // sequelize.query('').then(price => {
+                                //         console.log(price);
+                                //         // console.log("-------------PRICE: " + price + "--------");
+                                //  });
                  });
                  
-                  sequelize.query('SELECT @PRICE;').then(price => {
-                        console.log(price);
-                        // console.log("-------------PRICE: " + price + "--------");
-                  });
+                  
 
             }, 1000);
             
