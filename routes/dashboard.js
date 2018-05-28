@@ -44,7 +44,26 @@ router.post('/', function(req, res){
                 }).then(passenger => {
                     console.log(passenger);
                 });
-    
+                
+                /* Select passenger id to be able to insert values into the reservation and trip tables.
+                    The result of the query is passed as "result."
+                 */
+                 sequelize.query("SELECT PASSENGER_ID FROM PASSENGER WHERE EMAIL='?' AND LAST_NAME='?'", {
+                   
+                     replacements: [email, lastName],
+                     type: sequelize.QueryTypes.SELECT 
+                     
+                 }).spread((result) => {
+                   
+                       passengerId = result;
+                       
+                       models.RESERVATION.create({
+                             PASSENGER_ID:     result,   
+                             RES_DATE:         reservationDate,
+                             PAYMENT_METHOD:   paymentMethod 
+                       });
+                 });
+
     
     
     res.render('dashboard');
@@ -161,20 +180,7 @@ module.exports = router;
                       
 
                       
-//                       /* Select passenger id to be able to insert values into the reservation and trip tables.
-//                          The result of the query is passed as "result."
-//                       */
-//                       sequelize.query("SELECT PASSENGER_ID FROM PASSENGER WHERE EMAIL='?' AND LAST_NAME='?'", {
-//                           replacements: [email, lastName],
-//                           type: sequelize.QueryTypes.SELECT 
-//                       }).spread((result) => {
-//                             passengerId = result;
-//                             models.RESERVATION.create({
-//                                   PASSENGER_ID:     result,   
-//                                   RES_DATE:         reservationDate,
-//                                   PAYMENT_METHOD:   paymentMethod 
-//                             });
-//                       });
+
                       
 //                       /* Select reservation id to insert information into the TRIP table */
 //                       sequelize.query("SELECT RESERVATION_ID FROM RESERVATION WHERE PASSENGER_ID='?'", {
