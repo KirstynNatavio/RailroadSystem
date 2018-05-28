@@ -1,7 +1,7 @@
 const models        = require("../models"),
       express       = require('express'),
-      Sequelize     = require('sequelize'),
-      moment        = require('moment');
+      Sequelize     = require('sequelize');
+      
 var router = express.Router();
 var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                  host: 'localhost',

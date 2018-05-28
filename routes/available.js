@@ -1,6 +1,7 @@
 const   Sequelize       = require('sequelize'),
         models          = require('../models'),
-        express         = require('express');
+        express         = require('express'),
+        moment        = require('moment');
     
 var router              = express.Router();
     
