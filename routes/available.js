@@ -1,7 +1,7 @@
 const   Sequelize       = require('sequelize'),
         models          = require('../models'),
         express         = require('express'),
-        dashboard       = require('dashboard.js'),
+        dashboard       = require('./dashboard.js'),
         options         = dashboard.options,
         origin          = options.origin,
         destination     = options.destination,

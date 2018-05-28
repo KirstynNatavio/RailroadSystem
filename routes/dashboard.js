@@ -46,7 +46,7 @@ router.post('/', function(req, res){
                   trip_price          = null,
                   disabled            = req.body.disabled,
                   veteran             = req.body.veteran,
-                  train_timeday       = '';
+                  train_timeday       = '',
                   time                = req.body.time;
                   
                  if(timeday == 'morning')       train_timeday = 'MOR';
