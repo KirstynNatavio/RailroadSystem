@@ -111,80 +111,80 @@
 										if(!$afternoon.is(':checked')) {
 											alert('LOL IM CHECKED');
 											/* Get sequelize */
-											
-											const Sequelize     = require('sequelize');
-											var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
-									                host: 'localhost',
-									                dialect: 'mysql',
-									                port: 3306
-									        });
-									        
-									        /* setup call to get available trains from TRAIN */
-									   
-									        var origin 		= $('#origin option:selected').text(),
-									            destination = $('#destination option:selected').text(),
-									            date 		= $('#date').val(),
-									            timeday 	= 'AFT';
-									            
-									         console.log(origin);
-									         console.log(destination);
-									         console.log(date);
-									         console.log(timeday);
-									        
-											sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
-						                            replacements: [origin, destination, timeday, date],
-						                            type: sequelize.QueryTypes.SELECT 
-     
-						                     });
-						                     
-						                    var trains = [];
-											sequelize.query('select @TRAIN1, @TRAIN2, @TRAIN3;').spread(result => {
-														trains = JSON.stringify(result);
-											});		
-											
-											console.log(trains);
-											
-											var arrivals = [];
-											sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN1;", {
-														replacements: [origin],
-														type: sequelize.QueryTypes.SELECT 
-													}).then(arrival => {
-														arrivals.push(arrival);
-													});
-													
-											sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN2;", {
-														replacements: [origin],
-														type: sequelize.QueryTypes.SELECT 
-													}).then(arrival => {
-														arrivals.push(arrival);
-													});
-													
-											
-											sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN3;", {
-														replacements: [origin],
-														type: sequelize.QueryTypes.SELECT 
-													}).then(arrival => {
-														arrivals.push(arrival);
-													});
-											console.log(arrivals);		
-											
-											var html = '';
-											var i = 0;
-											trains.forEach(function(train){
-													if(train == 0) {
-														i++;
-														
-													} else {
-														html += '<option>' + 'Train ID: ' + train + ' Arrival time:' + arrivals[i] + '</option>';
-														i++;
-													}
-													
-											});
-											
-											$afternoonSelect = $('#afternoonSelect');
-											$afternoonSelect.innerHTML(html);
-											
 										}
+										// 	const Sequelize     = require('sequelize');
+										// 	var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
+									 //               host: 'localhost',
+									 //               dialect: 'mysql',
+									 //               port: 3306
+									 //       });
+									        
+									 //       /* setup call to get available trains from TRAIN */
+									   
+									 //       var origin 		= $('#origin option:selected').text(),
+									 //           destination = $('#destination option:selected').text(),
+									 //           date 		= $('#date').val(),
+									 //           timeday 	= 'AFT';
+									            
+									 //        console.log(origin);
+									 //        console.log(destination);
+									 //        console.log(date);
+									 //        console.log(timeday);
+									        
+										// 	sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
+						    //                         replacements: [origin, destination, timeday, date],
+						    //                         type: sequelize.QueryTypes.SELECT 
+     
+						    //                  });
+						                     
+						    //                 var trains = [];
+										// 	sequelize.query('select @TRAIN1, @TRAIN2, @TRAIN3;').spread(result => {
+										// 				trains = JSON.stringify(result);
+										// 	});		
+											
+										// 	console.log(trains);
+											
+										// 	var arrivals = [];
+										// 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN1;", {
+										// 				replacements: [origin],
+										// 				type: sequelize.QueryTypes.SELECT 
+										// 			}).then(arrival => {
+										// 				arrivals.push(arrival);
+										// 			});
+													
+										// 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN2;", {
+										// 				replacements: [origin],
+										// 				type: sequelize.QueryTypes.SELECT 
+										// 			}).then(arrival => {
+										// 				arrivals.push(arrival);
+										// 			});
+													
+											
+										// 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN3;", {
+										// 				replacements: [origin],
+										// 				type: sequelize.QueryTypes.SELECT 
+										// 			}).then(arrival => {
+										// 				arrivals.push(arrival);
+										// 			});
+										// 	console.log(arrivals);		
+											
+										// 	var html = '';
+										// 	var i = 0;
+										// 	trains.forEach(function(train){
+										// 			if(train == 0) {
+										// 				i++;
+														
+										// 			} else {
+										// 				html += '<option>' + 'Train ID: ' + train + ' Arrival time:' + arrivals[i] + '</option>';
+										// 				i++;
+										// 			}
+													
+										// 	});
+											
+										// 	$afternoonSelect = $('#afternoonSelect');
+										// 	$afternoonSelect.innerHTML(html);
+											
+										// }
 										
 									</script>
 								</select>
