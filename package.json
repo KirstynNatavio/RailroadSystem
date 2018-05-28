@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
    "start": "node app.js"
+=======
+    "start": "node app.js"
+>>>>>>> 5547785859cafaa376e3d827040b2f7d1c42b178
   },
   "dependencies": {
     "body-parser": "~1.18.2",
