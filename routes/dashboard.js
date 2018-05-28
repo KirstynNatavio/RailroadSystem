@@ -100,8 +100,9 @@ router.post('/', function(req, res){
             })
 
 
-
-
+            console.log('DESTINATION ' + destination_id);
+            console.log('ORIGIN ' + origin_id);
+            
             var replacements = [
                              origin_id,
                              destination_id,
