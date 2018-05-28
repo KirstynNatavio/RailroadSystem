@@ -413,6 +413,14 @@
 	 	 $afternoonTrains 		= $('#afternoonTrains'),
 	 	 $eveningTrains  		= $('#eveningTrains');
 	 	 
+	 	 const Sequelize     = require('sequelize');
+	 	 var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
+		                host: 'localhost',
+		                dialect: 'mysql',
+		                port: 3306
+		 });
+									        
+	 	 
 	 if(!$morning.is(':checked')) $morningTrains.hide();
 	 if(!$afternoon.is(':checked')) $afternoonTrains.hide();
 	 if(!$evening.is(':checked')) $eveningTrains.hide();
@@ -434,13 +442,7 @@
 			    	
 			    	$afternoonTrains.show();
 			    	
-			    				 	const Sequelize     = require('sequelize');
-								 	var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
-									                host: 'localhost',
-									                dialect: 'mysql',
-									                port: 3306
-									        });
-									        
+			    				 	
 									        /* setup call to get available trains from TRAIN */
 									   
 									        var origin 		= $('#origin option:selected').text(),
