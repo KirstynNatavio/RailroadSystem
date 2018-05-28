@@ -84,6 +84,7 @@ router.post('/', function(req, res){
                      type: sequelize.QueryTypes.SELECT 
             
              }).then(projects => {
+                  console.log("-----------PROJECTS:---------")
                  console.log(projects);
                });
                
