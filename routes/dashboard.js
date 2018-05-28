@@ -8,6 +8,7 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                  dialect: 'mysql',
                  port: 3306
          });
+
          
 
 router.get('/', function(req, res, next) {
