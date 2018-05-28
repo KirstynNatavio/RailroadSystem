@@ -37,6 +37,7 @@ router.post('/', function(req, res){
           var passengerId             = null,
                   trainId             = null,
                   age                 = null,
+                  trip_price          = null,
                   disabled            = req.body.disabled,
                   veteran             = req.body.veteran,
                   time                = req.body.time;
@@ -120,7 +121,7 @@ router.post('/', function(req, res){
                  }).then(price => {
                                  
                                  sequelize.query('SELECT @PRICE;').then(price => {
-                                        console.log(Object.values(price[0][0])[0]);
+                                        trip_price = Object.values(price[0][0])[0];
                                  });
                  });
                  
@@ -128,29 +129,19 @@ router.post('/', function(req, res){
 
             }, 1000);
             
-
-    
-            
-            
-            
-           
-              
-               
-               
-         
-      
-                models.PASSENGER.create({
-                    FIRST_NAME: firstName,
-                    LAST_NAME: lastName,
-                    PHONE_NUMBER: phone,
-                    EMAIL: email
-                }).then(passenger => {
-                    
+                setTimeout(function(){
+                         models.PASSENGER.create({
+                                FIRST_NAME: firstName,
+                                LAST_NAME: lastName,
+                                PHONE_NUMBER: phone,
+                                EMAIL: email
+                         }).then(passenger => {
+                        
                     
                      /* Select passenger id to be able to insert values into the reservation and trip tables.
                          The result of the query is passed as "result."
                     */
-                      console.log(passenger);
+                     
                            
                           models.RESERVATION.create({
                                 PASSENGER_ID:     passenger.dataValues.PASSENGER_ID,   
@@ -158,20 +149,22 @@ router.post('/', function(req, res){
                                 PAYMENT_METHOD:   paymentMethod 
                           }).then(reservation => {
                             
-                              models.TRIP.create({
-                                   TRAIN_ID:         trainId,
-                                   RESERVATION_ID:   reservation.dataValues.RESERVATION_ID,
-                                   PASSENGER_ID:     passengerId,
-                                   ORIGIN:           origin_id,
-                                   DESTINATION:      destination_id,
-                                   TRIP_DATE:        reservationDate,
-                                   TRIP_TIME:        time,
-                                   PRICE:            price
-                             });
+                            //   models.TRIP.create({
+                            //       TRAIN_ID:         trainId,
+                            //       RESERVATION_ID:   reservation.dataValues.RESERVATION_ID,
+                            //       PASSENGER_ID:     passengerId,
+                            //       ORIGIN:           origin_id,
+                            //       DESTINATION:      destination_id,
+                            //       TRIP_DATE:        reservationDate,
+                            //       TRIP_TIME:        timeday,
+                            //       PRICE:            trip_price
+                            // });
                             
                           });
                           
                      });
+                }, 2000);
+             
 
         
     
