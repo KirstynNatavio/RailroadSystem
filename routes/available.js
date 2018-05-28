@@ -16,7 +16,7 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                     port: 3306
                 });
 
-router.get('/', function(req, res){
+router.post('/', function(req, res){
       
       availableTrains();
       console.log("TEST");
