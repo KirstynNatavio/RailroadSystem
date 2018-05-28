@@ -16,7 +16,7 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                     port: 3306
                 });
 
-router.get('/availableTrains', function(req, res){
+router.get('/', function(req, res){
       
       availableTrains();
       
@@ -39,7 +39,7 @@ router.get('/availableTrains', function(req, res){
 		                            replacements: train_replacements
 
 		                     }).then(trains => {
-                                 
+                                 console.log(trains);
                                  sequelize.query('SELECT @TRAIN1;').then(train => {
                                         console.log(train);
                                  });
@@ -51,7 +51,7 @@ router.get('/availableTrains', function(req, res){
                                 //  sequelize.query('SELECT @TRAIN3;').then(price => {
                                 //         train3 = Object.values(train[0][0])[0];
                                 //  });
-                 });;
+                 });
 						          
 
         }
@@ -60,7 +60,7 @@ router.get('/availableTrains', function(req, res){
 
 });
 
-router.post('/availableTrains', function(req, res){
+router.post('/', function(req, res){
     //somewhere else
 });
 
