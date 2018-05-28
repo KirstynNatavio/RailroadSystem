@@ -114,8 +114,8 @@ router.post('/', function(req, res){
                         
                     //Call GET_PRICE with sequelize.query and pass in relevant info
                  sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, @PRICE);', { 
-                     replacements: replacements, 
-                     type: sequelize.QueryTypes.SELECT 
+                     replacements: replacements
+        
                 
                  }).then(price => {
                                  
