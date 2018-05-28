@@ -78,6 +78,8 @@ router.post('/', function(req, res){
               }
             }).then((originID) => {
               origin_id = originID.STATION_ID;
+              console.log("originID = " + originID);
+              console.log("stored origin = " + origin_id);
             })
 
             models.STATION.findOne({
@@ -86,7 +88,9 @@ router.post('/', function(req, res){
                 STATE: inputDestination[1]
               }
             }).then((destinationID) => {
+              console.log("destinationID = " + destinationID);
               destination_id = destinationID.STATION_ID;
+              console.log("stored destination = " + destination_id);
             })
 
 
