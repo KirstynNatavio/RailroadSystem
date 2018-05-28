@@ -19,7 +19,7 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
 router.get('/', function(req, res){
       
       availableTrains();
-      
+      console.log("TEST");
       
       function availableTrains(){
           
