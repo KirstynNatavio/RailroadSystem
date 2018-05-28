@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-const exphbs = require('express-handlebars');
 
 const models = require('./models/');
 
@@ -22,14 +21,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.engine('handlebars', exphbs({
-  layoutsDir: './views/layouts',
-  defaultLayout: 'main',
-}));
-app.set('view engine', 'handlebars');
-app.set('views', `${__dirname}/views/`);
 
-app.use(require('./routes/'));
+const dashboard = require('./routes/dashboard');
+
+app.use('/', dashboard);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
