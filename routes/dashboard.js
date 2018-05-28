@@ -26,11 +26,11 @@ router.post('/', function(req, res){
                   origin              = req.body.origin,
                   reservationDate     = req.body.date,
                   destination         = req.body.destination,
-                  numberOfPets        = req.body.pets,
+                  numberOfPets        = parseInt(req.body.pets),
                   paymentMethod       = req.body.paymentMethod,
               
                   fare                = req.body.fare,
-                  timeday             = req.body.timeday,
+                  timeday             = Date.parse(req.body.timeday),
                   currentDate         = Date.now();
                   
           var passengerId             = null,
@@ -67,9 +67,34 @@ router.post('/', function(req, res){
                        */
                   
             var price;
+            var inputOrigin = origin.split(",");
+            var inputDestination = destination.split(",");
+            var origin_id;
+            var destination_id;
+            models.STATION.findOne({
+              where: {
+                CITY: inputOrigin[0],
+                STATE: inputOrigin[1]
+              }
+            }).then((originID) => {
+              origin_id = originID;
+            })
+
+            models.STATION.findOne({
+              where: {
+                CITY: inputDestination[0],
+                STATE: inputDestination[1]
+              }
+            }).then((destinationID) => {
+              destination_id = destinationID;
+            })
+
+
+
+
             var replacements = [
-                             origin,
-                             destination,
+                             origin_id,
+                             destination_id,
                              disabled,
                              veteran,
                              age,
@@ -85,7 +110,7 @@ router.post('/', function(req, res){
                      type: sequelize.QueryTypes.SELECT 
             
              }).then(() => {
-                  console.log(price)
+                  console.log("-------------PRICE: " + price + "--------")
 
                });
                
