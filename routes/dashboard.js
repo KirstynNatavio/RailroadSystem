@@ -99,11 +99,14 @@ router.post('/', function(req, res){
               console.log("destinationID = " + destinationID);
               destination_id = destinationID.dataValues.STATION_ID;
               console.log("stored destination = " + destination_id);
-            })
+            });
 
-
-            console.log('DESTINATION ' + destination_id);
-            console.log('ORIGIN ' + origin_id);
+            setInterval(function(){ 
+                        console.log('DESTINATION ' + destination_id);
+                        console.log('ORIGIN ' + origin_id); 
+                
+            }, 3000);
+    
             
             
             
