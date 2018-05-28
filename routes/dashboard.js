@@ -83,7 +83,7 @@ router.post('/', function(req, res){
                 STATE: inputOrigin[1]
               }
             }).then((originID) => {
-              origin_id = originID.STATION_ID;
+              origin_id = originID.dataValues.STATION_ID;
               console.log("originID = " + originID);
               console.log("stored origin = " + origin_id);
             })
@@ -95,13 +95,15 @@ router.post('/', function(req, res){
               }
             }).then((destinationID) => {
               console.log("destinationID = " + destinationID);
-              destination_id = destinationID.STATION_ID;
+              destination_id = destinationID.dataValues.STATION_ID;
               console.log("stored destination = " + destination_id);
             })
 
 
             console.log('DESTINATION ' + destination_id);
             console.log('ORIGIN ' + origin_id);
+            
+            
             
             var replacements = [
                              origin_id,
