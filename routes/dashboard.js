@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res){
   
-     const firstName           = req.body.firstName,
+     const        firstName           = req.body.firstName,
                   lastName            = req.body.lastName,
                   phone               = req.body.phone,
                   email               = req.body.email,
@@ -27,17 +27,17 @@ router.post('/', function(req, res){
                   origin              = req.body.origin,
                   reservationDate     = req.body.date,
                   destination         = req.body.destination,
+                  fare                = req.body.fare,
                   numberOfPets        = parseInt(req.body.pets),
                   paymentMethod       = req.body.paymentMethod,
-              
-                  fare                = req.body.fare,
                   timeday             = Date.parse(req.body.timeday),
                   currentDate         = moment().format('YYYY-MM-DD');
                   
-          var passengerId             = null,
+    var           passengerId         = null,
                   trainId             = null,
                   age                 = null,
                   trip_price          = null,
+                  train_timeday       = '',
                   disabled            = req.body.disabled,
                   veteran             = req.body.veteran,
                   time                = req.body.time;
@@ -53,6 +53,7 @@ router.post('/', function(req, res){
                        //These bits will be used to compute the GET_PRICE procedure in the database
                       (disabled ==  'disabled_yes') ? disabled = 1 : disabled = 0;
                       (veteran == 'veteran_yes') ? veteran = 1 : veteran = 0;
+                      
                       if (fare == 'adult') age = 1;
                       else if (fare == 'child') age = 0;
                       else age = 2;
@@ -161,6 +162,71 @@ router.post('/', function(req, res){
                             // });
                             
                           });
+                          
+                          //Origin
+                          //dest
+                          //timeday - mor, eve, aft
+                          //reservationDate
+                        
+                          
+                          $evening = $('#evening');
+                          
+                          if($evening.is(':checked')){
+                              train_timeday = 'EVE';
+                              availableTrains();
+                              
+                          }
+                          
+                          function availableTrains(){
+                              
+                                
+                              var train_replacements = [
+                                    origin,
+                                    destination,
+                                    train_timeday,
+                                    date
+                              ];    
+                              
+                              sequelize.query('call GET_AVAILABLE_TRAINS(?, ?, ?, ?, @TRAIN1, @TRAIN2, @TRAIN3);', {
+		                            replacements: train_replacements
+
+		                     });
+						                
+                              
+                          };
+                          
+                               
+						  //                  var trains = [];
+								// 			sequelize.query('select @TRAIN1, @TRAIN2, @TRAIN3;').spread(result => {
+								// 						trains = JSON.stringify(result);
+								// 			});		
+											
+								// 			console.log(trains);
+											
+								// 			var arrivals = [];
+                           	
+										// 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN1;", {
+										// 				replacements: [origin],
+										// 				type: sequelize.QueryTypes.SELECT 
+										// 			}).then(arrival => {
+										// 				arrivals.push(arrival);
+										// 			});
+													
+										// 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN2;", {
+										// 				replacements: [origin],
+										// 				type: sequelize.QueryTypes.SELECT 
+										// 			}).then(arrival => {
+										// 				arrivals.push(arrival);
+										// 			});
+													
+											
+										// 	sequelize.query("SELECT ARRIVAL FROM STOPS_AT WHERE STATION_ID='?' AND TRAIN_ID=@TRAIN3;", {
+										// 				replacements: [origin],
+										// 				type: sequelize.QueryTypes.SELECT 
+										// 			}).then(arrival => {
+										// 				arrivals.push(arrival);
+										// 			});
+										// 	console.log(arrivals);	
                           
                      });
                 }, 2000);
