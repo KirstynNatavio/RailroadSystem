@@ -1,9 +1,19 @@
-var router          = require('dashboard.js'),
-    options         = router.options,
-    origin          = options.origin,
-    destination     = options.destination,
-    train_timeday   = options.train_timeday,
-    date            = options.date;
+const   Sequelize       = require('sequelize'),
+        models          = require('../models'),
+        express         = require('express'),
+        options         = router.options,
+        origin          = options.origin,
+        destination     = options.destination,
+        train_timeday   = options.train_timeday,
+        date            = options.date;
+    
+var router              = express.router();
+    
+var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
+                    host: 'localhost',
+                    dialect: 'mysql',
+                    port: 3306
+                });
 
 router.get('/availableTrains', function(req, res){
       
@@ -11,6 +21,8 @@ router.get('/availableTrains', function(req, res){
       
       
       function availableTrains(){
+          
+                
                               
                                 
                               var train_replacements = [
@@ -33,5 +45,8 @@ router.get('/availableTrains', function(req, res){
 });
 
 router.post('/availableTrains', function(req, res){
-    res.render('reservation');
+    //somewhere else
 });
+
+
+module.exports = router;

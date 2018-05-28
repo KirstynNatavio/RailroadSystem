@@ -229,7 +229,7 @@ router.post('/', function(req, res){
 
         
     
-    res.render('dashboard');
+    res.render('available');
 });
 
 module.exports = router;
