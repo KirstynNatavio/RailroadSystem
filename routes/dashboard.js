@@ -44,6 +44,8 @@ router.post('/', function(req, res){
                                    console.log(disabled);
                                    console.log(veteran);
                                    console.log(fare);
+                                   console.log("timeDay = " + timeday);
+
                               
                        //Set veteran/military variables to bits for yes/no
                        //These bits will be used to compute the GET_PRICE procedure in the database
@@ -68,7 +70,9 @@ router.post('/', function(req, res){
                   
             var price;
             var inputOrigin = origin.split(",");
+            console.log("inputOrigin = " + inputOrigin);
             var inputDestination = destination.split(",");
+            console.log("inputDestination = " + inputDestination);
             var origin_id;
             var destination_id;
             models.STATION.findOne({
