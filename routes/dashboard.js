@@ -77,7 +77,7 @@ router.post('/', function(req, res){
                 STATE: inputOrigin[1]
               }
             }).then((originID) => {
-              origin_id = originID;
+              origin_id = originID.STATION_ID;
             })
 
             models.STATION.findOne({
@@ -86,7 +86,7 @@ router.post('/', function(req, res){
                 STATE: inputDestination[1]
               }
             }).then((destinationID) => {
-              destination_id = destinationID;
+              destination_id = destinationID.STATION_ID;
             })
 
 
@@ -105,7 +105,7 @@ router.post('/', function(req, res){
                ];
               
                //Call GET_PRICE with sequelize.query and pass in relevant info
-             sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, ?);', { 
+             sequelize.query('call GET_PRICE(?, ?, ?, ?, ?, ?, ?, ?, :price);', { 
                      replacements: replacements, 
                      type: sequelize.QueryTypes.SELECT 
             
@@ -139,8 +139,8 @@ router.post('/', function(req, res){
                                    TRAIN_ID:         trainId,
                                    RESERVATION_ID:   reservation.dataValues.RESERVATION_ID,
                                    PASSENGER_ID:     passengerId,
-                                   ORIGIN:           origin,
-                                   DESTINATION:      destination,
+                                   ORIGIN:           origin_id,
+                                   DESTINATION:      destination_id,
                                    TRIP_DATE:        reservationDate,
                                    TRIP_TIME:        time,
                                    PRICE:            price
