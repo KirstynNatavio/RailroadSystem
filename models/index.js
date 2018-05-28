@@ -6,10 +6,10 @@ const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
 const db = {};
 
-const sequelize = new Sequelize('S18336PRRteam1', 'kpj', 'thebestgroupever123', {
-	host: '96.246.237.159',
+const sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
+	host: 'localhost',
 	dialect: 'mysql',
-  port: 22
+	port: 3306
 });	
 
 
