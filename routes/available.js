@@ -4,6 +4,9 @@ const   Sequelize       = require('sequelize'),
         moment        = require('moment');
     
 var router              = express.Router();
+var queue = require('queue');
+var q = queue();
+var listReservations = [];
     
 var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                     host: 'localhost',
@@ -145,26 +148,35 @@ router.post('/available', function(req, res){
                      /* Select passenger id to be able to insert values into the reservation and trip tables.
                          The result of the query is passed as "result."
                     */
-                     
-                           
-                          models.RESERVATION.create({
+                          q.push(function (cb) {
+                            listReservations.push(
+                               models.RESERVATION.create({
                                 PASSENGER_ID:     passenger.dataValues.PASSENGER_ID,   
                                 RES_DATE:         reservationDate,
                                 PAYMENT_METHOD:   paymentMethod 
-                          }).then(reservation => {
-                            
-                            //   models.TRIP.create({
-                            //       TRAIN_ID:         trainId,
-                            //       RESERVATION_ID:   reservation.dataValues.RESERVATION_ID,
-                            //       PASSENGER_ID:     passengerId,
-                            //       ORIGIN:           origin_id,
-                            //       DESTINATION:      destination_id,
-                            //       TRIP_DATE:        reservationDate,
-                            //       TRIP_TIME:        timeday,
-                            //       PRICE:            trip_price
-                            // });
-                            
-                          });
+                              }).then(reservation => {
+
+
+                                
+                                //   models.TRIP.create({
+                                //       TRAIN_ID:         trainId,
+                                //       RESERVATION_ID:   reservation.dataValues.RESERVATION_ID,
+                                //       PASSENGER_ID:     passengerId,
+                                //       ORIGIN:           origin_id,
+                                //       DESTINATION:      destination_id,
+                                //       TRIP_DATE:        reservationDate,
+                                //       TRIP_TIME:        timeday,
+                                //       PRICE:            trip_price
+                                // });
+                                
+                              });
+
+
+                            )
+
+                          })
+                           
+                         
                           
                           //Origin
                           //dest
