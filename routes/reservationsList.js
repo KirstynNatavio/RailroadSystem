@@ -43,8 +43,11 @@ router.post('/', function(req, res, next) {
 						}
 					}).then((destination) => {
 						destinationObj = destination;
-							var tripId = tripObj.TRIP_ID;
-        					module.exports = tripId;
+							// var tripId = tripObj.TRIP_ID;
+							var options = {
+								tripId: tripObj.TRIP_ID
+							}
+        					module.exports = options;
 						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj})
 
 					})
