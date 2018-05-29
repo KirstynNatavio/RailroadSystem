@@ -52,7 +52,7 @@ var tripId;
                             });
   
     setTimeout(() => {
-        res.render('availableConfirm');  
+        res.render('availableConfirm', {reservationId: reservationId});  
     }, 1000);
           
         
