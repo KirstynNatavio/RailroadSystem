@@ -11,7 +11,7 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                     port: 3306
                 });
 
-router.post('/available', function(req, res){
+router.get('/available', function(req, res){
   
      const        firstName           = req.body.firstName,
                   lastName            = req.body.lastName,
@@ -248,15 +248,15 @@ router.post('/available', function(req, res){
                                         var train_w_arrivals= [];
                                         
                                         if(train1 != 0){
-                                            train_w_arrivals.push('Train ID: ' + train1 + ',' + ' Arrival Time: ' + arrival1);
+                                            train_w_arrivals.push('Train ' + train1 + ',' + ' Arrival Time: ' + arrival1);
                                         }
                                         
                                         if(train2 != 0){
-                                            train_w_arrivals.push('Train ID: ' + train2 + ',' + ' Arrival Time: ' + arrival2);
+                                            train_w_arrivals.push('Train ' + train2 + ',' + ' Arrival Time: ' + arrival2);
                                         }
                                         
                                         if(train3 != 0){
-                                            train_w_arrivals.push('Train ID: ' + train3 + ',' + ' Arrival Time: ' + arrival3);
+                                            train_w_arrivals.push('Train ' + train3 + ',' + ' Arrival Time: ' + arrival3);
                                         }
                                         res.render('available', {trains : train_w_arrivals}); 
                                 }, 3200);
