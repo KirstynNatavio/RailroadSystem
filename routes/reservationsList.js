@@ -8,11 +8,14 @@ var reservationObj;
 var tripObj;
 var originObj;
 var destinationObj;
+var email;
 
 router.post('/', function(req, res, next) {
+	
+	email = req.body.email;
 	models.PASSENGER.findOne({
 		where:{
-			EMAIL: req.body.email
+			EMAIL: email
 		}
 	}).then((passenger) => {
 		passengerObj = passenger;
@@ -48,7 +51,13 @@ router.post('/', function(req, res, next) {
 								tripId: tripObj.TRIP_ID
 							}
         					module.exports = options;
-						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj})
+        // 						if(email != null && reservationId != null){
+								// 		res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj})
+								// } else {
+								// 	//req.flash("error", "There is no reservation on file with the email");
+								// 	res.render('reservations');
+								// }
+						
 
 					})
 				})
@@ -56,6 +65,8 @@ router.post('/', function(req, res, next) {
 			})
 		})
 	})
+	
+
 	// models.RESERVATIONS.findAll({
 	// }).then(())
  //  res.render('reservationsList');
