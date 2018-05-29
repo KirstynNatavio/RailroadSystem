@@ -1,9 +1,19 @@
 const   Sequelize       = require('sequelize'),
         models          = require('../models'),
         express         = require('express'),
-        moment        = require('moment');
+        moment          = require('moment');
     
 var router              = express.Router();
+
+var passengerId,
+    reservationId,
+    origin_id,
+    destination_id,
+    reservationDate,
+    timeday,
+    trip_price;
+    
+    
 
 
 var exphbs = require('express-handlebars');
@@ -33,32 +43,30 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                 });
 
 router.post('/available', function(req, res){
+    
+                  reservationDate     = req.body.date;
+                  timeday             = req.body.timeday;
   
-     const        firstName           = req.body.firstName,
+        const     firstName           = req.body.firstName,
                   lastName            = req.body.lastName,
                   phone               = req.body.phone,
                   email               = req.body.email,
                   date                = req.body.date,
                   origin              = req.body.origin,
-                  reservationDate     = req.body.date,
                   destination         = req.body.destination,
                   fare                = req.body.fare,
                   numberOfPets        = parseInt(req.body.pets),
                   paymentMethod       = req.body.paymentMethod,
-                  timeday             = req.body.timeday,
                   currentDate         = moment().format('YYYY-MM-DD');
                   
   
                   
-                  
-    var           passengerId         = null,
-                  trainId             = null,
+                 
+        var       trainId,
                   age                 = null,
-                  trip_price          = null,
                   disabled            = req.body.disabled,
                   veteran             = req.body.veteran,
                   train_timeday       = '',
-                  reservationId       = '',
                   time                = req.body.time;
                   
                  if(timeday == 'morning')       train_timeday = 'MOR';
@@ -297,6 +305,7 @@ router.post('/available', function(req, res){
                                         }
                                         
                                         module.exports = options;
+                                        
                                         res.render('available', {train_arrivals, empty}); 
                                 }, 2000);
                               
