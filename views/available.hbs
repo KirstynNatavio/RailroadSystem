@@ -23,10 +23,10 @@
 						<div class="wrap-contact100-form-radio">
 
 						<div class="contact100-form-radio m-t-15">
-						    {{#each trains}}
-		    						<input class="input-radio100" type="radio" id="train{{this}}" name="available" checked="checked" />
-		    						<label class="label-radio100" for="train{{this}}">{{this}}</label>
-		    				{{/each}}
+						    {{#eachInMap train_arrivals}}
+		    						<input class="input-radio100" value="{{key}}" type="radio" id="{{key}}" name="available" checked="checked" />
+		    						<label class="label-radio100" for="{{key}}">Train {{key}}, Arrival Time: {{value}}</label>
+		    				{{/eachInMap}}
 						</div>
 				
 				
@@ -98,6 +98,14 @@
 <!--===============================================================================================-->
 
 	<script>
+
+		Handlebars.registerHelper( 'eachInMap', function ( map, block ) {
+		   var out = '';
+		   Object.keys( map ).map(function( prop ) {
+		      out += block.fn( {key: prop, value: map[ prop ]} );
+		   });
+		   return out;
+		} );
 
 		var today = new Date().toISOString().split('T')[0];
 		document.getElementsByName("date")[0].setAttribute('min', today);

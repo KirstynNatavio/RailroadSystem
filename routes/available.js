@@ -233,28 +233,25 @@ router.post('/available', function(req, res){
                                 });
                                 
                                 setTimeout(() => {
-                                        var trains = [train1, train2, train3];
-                                        var arrivals = [arrival1, arrival2, arrival3];
-                                        
-                                        var train_w_arrivals= [];
-                                        
+                                        var train_arrivals = new Map();
+                                                                               
                                         if(train1 != 0 && train1 != null){
-                                            train_w_arrivals.push('Train ' + train1 + ',' + ' Arrival Time: ' + arrival1);
+                                          train_arrivals.set(train1, arrival1);
                                         }
                                         
                                         if(train2 != 0 && train2 != null){
-                                            train_w_arrivals.push('Train ' + train2 + ',' + ' Arrival Time: ' + arrival2);
+                                          train_arrivals.set(train2, arrival2);
                                         }
                                         
                                         if(train3 != 0 && train3 != null){
-                                            train_w_arrivals.push('Train ' + train3 + ',' + ' Arrival Time: ' + arrival3);
+                                          train_arrivals.set(train3, arrival3);
                                         }
                         
                                         var empty = false;
-                                        if (train_w_arrivals.length == 0) {
+                                        if (train_arrivals.length == 0) {
                                           empty = true;
                                         }
-                                        res.render('available', {trains: train_w_arrivals, empty}); 
+                                        res.render('available', {train_arrivals, empty}); 
                                 }, 3200);
                               
                  			    
