@@ -25,7 +25,7 @@
 
 						<div class="contact100-form-radio m-t-15">
 						    {{#each train_arrivals}}
-		    						<input class="input-radio100" value="{{this.number}}:{{this.arrival}}" type="radio" id="{{this.number}}" name="available" checked="checked" />
+		    						<input class="input-radio100" value="{{this.number}}-{{this.arrival}}" type="radio" id="{{this.number}}" name="available" checked="checked" />
 		    						<label class="label-radio100" for="{{this.number}}">Train {{this.number}}, Arrival Time: {{this.arrival}}</label>
 		    				{{/each}}
 						</div>
