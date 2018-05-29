@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false
 		},
 		TRIP_DATE: {
-			type: DataTypes.DATE,
+			type: DataTypes.DATEONLY,
 			allowNull: false
 		},
 		TRIP_TIME: {
