@@ -11,7 +11,7 @@ var availableConfirm = require('./routes/availableConfirm');
 var mainPage = require('./routes/mainPage');
 var reservations = require('./routes/reservations');
 var reservationsList = require('./routes/reservationsList');
-var deleteConfirm = require('./routes/deleteconfirm');
+var deleteConfirm = require('./routes/deleteConfirm');
 
 const models = require('./models/');
 
