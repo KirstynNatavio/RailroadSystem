@@ -5,7 +5,7 @@ const   Sequelize       = require('sequelize'),
     
 var router              = express.Router();
 
-var express = require('express');
+
 var exphbs = require('express-handlebars');
 var app = express();
 var hbs = exphbs.create({
