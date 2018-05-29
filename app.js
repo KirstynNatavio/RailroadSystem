@@ -9,6 +9,9 @@ var dashboard = require('./routes/dashboard');
 var available = require('./routes/available');
 var availableConfirm = require('./routes/availableConfirm');
 var mainPage = require('./routes/mainPage');
+var reservations = require('./routes/reservations')
+var reservationsList = require('./routes/reservationsList');
+
 const models = require('./models/');
 
 var app = express();
@@ -29,7 +32,8 @@ app.use('/', mainPage);
 app.use('/dashboard', dashboard);
 app.use('/', available);
 app.use('/availableConfirm', availableConfirm);
-
+app.use('/reservations', reservations)
+app.use('/reservationsList', reservationsList)
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
 //   var err = new Error('Not Found');
