@@ -11,7 +11,7 @@ var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                     port: 3306
                 });
 
-router.get('/available', function(req, res){
+router.post('/available', function(req, res){
   
      const        firstName           = req.body.firstName,
                   lastName            = req.body.lastName,
@@ -153,16 +153,7 @@ router.get('/available', function(req, res){
                                 PAYMENT_METHOD:   paymentMethod 
                           }).then(reservation => {
                             
-                            //   models.TRIP.create({
-                            //       TRAIN_ID:         trainId,
-                            //       RESERVATION_ID:   reservation.dataValues.RESERVATION_ID,
-                            //       PASSENGER_ID:     passengerId,
-                            //       ORIGIN:           origin_id,
-                            //       DESTINATION:      destination_id,
-                            //       TRIP_DATE:        reservationDate,
-                            //       TRIP_TIME:        timeday,
-                            //       PRICE:            trip_price
-                            // });
+                      
                             
                           });
           
@@ -269,6 +260,25 @@ router.get('/available', function(req, res){
             
 
 });
+
+// router.post('/availableConfirm', function(req, res){
+    
+        
+//         var available = req.body.available;
+//         //create trip
+//                          models.TRIP.create({
+//                                   TRAIN_ID:         trainId,
+//                                   RESERVATION_ID:   reservation.dataValues.RESERVATION_ID,
+//                                   PASSENGER_ID:     passengerId,
+//                                   ORIGIN:           origin_id,
+//                                   DESTINATION:      destination_id,
+//                                   TRIP_DATE:        reservationDate,
+//                                   TRIP_TIME:        timeday,
+//                                   PRICE:            trip_price
+//                             });
+   
+//   res.render('reservation'); 
+// });
 
 
 module.exports = router;
