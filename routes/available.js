@@ -133,38 +133,33 @@ router.post('/available', function(req, res){
 
             }, 1000);
             
-
-                return models.sequelize.transaction(function (t)  {
-                  return setTimeout(function(){
-                    return models.PASSENGER.create({
-                            FIRST_NAME: firstName,
-                            LAST_NAME: lastName,
-                            PHONE_NUMBER: phone,
-                            EMAIL: email
-                     }, {lock: t.LOCK.UPDATE, transaction: t}).then(passenger => {
-                        return models.RESERVATION.create({
-                          PASSENGER_ID:     passenger.dataValues.PASSENGER_ID,   
-                          RES_DATE:         reservationDate,
-                          PAYMENT_METHOD:   paymentMethod 
-                        }, {lock: t.LOCK.UPDATE, transaction: t}).then(reservation => {
-
-                        })
-
-                  }, 2000); 
-                })
-
-
-
-
+                setTimeout(function(){
+                         models.PASSENGER.create({
+                                FIRST_NAME: firstName,
+                                LAST_NAME: lastName,
+                                PHONE_NUMBER: phone,
+                                EMAIL: email
+                         }).then(passenger => {
                         
                     
                      /* Select passenger id to be able to insert values into the reservation and trip tables.
                          The result of the query is passed as "result."
                     */
-
+                        
                            
-                       
-              
+                          models.RESERVATION.create({
+                                PASSENGER_ID:     passenger.dataValues.PASSENGER_ID,   
+                                RES_DATE:         reservationDate,
+                                PAYMENT_METHOD:   paymentMethod 
+                          }).then(reservation => {
+                            
+                      
+                            
+                          });
+          
+                          
+                     });
+                }, 2000);
                 
             
           
