@@ -294,20 +294,16 @@ router.post('/available', function(req, res){
                                           empty = true;
                                         }
                                         
-                                        var options = [
-                                            passengerId,
-                                            origin_id,
-                                            destination_id,
-                                            reservationDate,
-                                            reservationId,
-                                            timeday,
-                                            trip_price
-                                        ]
-                                        
-                                        // for(var item of options){
-                                        //     console.log(item);
-                                        // }
-                                        
+                                        var options = {
+                                            passengerId: passengerId,
+                                            origin_id: origin_id,
+                                            destination_id: destination_id,
+                                            reservationDate: reservationDate,
+                                            reservationId: reservationId,
+                                            timeday: timeday,
+                                            trip_price: trip_price
+                                        };
+                                   
                                         module.exports = options;
                                         
                                         res.render('available', {train_arrivals, empty}); 
