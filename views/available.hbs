@@ -1,24 +1,3 @@
-<script>
-	var express = require('express');
-	var exphbs = require('express-handlebars');
-	var app = express();
-	var hbs = exphbs.create({
-	  helpers: {
-	    eachInMap: function(map, block) {
-	      var out = '';
-	      Object.keys( map ).map(function( prop ) {
-	        out += block.fn( {key: prop, value: map[ prop ]} );
-	      });
-	      return out;
-	    }
-	  }
-	})
-	app.engine('handlebars', hbs.engine);
-	app.set('view engine', 'handlebars');
-
-</script>
-
-
 <div class="container-contact100">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form" action='/availableConfirm' method='POST'>
@@ -44,10 +23,10 @@
 						<div class="wrap-contact100-form-radio">
 
 						<div class="contact100-form-radio m-t-15">
-						    {{#eachInMap train_arrivals}}
-		    						<input class="input-radio100" value="{{key}}" type="radio" id="{{key}}" name="available" checked="checked" />
-		    						<label class="label-radio100" for="{{key}}">Train {{key}}, Arrival Time: {{value}}</label>
-		    				{{/eachInMap}}
+						    {{#each train_arrivals}}
+		    						<input class="input-radio100" value="{{this.number}}" type="radio" id="{{this.number}}" name="available" checked="checked" />
+		    						<label class="label-radio100" for="{{this.number}}">Train {{this.number}}, Arrival Time: {{this.arrival}}</label>
+		    				{{/each}}
 						</div>
 				
 				

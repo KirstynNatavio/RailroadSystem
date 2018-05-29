@@ -254,18 +254,32 @@ router.post('/available', function(req, res){
                                 });
                                 
                                 setTimeout(() => {
-                                        var train_arrivals = new Map();
+
+                                        var train_arrivals = [];
+                                        var train1 = {
+                                          number: train1,
+                                          arrival: arrival1
+                                        };
+                                        var train2 = {
+                                          number: train2,
+                                          arrival: arrival2
+                                        };
+                                        var train3 = {
+                                          number: train3,
+                                          arrival: arrival3
+                                        }
+
                                                                                
                                         if(train1 != 0 && train1 != null){
-                                          train_arrivals.set(train1, arrival1);
+                                          train_arrivals.push(train1);
                                         }
                                         
                                         if(train2 != 0 && train2 != null){
-                                          train_arrivals.set(train2, arrival2);
+                                          train_arrivals.push(train2);
                                         }
                                         
                                         if(train3 != 0 && train3 != null){
-                                          train_arrivals.set(train3, arrival3);
+                                          train_arrivals.push(train3);
                                         }
                         
                                         var empty = false;
