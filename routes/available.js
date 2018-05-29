@@ -300,7 +300,7 @@ router.post('/available', function(req, res){
                                             destination_id: destination_id,
                                             reservationDate: reservationDate,
                                             reservationId: reservationId,
-                                            timeday: timeday,
+                                            timeday: train_timeday,
                                             trip_price: trip_price
                                         };
                                    
