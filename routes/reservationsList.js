@@ -28,8 +28,8 @@ router.post('/', function(req, res, next) {
 				}
 			}).then((trip) => {
 				tripObj = trip;
-				var tripId = tripOj.dataValues.TRIP_ID;
-        		module.exports = trainId;
+				var tripId = tripObj.dataValues.TRIP_ID;
+        		module.exports = tripId;
         		
 				models.STATION.findOne({
 					where: {
