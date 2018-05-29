@@ -19,6 +19,8 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+var hbs = require('handlebars');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -35,7 +37,7 @@ app.use('/availableConfirm', availableConfirm);
 app.use('/reservations', reservations)
 app.use('/reservationsList', reservationsList)
 
-Handlebars.registerHelper( 'eachInMap', function ( map, block ) {
+hbs.registerHelper( 'eachInMap', function ( map, block ) {
    var out = '';
    Object.keys( map ).map(function( prop ) {
       out += block.fn( {key: prop, value: map[ prop ]} );
