@@ -34,6 +34,14 @@ app.use('/', available);
 app.use('/availableConfirm', availableConfirm);
 app.use('/reservations', reservations)
 app.use('/reservationsList', reservationsList)
+
+Handlebars.registerHelper( 'eachInMap', function ( map, block ) {
+   var out = '';
+   Object.keys( map ).map(function( prop ) {
+      out += block.fn( {key: prop, value: map[ prop ]} );
+   });
+   return out;
+} );
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
 //   var err = new Error('Not Found');
