@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
               
             
             
-        var train_w_arrival = req.body.available.split(':');
+        var train_w_arrival = req.body.available.split('-');
         var trainId = train_w_arrival[0];
         var arrivalTime = train_w_arrival[1];
         
