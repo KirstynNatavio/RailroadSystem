@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var dashboard = require('./routes/dashboard');
 var available = require('./routes/available');
 var availableConfirm = require('./routes/availableConfirm');
+var mainPage = require('./routes/mainPage');
 const models = require('./models/');
 
 var app = express();
@@ -24,7 +25,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', dashboard);
+app.use('/', mainPage);
+app.use('/dashboard', dashboard);
 app.use('/', available);
 app.use('/availableConfirm', availableConfirm);
 
