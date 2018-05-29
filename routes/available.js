@@ -49,8 +49,9 @@ router.post('/available', function(req, res){
                   
                  reservationDate = new Date(reservationDate);
                  var reservationMoment = moment(reservationDate);
+                 
                  reservationMoment = reservationMoment.format('YYYY-MM-DD');
-                 reservationDate = reservationMoment;
+               
                   
   
         const     firstName           = req.body.firstName,
@@ -304,7 +305,7 @@ router.post('/available', function(req, res){
                                             passengerId: passengerId,
                                             origin_id: origin_id,
                                             destination_id: destination_id,
-                                            reservationDate: reservationDate,
+                                            reservationDate: reservationMoment,
                                             reservationId: reservationId,
                                             timeday: train_timeday,
                                             trip_price: trip_price
