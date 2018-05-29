@@ -262,17 +262,6 @@ router.post('/available', function(req, res){
 
 });
 
-router.get('/availableConfirm', function(req, res){ 
-    var myText = req.body.available;
-    console.log(myText);
-    res.send(myText); 
-}); 
-
-router.post('/availableConfirm', function(req, res){ 
-    var myText = req.body.available;
-    console.log(myText);
-    res.send(myText);  
-}); 
 
 // router.post('/availableConfirm', function(req, res){
     
