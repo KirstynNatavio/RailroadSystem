@@ -304,7 +304,7 @@ router.post('/available', function(req, res){
                                             trip_price
                                         }
                                         
-                                        for(var item in options){
+                                        for(var item of options){
                                             console.log(item);
                                         }
                                         
