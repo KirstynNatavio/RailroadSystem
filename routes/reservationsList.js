@@ -69,8 +69,10 @@ router.post('/', function(req, res, next) {
         						}
         					}).then((stops_at) => {
         						
-        						var trip_date = moment(tripObj.TRIP_DATE).format("MMM Do YY");
-        						tripObj.TRIP_DATE = trip_date;
+        						var trip_date = moment(tripObj.TRIP_DATE);
+        						console.log("TRIP DATE:" + trip_date);
+        						tripObj.TRIP_DATE = trip_date.format("MMM Do YY");
+        						console.log("TRIP OBJ'S DATE: " + tripObj.TRIP_DATE);
        
         						
         						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj, stops_at, valid})
