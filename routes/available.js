@@ -134,7 +134,7 @@ router.post('/available', function(req, res){
             }, 1000);
             
 
-                return models.sequelize.transaction(function (t) => {
+                return models.sequelize.transaction(function (t)  {
                   return setTimeout(function(){
                     return models.PASSENGER.create({
                             FIRST_NAME: firstName,
