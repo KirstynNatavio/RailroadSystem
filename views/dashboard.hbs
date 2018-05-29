@@ -28,7 +28,7 @@
 				<div class="wrap-input100 input100-select bg1">
 					<span class="label-input100">Origin *</span>
 					<div>
-						<select class="js-select2" id="origin" name="origin">
+						<select class="js-select2" id="origin" name="origin" required>
 							<option>Please choose</option>
 							{{#each allStations}}
 							<option>{{this.CITY}},{{this.STATE}}</option>
@@ -43,7 +43,7 @@
 				<div class="wrap-input100 input100-select bg1">
 					<span class="label-input100">Destination *</span>
 					<div>
-						<select class="js-select2" id="destination" name="destination">
+						<select class="js-select2" id="destination" name="destination" required>
 							<option>Please choose</option>
 							{{#each allStations}}
 							<option>{{this.CITY}},{{this.STATE}}</option>
@@ -58,14 +58,14 @@
 				<div class="wrap-input100 form-group bg1 ">
 				  <span class="label-input100"> Date</span>
 				  <div class="col-10">
-				    <input class="form-control" id="date" type="date" name="date">
+				    <input class="form-control" id="date" type="date" name="date" required>
 				  </div>
 				</div>
 				
 				<div class="wrap-input100 form-group bg1 ">
 				  <span class="label-input100"> Number of Pets</span>
 				  <div class="col-10">
-				    <input class="form-control" id="pets" type="text" name="pets">
+				    <input class="form-control" id="pets" type="text" name="pets" required>
 				  </div>
 				</div>
 				
@@ -166,7 +166,7 @@
 				 <div class="wrap-input100 input100-select bg1">
 					<span class="label-input100">Payment Method *</span>
 					<div>
-						<select class="js-select2" name="paymentMethod">
+						<select class="js-select2" name="paymentMethod" required>
 							<option>Please choose</option>
 							<option>credit</option>
 							<option>debit</option>
