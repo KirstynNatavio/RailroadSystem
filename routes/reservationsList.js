@@ -70,8 +70,13 @@ router.post('/', function(req, res, next) {
         					}).then((stops_at) => {
         						
         						var trip_date = moment(tripObj.TRIP_DATE);
+        						trip_date = trip_date.moment().format();
+        						
+        						trip_date = trip.split(':');
+        						
+        						console.log(trip_date);
+        						
         						console.log("TRIP DATE:" + trip_date);
-        						tripObj.TRIP_DATE = trip_date.format('ll').format('MMM Do YYYY');
         						console.log("TRIP OBJ'S DATE: " + tripObj.TRIP_DATE);
         						
        
