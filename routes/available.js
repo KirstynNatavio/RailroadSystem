@@ -251,7 +251,7 @@ router.post('/available', function(req, res){
                                         }
                         
                                         
-                                        res.render('available', obj); 
+                                        res.render('available', {trains: train_w_arrivals}); 
                                 }, 3200);
                               
                  			    
