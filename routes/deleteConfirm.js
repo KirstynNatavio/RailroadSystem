@@ -58,7 +58,7 @@ router.post('/', function(req, res){
 											replacements: [tripId]
 										}).then(() => {
 											sequelize.query('SET FOREIGN_KEY_CHECKS = 1;');
-											res.send('everything worked!!');
+											res.render('cancellation');
 										});
 									});
 								});
