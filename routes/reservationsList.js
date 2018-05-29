@@ -60,8 +60,25 @@ router.post('/', function(req, res, next) {
 								tripId: tripObj.TRIP_ID
 							}
         					module.exports = options;
+
+        					models.STOPS_AT.findOne({
+        						attributes: ['ARRIVAL'],
+        						where: {
+        							STATION_ID: destinationObj.STATION_ID,
+        							TRAIN_ID: tripObj.TRAIN_ID
+        						}
+        					}).then((arrival) => {
+        						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj, arrival, valid})
+
+        					})
+
+
+
+
+
+
+
         // 						if(email != null && reservationId != null){
-							res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj, valid})
 								// } else {
 								// 	//req.flash("error", "There is no reservation on file with the email");
 								// 	res.render('reservations');
