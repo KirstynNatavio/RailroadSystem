@@ -3,7 +3,7 @@ const express = require('express');
 const sequelize = require('sequelize');
 var router = express.Router();
 
-router.delete('/', function(req, res){
+router.post('/', function(req, res){
 		var answer = req.body.deleteanswer;
 		var origin;
 		var destination;
@@ -46,7 +46,7 @@ router.delete('/', function(req, res){
 											replacements: [tripId]
 										}).then(() => {
 											sequelize.query('SET FOREIGN_KEY_CHECKS = 1;');
-											res.send('everything worked!!')
+											res.send('everything worked!!');
 										});
 									});
 								});
