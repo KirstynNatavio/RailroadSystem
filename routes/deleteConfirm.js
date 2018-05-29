@@ -44,7 +44,7 @@ router.post('/', function(req, res){
 						reservationId = trip.RESERVATION_ID;
 				});
 				setTimeout(() => {
-					sequelize.query('call ADD_FREE_SEAT(?, ?, ?);', {
+					sequelize.query('call ADD_FREE_SEAT(?, ?, ?, ?);', {
 								replacements: [origin, destination, trainId, date]
 						}).then(() => {
 							sequelize.query('SET FOREIGN_KEY_CHECKS = 0;').then(() => {
