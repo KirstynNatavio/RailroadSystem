@@ -1,4 +1,22 @@
+<script>
+	var express = require('express');
+	var exphbs = require('express-handlebars');
+	var app = express();
+	var hbs = exphbs.create({
+	  helpers: {
+	    eachInMap: function(map, block) {
+	      var out = '';
+	      Object.keys( map ).map(function( prop ) {
+	        out += block.fn( {key: prop, value: map[ prop ]} );
+	      });
+	      return out;
+	    }
+	  }
+	})
+	app.engine('handlebars', hbs.engine);
+	app.set('view engine', 'handlebars');
 
+</script>
 
 
 <div class="container-contact100">
