@@ -1,7 +1,7 @@
-{{#if valid}}
+{{#if valid}
 <div class="container-contact100-login">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" id="form">
+			<form class="contact100-form validate-form" action='/' method='GET'>
 				<span class="contact100-form-title">
 					Reservation List
 				</span>
@@ -30,7 +30,7 @@
 			
 
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn" onclick="mainPage();">
+					<button class="contact100-form-btn">
 						<span>
 							Main Page
 							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -42,16 +42,21 @@
 
 			</form>
 			
-			
-			<span class="label-input100">Cancel your reservation</span>
+			<div class="wrap-contact100">
+				<form class="contact100-form validate-form" action='/deleteConfirm' method="POST">
+					<div class="wrap-input100 input100-select bg1">
+						<span class="label-input100">Cancel your reservation</span>
 
-			<div class="container-contact100-form-btn">
-			<button class="contact100-form-btn" onclick="cancelRes();">
-				<span>
-					Cancel
-					<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-				</span>
-			</button>
+						<div class="container-contact100-form-btn">
+						<button class="contact100-form-btn">
+							<span>
+								Cancel
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</form>
+			</div>
 
 		</div>
 	</div>
@@ -59,23 +64,42 @@
 {{else}}
 <div class="container-contact100-login">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" action='/reservations' method='GET'>
+			<form class="contact100-form validate-form" action='/' method='GET'>
 				<span class="contact100-form-title">
 					No record was found for the given information. Please try again. 
 				</span>
+
+			
 			
 
 				<div class="container-contact100-form-btn">
 					<button class="contact100-form-btn">
 						<span>
-							Go back
+							Main Page
 							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
 						</span>
 					</button>
 				</div>
 				
 
+
 			</form>
+			
+			<div class="wrap-contact100">
+				<form class="contact100-form validate-form" action='/deleteConfirm' method="POST">
+					<div class="wrap-input100 input100-select bg1">
+						<span class="label-input100">Cancel your reservation</span>
+
+						<div class="container-contact100-form-btn">
+						<button class="contact100-form-btn">
+							<span>
+								Cancel
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</form>
+			</div>
 
 		</div>
 	</div>
@@ -94,24 +118,6 @@
 <!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
 	<script>
-
-		function mainPage() {
-			var form = document.createElement('form');
-		    form.setAttribute('method', 'post');
-		    form.setAttribute('action', './reservations');
-		    form.submit();
-		}
-
-
-		function cancelRes() {
-			var form = document.createElement('form');
-			form.setAttribute('method', 'post');
-			form.setAttribute('action', './deleteConfirm');
-			form.submit();
-		}
-
-
-
 		$(".js-select2").each(function(){
 			$(this).select2({
 				minimumResultsForSearch: 20,
