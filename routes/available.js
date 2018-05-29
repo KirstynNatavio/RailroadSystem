@@ -4,7 +4,28 @@ const   Sequelize       = require('sequelize'),
         moment        = require('moment');
     
 var router              = express.Router();
-    
+
+var express = require('express');
+var exphbs = require('express-handlebars');
+var app = express();
+var hbs = exphbs.create({
+  helpers: {
+    eachInMap: function(map, block) {
+      var out = '';
+      Object.keys( map ).map(function( prop ) {
+        out += block.fn( {key: prop, value: map[ prop ]} );
+      });
+      return out;
+    }
+  }
+})
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+
+
+   
+
 var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
                     host: 'localhost',
                     dialect: 'mysql',
