@@ -250,8 +250,11 @@ router.post('/available', function(req, res){
                                             train_w_arrivals.push('Train ' + train3 + ',' + ' Arrival Time: ' + arrival3);
                                         }
                         
-                                        
-                                        res.render('available', {trains: train_w_arrivals}); 
+                                        var empty = false;
+                                        if (train_w_arrivals.length == 0) {
+                                          empty = true;
+                                        }
+                                        res.render('available', {trains: train_w_arrivals, empty}); 
                                 }, 3200);
                               
                  			    
