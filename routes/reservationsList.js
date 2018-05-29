@@ -62,13 +62,12 @@ router.post('/', function(req, res, next) {
         					module.exports = options;
 
         					models.STOPS_AT.findOne({
-        						attributes: ['ARRIVAL'],
         						where: {
         							STATION_ID: destinationObj.STATION_ID,
         							TRAIN_ID: tripObj.TRAIN_ID
         						}
-        					}).then((arrival) => {
-        						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj, arrival, valid})
+        					}).then((stops_at) => {
+        						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj, stops_at, valid})
 
         					})
 
