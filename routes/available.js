@@ -42,7 +42,6 @@ router.post('/available', function(req, res){
                   origin              = req.body.origin,
                   reservationDate     = req.body.date,
                   destination         = req.body.destination,
-                  reservationId       = '',
                   fare                = req.body.fare,
                   numberOfPets        = parseInt(req.body.pets),
                   paymentMethod       = req.body.paymentMethod,
@@ -59,6 +58,7 @@ router.post('/available', function(req, res){
                   disabled            = req.body.disabled,
                   veteran             = req.body.veteran,
                   train_timeday       = '',
+                  reservationId       = '',
                   time                = req.body.time;
                   
                  if(timeday == 'morning')       train_timeday = 'MOR';
