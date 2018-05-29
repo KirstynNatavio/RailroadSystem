@@ -1,6 +1,7 @@
 const models = require("../models");
 const express = require('express');
 const sequelize = require('sequelize');
+const moment	= require('moment');
 
 var router = express.Router();
 var passengerObj;
@@ -67,6 +68,11 @@ router.post('/', function(req, res, next) {
         							TRAIN_ID: tripObj.TRAIN_ID
         						}
         					}).then((stops_at) => {
+        						
+        						var trip_date = moment(tripObj.TRIP_DATE).format("MMM Do YY");
+        						tripObj.TRIP_DATE = trip_date;
+       
+        						
         						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj, stops_at, valid})
 
         					})
