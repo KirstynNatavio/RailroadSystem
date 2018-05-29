@@ -170,7 +170,7 @@ router.post('/available', function(req, res){
                                 PHONE_NUMBER: phone,
                                 EMAIL: email
                          }).then(passenger => {
-                        
+                                passengerId = passenger.dataValues.PASSENGER_ID;
                     
                      /* Select passenger id to be able to insert values into the reservation and trip tables.
                          The result of the query is passed as "result."
@@ -178,7 +178,7 @@ router.post('/available', function(req, res){
                         
                            
                           models.RESERVATION.create({
-                                PASSENGER_ID:     passenger.dataValues.PASSENGER_ID,   
+                                PASSENGER_ID:     passengerId,   
                                 RES_DATE:         reservationDate,
                                 PAYMENT_METHOD:   paymentMethod 
                           }).then(reservation => {
