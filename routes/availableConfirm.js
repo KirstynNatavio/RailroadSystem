@@ -11,12 +11,12 @@ router.post('/', function(req, res, next) {
               reservationId     = options.reservationId,
               origin_id         = options.origin_id,
               destination_id    = options.destination_id,
-              reservationDate   = options.reservationMoment,
+              reservationDate   = options.reservationDate,
               timeday           = options.timeday,
               trip_price        = options.trip_price;
               
             
-            
+   
         var train_w_arrival = req.body.available.split('-');
         var trainId = train_w_arrival[0];
         var arrivalTime = train_w_arrival[1];
