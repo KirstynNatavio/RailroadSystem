@@ -63,7 +63,6 @@ router.delete('/', function(req, res){
 		var reservationId;
 		var tripId;
 		
-		if(answer == 'yes'){
 				models.TRIP.findOne({
 					where: {
 						TRIP_ID: tripObj.dataValues.TRIP_ID
@@ -102,5 +101,5 @@ router.delete('/', function(req, res){
 			
 
 			}
-});
+
 module.exports = router;
