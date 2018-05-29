@@ -42,6 +42,7 @@ router.post('/available', function(req, res){
                   origin              = req.body.origin,
                   reservationDate     = req.body.date,
                   destination         = req.body.destination,
+                  reservationId       = '',
                   fare                = req.body.fare,
                   numberOfPets        = parseInt(req.body.pets),
                   paymentMethod       = req.body.paymentMethod,
@@ -173,9 +174,7 @@ router.post('/available', function(req, res){
                                 RES_DATE:         reservationDate,
                                 PAYMENT_METHOD:   paymentMethod 
                           }).then(reservation => {
-                            
-                      
-                            
+                                reservationId = reservation.dataValues.RESERVATION_ID;
                           });
           
                           
@@ -286,6 +285,18 @@ router.post('/available', function(req, res){
                                         if (train_arrivals.length == 0) {
                                           empty = true;
                                         }
+                                        
+                                        var options = {
+                                            passengerId,
+                                            origin_id,
+                                            destination_id,
+                                            reservationDate,
+                                            reservationId,
+                                            timeday,
+                                            trip_price
+                                        }
+                                        
+                                        module.exports = options;
                                         res.render('available', {train_arrivals, empty}); 
                                 }, 3200);
                               
@@ -300,19 +311,7 @@ router.post('/available', function(req, res){
 
 // router.post('/availableConfirm', function(req, res){
     
-        
-//         var available = req.body.available;
-//         //create trip
-//                          models.TRIP.create({
-//                                   TRAIN_ID:         trainId,
-//                                   RESERVATION_ID:   reservation.dataValues.RESERVATION_ID,
-//                                   PASSENGER_ID:     passengerId,
-//                                   ORIGIN:           origin_id,
-//                                   DESTINATION:      destination_id,
-//                                   TRIP_DATE:        reservationDate,
-//                                   TRIP_TIME:        timeday,
-//                                   PRICE:            trip_price
-//                             });
+
    
 //   res.render('reservation'); 
 // });
