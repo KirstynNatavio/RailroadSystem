@@ -44,7 +44,7 @@ router.post('/', function(req, res, next) {
 					}).then((destination) => {
 						destinationObj = destination;
 							var tripId = tripObj.TRIP_ID;
-        					exports.tripId = tripId;
+        					module.exports = tripId;
 						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj})
 
 					})
