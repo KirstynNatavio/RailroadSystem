@@ -1,3 +1,15 @@
+<script>
+	Handlebars.registerHelper( 'eachInMap', function ( map, block ) {
+	   var out = '';
+	   Object.keys( map ).map(function( prop ) {
+	      out += block.fn( {key: prop, value: map[ prop ]} );
+	   });
+	   return out;
+	} );
+
+</script>
+
+
 <div class="container-contact100">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form" action='/availableConfirm' method='POST'>
@@ -99,14 +111,7 @@
 
 	<script>
 
-		Handlebars.registerHelper( 'eachInMap', function ( map, block ) {
-		   var out = '';
-		   Object.keys( map ).map(function( prop ) {
-		      out += block.fn( {key: prop, value: map[ prop ]} );
-		   });
-		   return out;
-		} );
-
+		
 		var today = new Date().toISOString().split('T')[0];
 		document.getElementsByName("date")[0].setAttribute('min', today);
 
