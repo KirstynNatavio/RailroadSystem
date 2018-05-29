@@ -1,6 +1,13 @@
 const models = require("../models");
 const express = require('express');
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
+
+var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
+                    host: 'localhost',
+                    dialect: 'mysql',
+                    port: 3306
+});
+
 var router = express.Router();
 
 router.post('/', function(req, res){
