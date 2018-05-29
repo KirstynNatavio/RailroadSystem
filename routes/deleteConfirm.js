@@ -33,7 +33,7 @@ router.post('/', function(req, res){
 					}
 				}).then(tripOb => {
 						console.log(tripOb)
-						var trip     = tripOb;
+						var trip     = tripOb.dataValues;
 						
 						tripId       = trip.TRIP_ID
 						origin		 = trip.ORIGIN;
