@@ -256,30 +256,30 @@ router.post('/available', function(req, res){
                                 setTimeout(() => {
 
                                         var train_arrivals = [];
-                                        var train1 = {
+                                        var firstTrain = {
                                           number: train1,
                                           arrival: arrival1
                                         };
-                                        var train2 = {
+                                        var secondTrain = {
                                           number: train2,
                                           arrival: arrival2
                                         };
-                                        var train3 = {
+                                        var thirdTrain = {
                                           number: train3,
                                           arrival: arrival3
                                         }
 
                                                                                
                                         if(train1 != 0 && train1 != null){
-                                          train_arrivals.push(train1);
+                                          train_arrivals.push(firstTrain);
                                         }
                                         
                                         if(train2 != 0 && train2 != null){
-                                          train_arrivals.push(train2);
+                                          train_arrivals.push(secondTrain);
                                         }
                                         
                                         if(train3 != 0 && train3 != null){
-                                          train_arrivals.push(train3);
+                                          train_arrivals.push(thirdTrain);
                                         }
                         
                                         var empty = false;
