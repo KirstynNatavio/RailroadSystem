@@ -14,9 +14,14 @@ router.post('/', function(req, res, next) {
               reservationDate   = options.reservationMoment,
               timeday           = options.timeday,
               trip_price        = options.trip_price;
-            for(var item in req.body.available) console.log(item);
+              
+            
+            
         var trainId = req.body.available.number;
         var arrivalTime = req.body.available.arrival;
+        
+        console.log('TRAIN ID: ' + trainId);
+        console.log('ARRIVAL TIME: ' + arrivalTime);
         //create trip
                          models.TRIP.create({
                                   TRAIN_ID:         trainId,
