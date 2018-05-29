@@ -46,6 +46,12 @@ router.post('/available', function(req, res){
     
                   reservationDate     = req.body.date;
                   timeday             = req.body.timeday;
+                  
+                 reservationDate = new Date(reservationDate);
+                 var reservationMoment = moment(reservationDate);
+                 reservationMoment = reservationMoment.format('YYYY-MM-DD');
+                 reservationDate = reservationMoment;
+                  
   
         const     firstName           = req.body.firstName,
                   lastName            = req.body.lastName,
