@@ -1,13 +1,13 @@
-const models            = require("../models");
-const express           = require('express');
-const available         = require('./available.js');
-const passengerId       = available.passengerId;
-const reservationId     = available.reservationId;
-const origin_id         = available.origin_id;
-const destination_id    = available.destination_id;
-const reservationDate   = available.reservationDate;
-const timeday           = available.timeday;
-const trip_price        = available.trip_price;
+const models            = require("../models"),
+      express           = require('express'),
+      available         = require('./available.js'),
+      passengerId       = available.passengerId,
+      reservationId     = available.reservationId,
+      origin_id         = available.origin_id,
+      destination_id    = available.destination_id,
+      reservationDate   = available.reservationDate,
+      timeday           = available.timeday,
+      trip_price        = available.trip_price;
       
 var router = express.Router();
 router.post('/', function(req, res, next) {
@@ -23,6 +23,8 @@ router.post('/', function(req, res, next) {
                                   TRIP_DATE:        reservationDate,
                                   TRIP_TIME:        timeday,
                                   PRICE:            trip_price
+                            }).then(trip => {
+                                console.log(trip);
                             });
   
     setTimeout(() => {

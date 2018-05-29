@@ -153,7 +153,7 @@ router.post('/available', function(req, res){
                  
                   
 
-            }, 1000);
+            }, 500);
             
                 setTimeout(function(){
                          models.PASSENGER.create({
@@ -179,7 +179,7 @@ router.post('/available', function(req, res){
           
                           
                      });
-                }, 2000);
+                }, 1000);
                 
             
           
@@ -298,10 +298,10 @@ router.post('/available', function(req, res){
                                         
                                         module.exports = options;
                                         res.render('available', {train_arrivals, empty}); 
-                                }, 3200);
+                                }, 2000);
                               
                  			    
-                }, 3000);
+                }, 1500);
                               
 
             
