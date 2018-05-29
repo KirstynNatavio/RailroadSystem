@@ -30,7 +30,7 @@ router.post('/', function(req, res, next) {
 				tripObj = trip;
 				
 				var tripId = trip.TRIP_ID;
-        		module.exports = tripId;
+        		exports.tripId = tripId;
         		
 				models.STATION.findOne({
 					where: {

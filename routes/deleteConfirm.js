@@ -22,6 +22,7 @@ router.post('/', function(req, res){
 		
 		var options = require('./reservationsList');
 		tripId = options.tripId;
+		
 		console.log(tripId);
 		
 				models.TRIP.findOne({
