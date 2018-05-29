@@ -28,7 +28,8 @@ router.post('/', function(req, res){
 						TRIP_ID: tripId
 					}
 				}).then(tripOb => {
-						var trip     = tripOb.dataValues;
+						console.log(tripOb)
+						var trip     = tripOb;
 						
 						tripId       = trip.TRIP_ID
 						origin		 = trip.ORIGIN;
