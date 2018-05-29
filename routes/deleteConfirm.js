@@ -19,12 +19,12 @@ router.post('/', function(req, res){
 		var passengerId;
 		var reservationId;
 		var tripId;
-		setTimeout(() => {
+
 				var options = require('./reservationsList');
 				tripId = options.tripId;
 				
 				console.log(tripId);
-		}, 2000)
+	
 	
 		
 				models.TRIP.findOne({
