@@ -294,7 +294,7 @@ router.post('/available', function(req, res){
                                           empty = true;
                                         }
                                         
-                                        var options = {
+                                        var options = [
                                             passengerId,
                                             origin_id,
                                             destination_id,
@@ -302,7 +302,7 @@ router.post('/available', function(req, res){
                                             reservationId,
                                             timeday,
                                             trip_price
-                                        }
+                                        ]
                                         
                                         // for(var item of options){
                                         //     console.log(item);

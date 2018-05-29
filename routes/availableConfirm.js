@@ -2,13 +2,13 @@ const models            = require("../models"),
       express           = require('express'),
       available         = require('./available.js'),
       options           = available.options,
-      passengerId       = options.passengerId,
-      reservationId     = options.reservationId,
-      origin_id         = options.origin_id,
-      destination_id    = options.destination_id,
-      reservationDate   = options.reservationDate,
-      timeday           = options.timeday,
-      trip_price        = options.trip_price;
+      passengerId       = options[0],
+      origin_id         = options[1],
+      destination_id    = options[2],
+      reservationDate   = options[3],
+      reservationId     = options[4],
+      timeday           = options[5],
+      trip_price        = options[6];
       
 var router = express.Router();
 router.post('/', function(req, res, next) {
