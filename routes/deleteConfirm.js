@@ -43,8 +43,8 @@ router.post('/', function(req, res){
 						passengerId   = trip.PASSENGER_ID;
 						reservationId = trip.RESERVATION_ID;
 				});
-				
-						sequelize.query('call ADD_FREE_SEAT(?, ?, ?);', {
+				setTimeout(() => {
+					sequelize.query('call ADD_FREE_SEAT(?, ?, ?);', {
 								replacements: [origin, destination, trainId, date]
 						}).then(() => {
 							sequelize.query('SET FOREIGN_KEY_CHECKS = 0;').then(() => {
@@ -64,6 +64,8 @@ router.post('/', function(req, res){
 								});
 							});
 						});
+				}, 1000);
+						
 			
 
 });
