@@ -238,15 +238,15 @@ router.post('/available', function(req, res){
                                         
                                         var train_w_arrivals= [];
                                         
-                                        if(train1 != 0){
+                                        if(train1 != 0 && train1 != null){
                                             train_w_arrivals.push('Train ' + train1 + ',' + ' Arrival Time: ' + arrival1);
                                         }
                                         
-                                        if(train2 != 0){
+                                        if(train2 != 0 && train2 != null){
                                             train_w_arrivals.push('Train ' + train2 + ',' + ' Arrival Time: ' + arrival2);
                                         }
                                         
-                                        if(train3 != 0){
+                                        if(train3 != 0 && train3 != null){
                                             train_w_arrivals.push('Train ' + train3 + ',' + ' Arrival Time: ' + arrival3);
                                         }
                                         res.render('available', {trains : train_w_arrivals}); 
