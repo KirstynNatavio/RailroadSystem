@@ -30,6 +30,12 @@ var tripId;
         var trainId = train_w_arrival[0];
         var arrivalTime = train_w_arrival[1];
         
+        var trainOptions = {
+            trainId: trainId,
+            arrivalTime: arrivalTime
+        }
+        
+        module.exports = trainOptions;
         console.log('TRAIN ID: ' + trainId);
         console.log('ARRIVAL TIME: ' + arrivalTime);
         //create trip
