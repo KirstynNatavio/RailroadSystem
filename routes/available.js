@@ -148,7 +148,7 @@ router.post('/available', function(req, res){
                           PAYMENT_METHOD:   paymentMethod 
                         }, {lock: t.LOCK.UPDATE, transaction: t}).then(reservation => {
 
-                        });
+                        })
 
                   }, 2000); 
                 })
