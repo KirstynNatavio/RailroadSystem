@@ -261,7 +261,7 @@ router.post('/available', function(req, res){
 
 });
 
-router.get('/availableConfirm', function(req, res){ 
+router.post('/availableConfirm', function(req, res){ 
     var myText = req.query.available; //mytext is the name of your input box
     res.send('Your Text:' +myText); 
 }); 
