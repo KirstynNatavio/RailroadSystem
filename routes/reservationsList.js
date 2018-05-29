@@ -73,6 +73,7 @@ router.post('/', function(req, res, next) {
         						console.log("TRIP DATE:" + trip_date);
         						tripObj.TRIP_DATE = trip_date.format("MMM Do YY");
         						console.log("TRIP OBJ'S DATE: " + tripObj.TRIP_DATE);
+        						
        
         						
         						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj, stops_at, valid})
