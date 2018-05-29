@@ -249,7 +249,9 @@ router.post('/available', function(req, res){
                                         if(train3 != 0 && train3 != null){
                                             train_w_arrivals.push('Train ' + train3 + ',' + ' Arrival Time: ' + arrival3);
                                         }
-                                        res.render('available', {trains : train_w_arrivals}); 
+                        
+                                        
+                                        res.render('available', obj); 
                                 }, 3200);
                               
                  			    
@@ -261,8 +263,8 @@ router.post('/available', function(req, res){
 });
 
 router.post('/availableConfirm', function(req, res){ 
-    var myText = req.body.available; //mytext is the name of your input box
-    res.send('Your Text:' +myText); 
+    console.log(req.body.available);
+    res.send('Your Text:' + myText); 
 }); 
 
 // router.post('/availableConfirm', function(req, res){
