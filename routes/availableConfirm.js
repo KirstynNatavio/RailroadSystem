@@ -3,6 +3,15 @@ const models            = require("../models"),
     
       
 var router = express.Router();
+
+
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize('S18336PRRteam1', 'user', 'password', {
+                    host: 'localhost',
+                    dialect: 'mysql',
+                    port: 3306
+});
+
 router.post('/', function(req, res, next) {
     
  const     available         = require('./available.js'),
@@ -14,7 +23,7 @@ router.post('/', function(req, res, next) {
               reservationDate   = options.reservationDate,
               timeday           = options.timeday,
               trip_price        = options.trip_price;
-              
+var tripId;
             
    
         var train_w_arrival = req.body.available.split('-');
@@ -34,7 +43,11 @@ router.post('/', function(req, res, next) {
                                   TRIP_TIME:        arrivalTime,
                                   PRICE:            trip_price
                             }).then(trip => {
-                                console.log(trip);
+                                tripId = trip;
+                                
+                                sequelize.query('call OCCUPY_FREE_SEAT(?,?,?,?);', {
+                                    replacements: [origin_id, destination_id, trainId, reservationDate]
+                                });
                             });
   
     setTimeout(() => {
