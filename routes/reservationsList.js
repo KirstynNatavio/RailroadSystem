@@ -72,7 +72,7 @@ router.post('/', function(req, res, next) {
         						var trip_date = moment(tripObj.TRIP_DATE);
         						trip_date = trip_date.format();
         						
-        						trip_date = trip.split(':');
+        						trip_date = trip_date.split(':');
         						
         						console.log(trip_date);
         						
