@@ -29,8 +29,7 @@ router.post('/', function(req, res, next) {
 			}).then((trip) => {
 				tripObj = trip;
 				
-				var tripId = trip.TRIP_ID;
-        		exports.tripId = tripId;
+			
         		
 				models.STATION.findOne({
 					where: {
@@ -44,6 +43,8 @@ router.post('/', function(req, res, next) {
 						}
 					}).then((destination) => {
 						destinationObj = destination;
+							var tripId = tripObj.TRIP_ID;
+        					exports.tripId = tripId;
 						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj})
 
 					})
