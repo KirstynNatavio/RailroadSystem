@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false
 		},
 		RES_DATE: {
-			type: DataTypes.DATEONLY,
+			type: DataTypes.DATE,
 			allowNull: false
 		},
 		PAYMENT_METHOD: {
