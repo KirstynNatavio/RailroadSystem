@@ -278,19 +278,19 @@ router.post('/available', function(req, res){
                                         console.log(arrival2);
                                         console.log(arrival3); //undefined?
                                         
-                                        if(typeof arrival1 === undefined){
+                                        if(typeof arrival1 !== undefined){
                                             arr1 = arrival1.split(':');
                                             console.log(arr1);
                                             arr1 = format(arr1);
                                         }
                                         
-                                        if(typeof arrival2 === undefined){
+                                        if(typeof arrival2 !== undefined){
                                             arr2 = arrival2.split(':');
                                             console.log(arr2);
                                             arr2 = format(arr2);
                                         }
                                         
-                                        if(typeof arrival3 === undefined){
+                                        if(typeof arrival3 !== undefined){
                                             arr3 = arrival3.split(':');
                                             console.log(arr3)
                                             arr3 = format(arr3);
