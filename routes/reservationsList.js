@@ -115,7 +115,7 @@ router.post('/', function(req, res, next) {
 		        						
 		       
 		        						
-		        						timeString = parsedHours + ' ' + parsedMin + ' ' + ampm;
+		        						timeString = parsedHours + ':' + parsedMin + ' ' + ampm;
 		        						return timeString;
 		        					
         					}
