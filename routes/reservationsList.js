@@ -75,18 +75,14 @@ router.post('/', function(req, res, next) {
         						
         						trip_date = trip_date.format('ll'); 
         						
-        						tripObj.TRIP_DATE = trip_date;
-        						
-        						console.log(tripObj.TRIP_DATE);
-   
-        						
-        						console.log(trip_date);
+        					//	tripObj.TRIP_DATE = trip_date;
+
         						
 
         						
        
         						
-        						res.render('reservationsList', {passengerObj, reservationObj, tripObj, originObj, destinationObj, stops_at, valid})
+        						res.render('reservationsList', {passengerObj, reservationObj, tripObj, trip_date, originObj, destinationObj, stops_at, valid})
 
         					})
 
