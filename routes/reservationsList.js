@@ -82,9 +82,11 @@ router.post('/', function(req, res, next) {
         					
         					var trip_start = new Date(tripObj.TRIP_TIME);
         					var trip_arrival = new Date(stops_at.ARRIVAL);
+        					
+        					
   
-        					trip_start = trip_start.split(':');
-        					trip_arrival = trip_arrival.split(':');
+        					trip_start = trip_start.toString().split(':');
+        					trip_arrival = trip_arrival.toString().split(':');
         					
         					console.log(trip_start[0]);
         					console.log(trip_start[1]);
