@@ -92,7 +92,7 @@ router.post('/', function(req, res, next) {
         						
        
         						
-        						res.render('reservationsList', {passengerObj, reservationObj, tripObj, trip_date, originObj, destinationObj, trip_start, trip_arrival})
+        						res.render('reservationsList', {passengerObj, reservationObj, tripObj, trip_date, valid, originObj, destinationObj, trip_start, trip_arrival})
 
         					})
 
