@@ -268,19 +268,30 @@ router.post('/available', function(req, res){
                                 });
                                 
                                 setTimeout(() => {
-
+                                        if(arrival1 != null || arrival1 != 0){
+                                            arrival1 = format(arrival1);
+                                        }
+                                        
+                                        if(arrival2 != null || arrival2 != 0){
+                                            arrival2 = format(arrival2);
+                                        }
+                                        
+                                        if(arrival3 != null || arrival3 != 0){
+                                            arrival3 = format(arrival3);
+                                        }
+                                        
                                         var train_arrivals = [];
                                         var firstTrain = {
                                           number: train1,
-                                          arrival: format(arrival1)
+                                          arrival: arrival1
                                         };
                                         var secondTrain = {
                                           number: train2,
-                                          arrival: format(arrival2)
+                                          arrival: arrival2
                                         };
                                         var thirdTrain = {
                                           number: train3,
-                                          arrival: format(arrival3)
+                                          arrival: arrival3
                                         }
                                         
                                          

@@ -99,8 +99,7 @@ router.post('/', function(req, res, next) {
 		        						var timeString;
 		        						var parsedHours = parseInt(start[0]);
 		        						var parsedMin = parseInt(start[1]);
-		        						
-		        						
+		
 		        						if(parsedHours > 12){
 		        							ampm = 'pm';
 		        							parsedHours = parsedHours - 12;
@@ -120,19 +119,9 @@ router.post('/', function(req, res, next) {
 		        					
         					}
         					
-        					
-        						
-
-        						
-       
-        						
         						res.render('reservationsList', {passengerObj, reservationObj, tripObj, trip_date, valid, originObj, destinationObj, trip_start, trip_arrival})
 
-        					})
-
-
-
-
+        					});
 
 
 
