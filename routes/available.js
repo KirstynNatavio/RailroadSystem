@@ -275,6 +275,8 @@ router.post('/available', function(req, res){
                                         
                                         var arr1, arr2, arr3;
                                         console.log(arrival1);
+                                        console.log(arrival2);
+                                        console.log(arrival3);
                                         
                                         if(arrival1 != null || arrival1 != 0 || arrival1 != undefined){
                                             arr1 = arrival1.split(':');
