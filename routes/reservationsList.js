@@ -76,13 +76,21 @@ router.post('/', function(req, res, next) {
         						trip_date = trip_date.format('ll'); 
         						
         					//	tripObj.TRIP_DATE = trip_date;
+        					var trip_start = new Date(tripObj.TRIP_TIME);
+        					var trip_arrival = new Date(stops_at.ARRIVAL);
+        					
+        					trip_start = moment(trip_start);
+        					trip_arrival = moment(trip_arrival);
+        					
+        					trip_start = trip_start.format('lts');
+        					trip_arrival = trip_arrival.format('lts');
 
         						
 
         						
        
         						
-        						res.render('reservationsList', {passengerObj, reservationObj, tripObj, trip_date, originObj, destinationObj, stops_at, valid})
+        						res.render('reservationsList', {passengerObj, reservationObj, tripObj, trip_date, originObj, destinationObj, trip_start, trip_arrival})
 
         					})
 
