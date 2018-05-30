@@ -76,6 +76,8 @@ router.post('/', function(req, res, next) {
         						trip_date = trip_date.format('ll'); 
         						
         						tripObj.TRIP_DATE = trip_date;
+        						
+        						console.log(tripObj.TRIP_DATE);
    
         						
         						console.log(trip_date);
