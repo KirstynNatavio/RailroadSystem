@@ -276,7 +276,7 @@ router.post('/available', function(req, res){
                                         var arr1, arr2, arr3;
                                         
                                         if(arrival1 != null || arrival1 != 0){
-                                            arrival1 = arrival1.toString().split(':');
+                                            arrival1 = arrival1.split(':');
                                             arr1 = format(arrival1);
                                         }
                                         
@@ -367,7 +367,7 @@ router.post('/available', function(req, res){
                                       
                                         
                                         res.render('available', {train_arrivals, empty}); 
-                                }, 2000);
+                                }, 3000);
                               
                  			    
                 }, 1500);
