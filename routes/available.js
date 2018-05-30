@@ -271,14 +271,17 @@ router.post('/available', function(req, res){
                                         var arr1, arr2, arr3;
                                         
                                         if(arrival1 != null || arrival1 != 0){
+                                            arrival1 = arrival1.split(':');
                                             arr1 = format(arrival1);
                                         }
                                         
                                         if(arrival2 != null || arrival2 != 0){
+                                            arrival2 = arrival2.split(':');
                                             arr2 = format(arrival2);
                                         }
                                         
                                         if(arrival3 != null || arrival3 != 0){
+                                            arrival3 = arrival3.split(':');
                                             arr3 = format(arrival3);
                                         }
                                         
