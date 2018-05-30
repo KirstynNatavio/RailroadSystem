@@ -274,6 +274,7 @@ router.post('/available', function(req, res){
                                 setTimeout(() => {
                                         
                                         var arr1, arr2, arr3;
+                                        console.log(arrival1);
                                         
                                         if(arrival1 != null || arrival1 != 0){
                                             arrival1 = arrival1.split(':');
