@@ -280,22 +280,25 @@ router.post('/available', function(req, res){
                                         
                                         if(typeof arrival1 === undefined){
                                             arr1 = arrival1.split(':');
-                                            var time1 = format(arr1);
+                                            console.log(arr1);
+                                            arr1 = format(arr1);
                                         }
                                         
                                         if(typeof arrival2 === undefined){
                                             arr2 = arrival2.split(':');
-                                            var time2 = format(arr2);
+                                            console.log(arr2);
+                                            arr2 = format(arr2);
                                         }
                                         
                                         if(typeof arrival3 === undefined){
                                             arr3 = arrival3.split(':');
-                                            var time3 = format(arr3);
+                                            console.log(arr3)
+                                            arr3 = format(arr3);
                                         }
                                         
-                                        console.log(time1);
-                                        console.log(time2);
-                                        console.log(time3);
+                                        console.log(arr1);
+                                        console.log(arr2);
+                                        console.log(arr3);
                                         
                                         function format(start){
             		        						var ampm;
