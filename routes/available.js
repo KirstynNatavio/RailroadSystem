@@ -293,6 +293,10 @@ router.post('/available', function(req, res){
                                             arr3 = format(arr3);
                                         }
                                         
+                                        console.log(arr1);
+                                        console.log(arr2);
+                                        console.log(arr3);
+                                        
                                         function format(start){
             		        						var ampm;
             		        						var timeString;
