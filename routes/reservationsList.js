@@ -79,7 +79,8 @@ router.post('/', function(req, res, next) {
         					//	tripObj.TRIP_DATE = trip_date;
         					console.log('BEFORE: ' + tripObj.TRIP_TIME);
         					console.log('BEFORE: ' + tripObj.TRIP_TIME)
-        					var trip_start = new Date(trip.Obj.TRIP_TIME);
+        					
+        					var trip_start = new Date(tripObj.TRIP_TIME);
         					var trip_arrival = new Date(stops_at.ARRIVAL);
   
         					trip_start = formatAMPM(trip_start);
