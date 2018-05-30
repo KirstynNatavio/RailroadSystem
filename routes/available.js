@@ -200,8 +200,8 @@ router.post('/available', function(req, res){
           
                 setTimeout(function(){
                     
-                              var train1, train2, train3 = null;
-                              var arrival1, arrival2, arrival3 = null;
+                              var train1, train2, train3;
+                              var arrival1, arrival2, arrival3;
                               var train_replacements = [
                                     origin_id,
                                     destination_id,
@@ -264,43 +264,22 @@ router.post('/available', function(req, res){
 
                                      });
 
-							
-                                });
-                                
-                                setTimeout(() => {
-                                        var arr1, arr2, arr3;
+                                 var arr1, arr2, arr3;
                                         
                                         if(arrival1 != null || arrival1 != 0){
-                                            arrival1 = arrival1.split(':');
+                                            arrival1 = arrival1.toString().split(':');
                                             arr1 = format(arrival1);
                                         }
                                         
                                         if(arrival2 != null || arrival2 != 0){
-                                            arrival2 = arrival2.split(':');
+                                            arrival2 = arrival2.toString().split(':');
                                             arr2 = format(arrival2);
                                         }
                                         
                                         if(arrival3 != null || arrival3 != 0){
-                                            arrival3 = arrival3.split(':');
+                                            arrival3 = arrival3.toString().split(':');
                                             arr3 = format(arrival3);
                                         }
-                                        
-                                        var train_arrivals = [];
-                                        
-                                        var firstTrain = {
-                                          number: train1,
-                                          arrival: arr1
-                                        };
-                                        var secondTrain = {
-                                          number: train2,
-                                          arrival: arr2
-                                        };
-                                        var thirdTrain = {
-                                          number: train3,
-                                          arrival: arr3
-                                        }
-                                        
-                                         
                                         
                                         function format(start){
             		        						var ampm;
@@ -328,6 +307,32 @@ router.post('/available', function(req, res){
             		        					
                     					}
 
+							
+                                });
+                                
+                               
+                                
+                                setTimeout(() => {
+                                        
+                                        
+                                        var train_arrivals = [];
+                                        
+                                        var firstTrain = {
+                                          number: train1,
+                                          arrival: arr1
+                                        };
+                                        var secondTrain = {
+                                          number: train2,
+                                          arrival: arr2
+                                        };
+                                        var thirdTrain = {
+                                          number: train3,
+                                          arrival: arr3
+                                        }
+                                        
+                                         
+                                        
+                                        
                                                                                
                                         if(train1 != 0 && train1 != null){
                                           train_arrivals.push(firstTrain);
