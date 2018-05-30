@@ -97,12 +97,15 @@ router.post('/', function(req, res, next) {
         					function format(start, arrival){
 		        						var ampm;
 		        						var timeString;
+		        						var parsedHours = parseInt(start[0]);
+		        						var parsedMin = parseInt(start[1]);
 		        						
-		        						if(start[0] > 12){
+		        						
+		        						if(parsedHours > 12){
 		        							ampm = 'pm';
-		        							start[0] = start[0] - 12;
+		        							parsedHours = parsedHours - 12;
 		        							
-		        						} else if (start[0] == 12){
+		        						} else if (parsedHours == 12){
 		        								ampm = 'pm';	
 		        						}	
 		        							
@@ -112,7 +115,7 @@ router.post('/', function(req, res, next) {
 		        						
 		       
 		        						
-		        						timeString = start[0] + ' ' + start[1] + ' ' + ampm;
+		        						timeString = parsedHours + ' ' + parsedMin + ' ' + ampm;
 		        						return timeString;
 		        					
         					}
