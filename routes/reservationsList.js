@@ -86,6 +86,8 @@ router.post('/', function(req, res, next) {
         					trip_start = trip_start.split(':');
         					trip_arrival = trip_arrival.split(':');
         					
+        					console.log(trip_start[0]);
+        					console.log(trip_start[1]);
         					
         					trip_start = format(trip_start);
         					trip_arrival = format(trip_arrival);
@@ -110,8 +112,8 @@ router.post('/', function(req, res, next) {
 		        						
 		        						timeString = start[0] + ' ' + start[1] + ' ' + ampm;
 		        						return timeString;
-		        					}
-        					});
+		        					
+        					}
         					
         					
         						
