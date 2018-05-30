@@ -200,8 +200,8 @@ router.post('/available', function(req, res){
           
                 setTimeout(function(){
                     
-                              var train1, train2, train3;
-                              var arrival1, arrival2, arrival3;
+                              var train1, train2, train3 = null;
+                              var arrival1, arrival2, arrival3 = null;
                               var train_replacements = [
                                     origin_id,
                                     destination_id,
@@ -264,86 +264,25 @@ router.post('/available', function(req, res){
 
                                      });
 
-                                        
-
 							
                                 });
                                 
-                               
-                                
                                 setTimeout(() => {
-                                        
-                                        var arr1, arr2, arr3;
-                                        console.log(arrival1);
-                                        console.log(arrival2);
-                                        console.log(arrival3); //undefined?
-                                        
-                                        if(typeof arrival1 !== 'undefined' || arrival1){
-                                            arr1 = arrival1.split(':');
-                                            console.log(arr1);
-                                            arr1 = format(arr1);
-                                        }
-                                        
-                                        if(typeof arrival2 !== 'undefined' || arrival2){
-                                            arr2 = arrival2.split(':');
-                                            console.log(arr2);
-                                            arr2 = format(arr2);
-                                        }
-                                        
-                                        if(typeof arrival3 !== 'undefined' || arrival3){
-                                            arr3 = arrival3.split(':');
-                                            console.log(arr3);
-                                            arr3 = format(arr3);
-                                        }
-                                        
-                                        console.log(arr1);
-                                        console.log(arr2);
-                                        console.log(arr3);
-                                        
-                                        function format(start){
-            		        						var ampm;
-            		        						var timeString;
-            		        						var parsedHours = parseInt(start[0]);
-            		        						var parsedMin = parseInt(start[1]);
-            		        						
-            		        						
-            		        						if(parsedHours > 12){
-            		        							ampm = 'pm';
-            		        							parsedHours = parsedHours - 12;
-            		        							
-            		        						} else if (parsedHours == 12){
-            		        								ampm = 'pm';	
-            		        						}	
-            		        							
-            		        							else {
-            		        							ampm = 'am';
-            		        						}
-            		        						
-            		       
-            		        						
-            		        						timeString = parsedHours + ':' + parsedMin + ' ' + ampm;
-            		        						return timeString;
-            		        					
-                    					}
-                                        
+
                                         var train_arrivals = [];
-                                        
                                         var firstTrain = {
                                           number: train1,
-                                          arrival: arr1
+                                          arrival: arrival1
                                         };
                                         var secondTrain = {
                                           number: train2,
-                                          arrival: arr2
+                                          arrival: arrival2
                                         };
                                         var thirdTrain = {
                                           number: train3,
-                                          arrival: arr3
+                                          arrival: arrival3
                                         }
-                                        
-                                         
-                                        
-                                        
+
                                                                                
                                         if(train1 != 0 && train1 != null){
                                           train_arrivals.push(firstTrain);
@@ -374,10 +313,8 @@ router.post('/available', function(req, res){
                                    
                                         module.exports = options;
                                         
-                                      
-                                        
                                         res.render('available', {train_arrivals, empty}); 
-                                }, 3000);
+                                }, 2000);
                               
                  			    
                 }, 1500);
