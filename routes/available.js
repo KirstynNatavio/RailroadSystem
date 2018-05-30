@@ -272,16 +272,44 @@ router.post('/available', function(req, res){
                                         var train_arrivals = [];
                                         var firstTrain = {
                                           number: train1,
-                                          arrival: arrival1
+                                          arrival: format(arrival1)
                                         };
                                         var secondTrain = {
                                           number: train2,
-                                          arrival: arrival2
+                                          arrival: format(arrival2)
                                         };
                                         var thirdTrain = {
                                           number: train3,
-                                          arrival: arrival3
+                                          arrival: format(arrival3)
                                         }
+                                        
+                                         
+                                        
+                                        function format(start){
+            		        						var ampm;
+            		        						var timeString;
+            		        						var parsedHours = parseInt(start[0]);
+            		        						var parsedMin = parseInt(start[1]);
+            		        						
+            		        						
+            		        						if(parsedHours > 12){
+            		        							ampm = 'pm';
+            		        							parsedHours = parsedHours - 12;
+            		        							
+            		        						} else if (parsedHours == 12){
+            		        								ampm = 'pm';	
+            		        						}	
+            		        							
+            		        							else {
+            		        							ampm = 'am';
+            		        						}
+            		        						
+            		       
+            		        						
+            		        						timeString = parsedHours + ':' + parsedMin + ' ' + ampm;
+            		        						return timeString;
+            		        					
+                    					}
 
                                                                                
                                         if(train1 != 0 && train1 != null){
@@ -312,6 +340,8 @@ router.post('/available', function(req, res){
                                         };
                                    
                                         module.exports = options;
+                                        
+                                      
                                         
                                         res.render('available', {train_arrivals, empty}); 
                                 }, 2000);
