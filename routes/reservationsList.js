@@ -75,16 +75,18 @@ router.post('/', function(req, res, next) {
         						
         						trip_date = trip_date.format('ll'); 
         						
-        					// //	tripObj.TRIP_DATE = trip_date;
-        					// var trip_start = new Date(tripObj.TRIP_TIME);
-        					// var trip_arrival = new Date(stops_at.ARRIVAL);
+        					//	tripObj.TRIP_DATE = trip_date;
+        					var trip_start = new Date(tripObj.TRIP_TIME);
+        					var trip_arrival = new Date(stops_at.ARRIVAL);
         					
-        					// trip_start = moment(trip_start);
-        					// trip_arrival = moment(trip_arrival);
+        					trip_start = moment(trip_start);
+        					trip_arrival = moment(trip_arrival);
         					
-        					// trip_start = trip_start.format('lts');
-        					// trip_arrival = trip_arrival.format('lts');
+        					trip_start = trip_start.format('lts');
+        					trip_arrival = trip_arrival.format('lts');
 			
+							console.log(trip_start);
+							console.log(trip_arrival);
         						
 
         						
