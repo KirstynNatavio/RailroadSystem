@@ -83,25 +83,37 @@ router.post('/', function(req, res, next) {
         					var trip_start = new Date(tripObj.TRIP_TIME);
         					var trip_arrival = new Date(stops_at.ARRIVAL);
   
-        					trip_start = formatAMPM(trip_start);
-        					trip_arrival = formatAMPM(trip_arrival);
+        					trip_start = trip_start.split(':');
+        					trip_arrival = trip_arrival.split(':');
         					
-        					//UTC
-        					function formatAMPM(date) {
-							  var hours = date.getHours();
-							  var minutes = date.getMinutes();
-							  console.log(minutes);
-							  console.log(date);
-							  var ampm = (hours-4) >= 12 ? 'pm' : 'am';
-							  hours = (hours-4 % 12);
-							  hours = hours ? hours : 12; // the hour '0' should be '12'
-							  //minutes = minutes < 10 ? '0'+minutes : minutes;
-							  var strTime = hours + ':' + minutes + ' ' + ampm;
-							  return strTime;
-							}
-			
-							console.log(trip_start);
-							console.log(trip_arrival);
+        					
+        					trip_start = format(trip_start);
+        					trip_arrival = format(trip_arrival);
+        					
+        					function format(start, arrival){
+		        						var ampm;
+		        						var timeString;
+		        						
+		        						if(start[0] > 12){
+		        							ampm = 'pm';
+		        							start[0] = start[0] - 12;
+		        							
+		        						} else if (start[0] == 12){
+		        								ampm = 'pm';	
+		        						}	
+		        							
+		        							else {
+		        							ampm = 'am';
+		        						}
+		        						
+		       
+		        						
+		        						timeString = start[0] + ' ' + start[1] + ' ' + ampm;
+		        						return timeString;
+		        					}
+        					});
+        					
+        					
         						
 
         						
