@@ -77,8 +77,8 @@ router.post('/', function(req, res, next) {
         						trip_date = trip_date.format('ll'); 
         						
         					//	tripObj.TRIP_DATE = trip_date;
-        					console.log('BEFORE: ' + tripObj.TRIP_TIME);
-        					console.log('BEFORE: ' + tripObj.TRIP_TIME)
+        					// console.log('BEFORE: ' + tripObj.TRIP_TIME);
+        					// console.log('BEFORE: ' + tripObj.TRIP_TIME)
         					
         					var trip_start = new Date(tripObj.TRIP_TIME);
         					var trip_arrival = new Date(stops_at.ARRIVAL);
@@ -90,11 +90,13 @@ router.post('/', function(req, res, next) {
         					function formatAMPM(date) {
 							  var hours = date.getHours();
 							  var minutes = date.getMinutes();
-							  var ampm = hours >= 12 ? 'pm' : 'am';
-							  hours = (hours % 12);
+							  console.log(minutes);
+							  console.log(date);
+							  var ampm = (hours-4) >= 12 ? 'pm' : 'am';
+							  hours = (hours-4 % 12);
 							  hours = hours ? hours : 12; // the hour '0' should be '12'
 							  //minutes = minutes < 10 ? '0'+minutes : minutes;
-							  var strTime = (hours - 4) + ':' + minutes + ' ' + ampm;
+							  var strTime = hours + ':' + minutes + ' ' + ampm;
 							  return strTime;
 							}
 			
