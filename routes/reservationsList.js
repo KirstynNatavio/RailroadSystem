@@ -80,13 +80,13 @@ router.post('/', function(req, res, next) {
         					// console.log('BEFORE: ' + tripObj.TRIP_TIME);
         					// console.log('BEFORE: ' + tripObj.TRIP_TIME)
         					
-        					var trip_start = new Date(tripObj.TRIP_TIME);
-        					var trip_arrival = new Date(stops_at.ARRIVAL);
+        					var start = new Date(tripObj.TRIP_TIME);
+        					var arrival = new Date(stops_at.ARRIVAL);
         					
         					
   
-        					trip_start = trip_start.toString().split(':');
-        					trip_arrival = trip_arrival.toString().split(':');
+        					var trip_start = start.toString().split(':');
+        					var trip_arrival = arrival.toString().split(':');
         					
         					console.log(trip_start[0]);
         					console.log(trip_start[1]);
