@@ -264,7 +264,16 @@ router.post('/available', function(req, res){
 
                                      });
 
-                                 var arr1, arr2, arr3;
+                                        
+
+							
+                                });
+                                
+                               
+                                
+                                setTimeout(() => {
+                                        
+                                        var arr1, arr2, arr3;
                                         
                                         if(arrival1 != null || arrival1 != 0){
                                             arrival1 = arrival1.toString().split(':');
@@ -306,14 +315,6 @@ router.post('/available', function(req, res){
             		        						return timeString;
             		        					
                     					}
-
-							
-                                });
-                                
-                               
-                                
-                                setTimeout(() => {
-                                        
                                         
                                         var train_arrivals = [];
                                         
